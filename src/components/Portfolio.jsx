@@ -1,5 +1,21 @@
+import portfolio from "../data/portfolio";
+import PortfolioItem from "./PortfolioItem";
+
 function Portfolio() {
-  return <section>Portfolio</section>;
+  return (
+    <section className="flex flex-col md:flex-row items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-col-3 gap-4">
+        {portfolio.map((project) => (
+          <PortfolioItem
+            imgUrl={project.imgUrl}
+            title={project.title}
+            stack={project.stack}
+            link={project.link}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default Portfolio;
