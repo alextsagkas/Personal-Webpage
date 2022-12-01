@@ -4,7 +4,7 @@ function Contact() {
   return (
     <section className="flex flex-col mb-10 mx-auto">
       <div className="flex justify-center items-center">
-        {/* TODO: change the slug */}
+        {/* TODO: Check if this works on deployment */}
         <form
           action="https://getform.io/f/13faa335-225a-4d88-8561-0f5940673221"
           method="POST"
