@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 // TODO: Change favicon
+// TODO: Display for Phone
 
 function App() {
   const [theme, setTheme] = useState(null);
@@ -70,7 +71,7 @@ function App() {
       <button
         type="button"
         onClick={themeSwitcherHandler}
-        className="fixed p-2 z-10 right-20 top-4 bg-violet-300 text-lg pd-1 rounded-md
+        className="fixed p-2 z-10 right-5 opacity-90 top-4 bg-violet-300 text-lg pd-1 rounded-md
         dark:bg-orange-300"
       >
         {theme === "dark" ? sun : moon}
