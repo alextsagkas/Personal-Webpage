@@ -1,3 +1,5 @@
+import Title from "./Title";
+
 function Contact() {
   return (
     <section className="flex flex-col mb-10 mx-auto">
@@ -8,6 +10,7 @@ function Contact() {
           method="POST"
           className="flex flex-col w-full md:w-7/12"
         >
+          <Title>Contact</Title>
           <input
             type="text"
             name="name"
