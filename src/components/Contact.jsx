@@ -33,7 +33,7 @@ function Contact() {
             type="button"
             className="text-center inline-block px-8 py-3 w-max text-base 
             font-medium rounded-md text-white bg-gradient-to-r 
-            from-yellow-500 to-pink-500 drop-shadow-md 
+            from-blue-500 to-violet-400 dark:to-orange-400 drop-shadow-md 
             hover: stroke-white"
           >
             Work with Me
