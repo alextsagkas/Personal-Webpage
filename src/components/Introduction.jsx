@@ -1,19 +1,13 @@
 function Introduction() {
   return (
-    <section
-      className="flex items-center justify-center flex-col text-center
-                pt-20 pb-6"
-    >
-      <h1
-        className="text-4xl md:text-7xl mb-1 md:mb-3 font-bold
-      dark:text-white"
-      >
+    <section className="flex flex-col items-center justify-center pt-20 pb-6 text-center">
+      <h1 className="mb-1 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
         Alexandros Tsagkaropoulos
       </h1>
-      <p className="text-base md:text-xl mb-3 font-medium">
+      <p className="mb-3 text-base font-medium md:text-xl">
         Physics Student & Developer
       </p>
-      <p className="text-sm max-w-xl mb-6 font-bold">
+      <p className="mb-6 max-w-xl text-sm font-bold">
         I'm a Bachelor Physics Student trying to figure out the world we live
         in. I specialize in Electronics and Computers and I seek to apply my
         knowledge to Software Development Projects. All Software Engineering

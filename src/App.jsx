@@ -38,7 +38,7 @@ function App() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -55,7 +55,7 @@ function App() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="white"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -70,16 +70,13 @@ function App() {
       <button
         type="button"
         onClick={themeSwitcherHandler}
-        className="fixed p-2 z-10 right-5 opacity-90 top-4 bg-violet-300 text-lg pd-1 rounded-md
+        className="pd-1 fixed right-5 top-4 z-10 rounded-md bg-violet-300 p-2 text-lg opacity-90
         dark:bg-orange-300"
       >
         {theme === "dark" ? sun : moon}
       </button>
-      <div
-        className="bg-white text-stone-900 min-h-screen font-inter
-      dark:bg-stone-900 dark:text-stone-300"
-      >
-        <div className="max-w-5xl w-11/12 mx-auto">
+      <div className="min-h-screen bg-white font-inter text-stone-900 dark:bg-stone-900 dark:text-stone-300">
+        <div className="mx-auto w-11/12 max-w-5xl">
           <Introduction />
           <Portfolio />
           <TimeLine />

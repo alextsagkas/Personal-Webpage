@@ -1,15 +1,14 @@
 function Footer() {
   return (
     <section className="py-5 text-center ">
-      <div className="container max-w-screen-lg mx-auto">
+      <div className="container mx-auto max-w-screen-lg">
         <div className="flex flex-wrap justify-center gap-3 pb-4">
           <a
             href="https://www.linkedin.com/in/alexandros-tsagkaropoulos/"
-            className="bg-stone-400 p-2 font-semibold text-white inline-flex
-               items-center rounded-lg"
+            className="inline-flex items-center rounded-lg bg-stone-400 p-2 font-semibold text-white"
           >
             <svg
-              className="w-5 h-5 fill-current"
+              className="h-5 w-5 fill-current"
               role="img"
               viewBox="0 0 256 256"
               xmlns="http://www.w3.org/2000/svg"
@@ -21,8 +20,8 @@ function Footer() {
           </a>
           <a
             href="https://github.com/alextsagkas"
-            className="bg-stone-400 p-2 font-semibold text-white inline-flex
-               items-center rounded-lg"
+            className="inline-flex items-center rounded-lg bg-stone-400 p-2
+               font-semibold text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <p className="text-sm mt-2 opacity-50">
+      <p className="mt-2 text-sm opacity-50">
         &copy; {new Date().getFullYear()} Alexandros Tsagkaropoulos. All rights
         reserved.
       </p>
