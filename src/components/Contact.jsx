@@ -2,7 +2,7 @@ import Title from "./Title";
 
 function Contact() {
   return (
-    <section className="mx-auto mb-10 flex flex-col">
+    <section className="mx-auto mb-10 flex flex-col px-2">
       <div className="flex items-center justify-center">
         {/* TODO: Check if this works on deployment */}
         <form

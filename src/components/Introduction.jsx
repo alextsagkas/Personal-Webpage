@@ -1,6 +1,6 @@
 function Introduction() {
   return (
-    <section className="flex flex-col items-center justify-center pt-20 pb-6 text-center">
+    <section className="flex flex-col items-center justify-center px-2 pt-20 pb-6 text-center">
       <h1 className="mb-1 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
         Alexandros Tsagkaropoulos
       </h1>
