@@ -6,7 +6,6 @@ import TimeLine from "./components/TimeLine";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-// TODO: Change favicon
 // TODO: Display for Phone
 
 function App() {
