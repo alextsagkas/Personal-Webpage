@@ -10,7 +10,8 @@ module.exports = {
         inter: ["inter", "serif"],
       },
       colors: {
-        bgDark: colors.slate,
+        bgDark: colors.neutral,
+        bgLight: colors.orange,
       },
     },
   },
