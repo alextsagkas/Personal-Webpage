@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -6,6 +8,9 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ["inter", "serif"],
+      },
+      colors: {
+        bgDark: colors.slate,
       },
     },
   },

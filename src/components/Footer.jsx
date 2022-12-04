@@ -5,7 +5,7 @@ function Footer() {
         <div className="flex flex-wrap justify-center gap-3 pb-4">
           <a
             href="https://www.linkedin.com/in/alexandros-tsagkaropoulos/"
-            className="inline-flex items-center rounded-lg bg-stone-400 p-2 font-semibold text-white"
+            className="inline-flex items-center rounded-lg bg-bgDark-400 p-2 font-semibold text-white"
           >
             <svg
               className="h-5 w-5 fill-current"
@@ -20,7 +20,7 @@ function Footer() {
           </a>
           <a
             href="https://github.com/alextsagkas"
-            className="inline-flex items-center rounded-lg bg-stone-400 p-2
+            className="inline-flex items-center rounded-lg bg-bgDark-400 p-2
                font-semibold text-white"
           >
             <svg

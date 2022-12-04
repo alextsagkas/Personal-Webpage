@@ -27,7 +27,7 @@ function Contact() {
             name="message"
             placeholder="Message"
             rows="10"
-            className="mb-4 resize-none rounded-md border-2 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:outline-none dark:caret-orange-300  dark:selection:bg-orange-400 dark:selection:text-stone-900"
+            className="mb-4 resize-none rounded-md border-2 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:outline-none dark:caret-orange-300  dark:selection:bg-orange-400 dark:selection:text-bgDark-900"
           />
           <button
             type="button"
