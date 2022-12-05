@@ -9,6 +9,7 @@ function TimeLine() {
         <Title>Timeline</Title>
         {timeline.map((event) => (
           <TimeLineItem
+            key={event.id}
             year={event.year}
             title={event.title}
             duration={event.duration}

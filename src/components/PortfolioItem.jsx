@@ -1,4 +1,4 @@
-function PortfolioItem({ title, imgUrl, stack, link }) {
+function PortfolioItem({ id, title, imgUrl, stack, link }) {
   return (
     <a
       href={link}
@@ -17,7 +17,10 @@ function PortfolioItem({ title, imgUrl, stack, link }) {
         </h3>
         <p className="felx-wrap flex flex-row items-center justify-start gap-2 text-xs dark:text-white md:text-sm">
           {stack.map((item) => (
-            <span className="inline-block rounded-md border-2 border-bgDark-900 px-2 py-1 font-semibold dark:border-white">
+            <span
+              key={id + item}
+              className="inline-block rounded-md border-2 border-bgDark-900 px-2 py-1 font-semibold dark:border-white"
+            >
               {item}
             </span>
           ))}

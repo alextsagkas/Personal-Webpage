@@ -10,6 +10,8 @@ function Portfolio() {
         <div className="lg:grid-col-3 grid grid-cols-1 gap-4 md:grid-cols-2">
           {portfolio.map((project) => (
             <PortfolioItem
+              key={project.id}
+              id={project.id}
               imgUrl={project.imgUrl}
               title={project.title}
               stack={project.stack}

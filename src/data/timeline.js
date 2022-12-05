@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     year: "Today",
     title: "Physics Bachelor's Degree",
     duration: "4 years",
@@ -7,6 +8,7 @@ export default [
       "My passion for understanding what constitutes reality and how humans can influence lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my passion.",
   },
   {
+    id: 2,
     year: "Today",
     title: "Human Resources Manager in Young Minds NKUA",
     duration: "1 year",
@@ -14,6 +16,7 @@ export default [
       "Contribute as a Volunteer in Young Minds NKUA Section with my fellow students and friends. The main reason I choose to be in that positions is that I warmly support the three main goals of Young Minds (education, networking and outreach). Also, I hone my skills in organization of teams, leadership and communication.",
   },
   {
+    id: 3,
     year: "2022",
     title: "Internship at 7L International",
     duration: "2 months",

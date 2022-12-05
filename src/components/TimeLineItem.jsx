@@ -3,7 +3,7 @@ function TimeLineItem({ year, title, duration, details }) {
     <ol className="relative flex flex-col border-l-[1.7px] border-bgDark-300 dark:border-bgDark-700 md:flex-row">
       <li className="mb-10 ml-4">
         <div className="absolute -left-[8.7px] mt-1.5 h-4 w-4 rounded-full border-[3.5px] border-bgLight-50 bg-bgDark-300 dark:border-bgDark-900 dark:bg-bgDark-700" />
-        <p className="flex flex-row flex-wrap items-center justify-start gap-4 text-xs md:text-sm">
+        <div className="flex flex-row flex-wrap items-center justify-start gap-4 text-xs md:text-sm">
           <span className="inline-block rounded-md bg-bgDark-900 px-2 py-1 font-semibold text-white dark:bg-white dark:text-bgDark-900">
             {year}
           </span>
@@ -16,7 +16,7 @@ function TimeLineItem({ year, title, duration, details }) {
           <p className="my-2 text-base font-normal text-bgDark-500 dark:text-bgDark-400">
             {details}
           </p>
-        </p>
+        </div>
       </li>
     </ol>
   );
