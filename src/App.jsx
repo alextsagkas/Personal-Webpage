@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Introduction from "./components/Introduction";
@@ -9,6 +9,18 @@ import Footer from "./components/Footer";
 
 function App() {
   const [theme, setTheme] = useState(null);
+
+  const introductionRef = useRef(null);
+  const portfolioRef = useRef(null);
+  const timeLineRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const refs = {
+    introductionRef,
+    portfolioRef,
+    timeLineRef,
+    contactRef,
+  };
 
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -31,18 +43,18 @@ function App() {
   }, [theme]);
 
   return (
-    <>
-      <NavBar theme={theme} themeSwitcherHandler={themeSwitcherHandler} />
-      <div className="min-h-screen bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
-        <div className="mx-auto w-11/12 min-w-fit max-w-5xl">
-          <Introduction />
-          <Portfolio />
-          <TimeLine />
-          <Contact />
-          <Footer />
-        </div>
-      </div>
-    </>
+    <div className="mx-auto min-h-screen w-11/12 min-w-fit max-w-5xl bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
+      <NavBar
+        theme={theme}
+        themeSwitcherHandler={themeSwitcherHandler}
+        refs={refs}
+      />
+      <Introduction ref={introductionRef} />
+      <Portfolio ref={portfolioRef} />
+      <TimeLine ref={timeLineRef} />
+      <Contact ref={contactRef} />
+      <Footer />
+    </div>
   );
 }
 

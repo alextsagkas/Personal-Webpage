@@ -1,10 +1,12 @@
+import { forwardRef } from "react";
+
 import portfolio from "../data/portfolio";
 import PortfolioItem from "./PortfolioItem";
 import Title from "./Title";
 
-function Portfolio() {
+const Portfolio = forwardRef((props, ref) => {
   return (
-    <section className="mx-auto w-fit px-2">
+    <section ref={ref} className="mx-auto w-fit px-2">
       <Title>Portfolio</Title>
       <div className="flex flex-col items-center justify-center md:flex-row">
         <div className="lg:grid-col-3 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -22,6 +24,6 @@ function Portfolio() {
       </div>
     </section>
   );
-}
+});
 
 export default Portfolio;

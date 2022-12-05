@@ -1,7 +1,9 @@
-function Introduction() {
+import { forwardRef } from "react";
+
+const Introduction = forwardRef((props, ref) => {
   return (
     <section
-      id="introduction"
+      ref={ref}
       className="flex h-screen flex-col items-center justify-center px-2 pt-20 pb-6 text-center"
     >
       <h1 className="mb-2 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
@@ -19,6 +21,6 @@ function Introduction() {
       </p>
     </section>
   );
-}
+});
 
 export default Introduction;
