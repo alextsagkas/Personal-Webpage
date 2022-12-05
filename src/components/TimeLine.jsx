@@ -8,7 +8,7 @@ const TimeLine = forwardRef((props, ref) => {
   return (
     <section
       ref={ref}
-      className="my-20 flex flex-col justify-center md:flex-row"
+      className="flex flex-col justify-center pt-12 md:flex-row"
     >
       <div className="w-full px-4 md:w-7/12">
         <Title>Timeline</Title>

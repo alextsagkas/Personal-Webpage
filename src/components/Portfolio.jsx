@@ -6,7 +6,7 @@ import Title from "./Title";
 
 const Portfolio = forwardRef((props, ref) => {
   return (
-    <section ref={ref} className="mx-auto w-fit px-2">
+    <section ref={ref} className="mx-auto w-fit px-2 pt-12">
       <Title>Portfolio</Title>
       <div className="flex flex-col items-center justify-center md:flex-row">
         <div className="lg:grid-col-3 grid grid-cols-1 gap-4 md:grid-cols-2">
