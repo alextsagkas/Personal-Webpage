@@ -15,7 +15,7 @@ function PortfolioItem({ id, title, imgUrl, stack, link }) {
         <h3 className="mb-2 text-lg font-semibold dark:text-white md:mb-3 md:text-xl">
           {title}
         </h3>
-        <p className="felx-wrap flex flex-row items-center justify-start gap-2 text-xs dark:text-white md:text-sm">
+        <p className="flex flex-row flex-wrap items-center justify-start gap-2 text-xs dark:text-white md:text-sm">
           {stack.map((item) => (
             <span
               key={id + item}

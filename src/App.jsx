@@ -7,8 +7,6 @@ import TimeLine from "./components/TimeLine";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import Carousel, { CarouselItem } from "./components/Carousel";
-
 function App() {
   const [theme, setTheme] = useState(null);
   const [removePage, removePageHandler] = useState(false);
@@ -68,12 +66,6 @@ function App() {
         />
       ) : null}
       <Portfolio ref={portfolioRef} />
-      <Carousel>
-        <CarouselItem>Item 1</CarouselItem>
-        <CarouselItem>Item 2</CarouselItem>
-        <CarouselItem>Item 3</CarouselItem>
-        <CarouselItem>Item 4</CarouselItem>
-      </Carousel>
       <TimeLine ref={timeLineRef} />
       <Contact ref={contactRef} />
       <Footer />

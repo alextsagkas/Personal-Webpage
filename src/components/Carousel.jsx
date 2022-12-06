@@ -4,10 +4,7 @@ import { useSwipeable } from "react-swipeable";
 
 export const CarouselItem = ({ children, width }) => {
   return (
-    <div
-      className="inline-flex h-20 items-center justify-center bg-green-500 text-white"
-      style={{ width: width }}
-    >
+    <div className={`inline-flex items-center justify-center w-[${width}]`}>
       {children}
     </div>
   );
@@ -51,12 +48,12 @@ const Carousel = ({ children }) => {
   };
 
   return (
-    <div className="my-5 overflow-hidden">
+    <div className="overflow-hidden">
       <div
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
-        className="whitespace-nowrap transition-transform duration-300"
+        className="duration-400 whitespace-nowrap transition-transform"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {React.Children.map(children, (child, index) => {
@@ -65,7 +62,7 @@ const Carousel = ({ children }) => {
       </div>
       <div className="flex justify-center">
         <button
-          className="m-3 rounded-md bg-green-100 p-1 text-black"
+          className="m-3 rounded-md bg-bgDark-300 p-1 text-black"
           onClick={() => {
             updateIndex(activeIndex - 1);
           }}
@@ -75,19 +72,17 @@ const Carousel = ({ children }) => {
         {React.Children.map(children, (child, index) => {
           return (
             <button
-              className={`${
-                activeIndex === index ? "bg-green-400" : ""
-              } m-1 rounded-md bg-green-100 px-2 text-black`}
+              className={`mx-2 mt-5 h-4 w-4 rounded-full ${
+                activeIndex === index ? "bg-bgDark-400" : "bg-bgDark-600"
+              }`}
               onClick={() => {
                 updateIndex(index);
               }}
-            >
-              {index + 1}
-            </button>
+            />
           );
         })}
         <button
-          className="m-3 rounded-md bg-green-100 p-1 text-black"
+          className="m-3 rounded-md bg-bgDark-300 p-1 text-black"
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}

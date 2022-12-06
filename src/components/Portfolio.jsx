@@ -3,14 +3,15 @@ import { forwardRef } from "react";
 import portfolio from "../data/portfolio";
 import PortfolioItem from "./PortfolioItem";
 import Title from "./Title";
+import Carousel, { CarouselItem } from "./Carousel";
 
 const Portfolio = forwardRef((props, ref) => {
   return (
-    <section ref={ref} className="mx-auto w-fit px-2 pt-12">
+    <section ref={ref} className="mx-auto w-screen px-4 pt-12 md:w-7/12">
       <Title>Portfolio</Title>
-      <div className="flex flex-col items-center justify-center md:flex-row">
-        <div className="lg:grid-col-3 grid grid-cols-1 gap-4 md:grid-cols-2">
-          {portfolio.map((project) => (
+      <Carousel>
+        {portfolio.map((project) => (
+          <CarouselItem>
             <PortfolioItem
               key={project.id}
               id={project.id}
@@ -19,9 +20,9 @@ const Portfolio = forwardRef((props, ref) => {
               stack={project.stack}
               link={project.link}
             />
-          ))}
-        </div>
-      </div>
+          </CarouselItem>
+        ))}
+      </Carousel>
     </section>
   );
 });
