@@ -23,7 +23,7 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
       </p>
       <div className="h-full" />
       <motion.div
-        className="mb-[0.3rem] text-[10px] text-bgDark-900 dark:text-white "
+        className="mb-1 text-xs text-bgDark-900 dark:text-white md:mb-3 md:text-sm "
         animate={{ y: -4 }}
         transition={{
           repeat: Infinity,
