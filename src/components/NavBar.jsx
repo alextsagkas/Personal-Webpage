@@ -1,6 +1,6 @@
 import ThemeButton from "./ThemeButton";
 
-function NavBar({ theme, themeSwitcherHandler, refs }) {
+function NavBar({ theme, themeSwitcherHandler, removePageHandler, refs }) {
   const { introductionRef, portfolioRef, timeLineRef, contactRef } = refs;
   const navItems = ["Home", "Portfolio", "Timeline", "Contact"];
 
@@ -9,7 +9,7 @@ function NavBar({ theme, themeSwitcherHandler, refs }) {
       <ul className="flex h-full list-none flex-row items-center gap-4">
         <button
           onClick={() => {
-            introductionRef.current?.scrollIntoView({ behavior: "smooth" });
+            removePageHandler(false);
           }}
         >
           Home

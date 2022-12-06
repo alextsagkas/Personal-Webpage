@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import NavBar from "./components/NavBar";
-import Introduction from "./components/Introduction";
+import IntroAnimate from "./components/IntroAnimate";
 import Portfolio from "./components/Portfolio";
 import TimeLine from "./components/TimeLine";
 import Contact from "./components/Contact";
@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [theme, setTheme] = useState(null);
+  const [removePage, removePageHandler] = useState(false);
 
   const introductionRef = useRef(null);
   const portfolioRef = useRef(null);
@@ -42,14 +43,28 @@ function App() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    if (!removePage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  }, [removePage]);
+
   return (
     <div className="mx-auto min-h-screen w-11/12 min-w-fit max-w-5xl bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
       <NavBar
         theme={theme}
         themeSwitcherHandler={themeSwitcherHandler}
+        removePageHandler={removePageHandler}
         refs={refs}
       />
-      <Introduction ref={introductionRef} />
+      {!removePage ? (
+        <IntroAnimate
+          removePageHandler={removePageHandler}
+          ref={introductionRef}
+        />
+      ) : null}
       <Portfolio ref={portfolioRef} />
       <TimeLine ref={timeLineRef} />
       <Contact ref={contactRef} />
