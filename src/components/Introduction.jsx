@@ -34,7 +34,7 @@ const Introduction = forwardRef((props, ref) => {
       >
         Swipe Up
       </motion.div>
-      <div className="mb-7 h-3 w-[30%] rounded-md bg-bgDark-900 dark:bg-white"></div>
+      <div className="mb-24 h-4 w-[30%] rounded-md bg-bgDark-900 dark:bg-white sm:mb-5"></div>
     </section>
   );
 });

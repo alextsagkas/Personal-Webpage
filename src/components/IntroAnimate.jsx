@@ -36,7 +36,7 @@ const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
         <Introduction ref={ref} />
       </motion.div>
       {isDraggedDown ? (
-        <div className="fixed top-0 left-0 z-10 h-[99%] w-screen bg-bgLight-50 dark:bg-red-900"></div>
+        <div className="fixed top-0 left-0 z-10 h-[99%] w-screen bg-bgLight-50 dark:bg-bgDark-900"></div>
       ) : null}
     </>
   );
