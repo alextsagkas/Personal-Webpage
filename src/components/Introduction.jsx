@@ -4,7 +4,7 @@ const Introduction = forwardRef((props, ref) => {
   return (
     <section
       ref={ref}
-      className="flex h-screen flex-col items-center justify-center px-2 text-center"
+      className="flex h-screen w-screen flex-col items-center justify-center px-2 text-center"
     >
       <div className="h-full" />
       <h1 className="mb-2 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
@@ -21,6 +21,7 @@ const Introduction = forwardRef((props, ref) => {
         world problems efficiently.
       </p>
       <div className="h-full" />
+      <div className="mb-2">Swipe Up</div>
       <div className="mb-5 h-5 w-44 rounded-md bg-white "></div>
     </section>
   );
