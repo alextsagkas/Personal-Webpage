@@ -6,6 +6,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        smallPhone: "380px",
+      },
       fontFamily: {
         inter: ["inter", "serif"],
       },
