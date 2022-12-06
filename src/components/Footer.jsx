@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <section className="py-5 text-center ">
+    <section className="mt-28 text-center">
       <div className="container mx-auto max-w-screen-lg">
         <div className="flex flex-wrap justify-center gap-3 pb-4">
           <a
@@ -44,7 +44,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <p className="mt-2 text-sm opacity-50">
+      <p className="mt-1 mb-4 text-sm opacity-50">
         &copy; {new Date().getFullYear()} Alexandros Tsagkaropoulos. All rights
         reserved.
       </p>
