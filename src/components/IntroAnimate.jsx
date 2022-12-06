@@ -6,7 +6,7 @@ import Introduction from "./Introduction";
 const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
   return (
     <motion.div
-      className="fixed top-0 left-0 z-20 bg-bgDark-900"
+      className="fixed top-0 left-0 z-20 bg-bgLight-50 dark:bg-bgDark-900"
       drag="y"
       dragConstraints={{ bottom: 0 }}
       dragElastic={0}
@@ -15,7 +15,7 @@ const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
         bounceStiffness: 1000,
         bounceDamping: 100,
       }}
-      whileDrag={{ scale: 1.02 }}
+      whileDrag={{ scale: 1.01 }}
       onUpdate={() => {
         if (
           Math.abs(ref.current.getBoundingClientRect().y) > window.innerHeight
