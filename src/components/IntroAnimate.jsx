@@ -6,7 +6,7 @@ import Introduction from "./Introduction";
 const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
   return (
     <motion.div
-      className="fixed top-0 bottom-0 z-20 bg-red-400 text-white"
+      className="fixed top-0 left-0 z-20 bg-bgDark-900"
       drag="y"
       dragConstraints={{ bottom: 0 }}
       dragElastic={0}

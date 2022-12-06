@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { motion } from "framer-motion";
 
 const Introduction = forwardRef((props, ref) => {
   return (
@@ -21,8 +22,19 @@ const Introduction = forwardRef((props, ref) => {
         world problems efficiently.
       </p>
       <div className="h-full" />
-      <div className="mb-2">Swipe Up</div>
-      <div className="mb-5 h-5 w-44 rounded-md bg-white "></div>
+      <motion.div
+        className="mb-[0.3rem] text-[8px] text-white md:text-[10px]"
+        animate={{ y: -4 }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "reverse",
+          duration: 1,
+          transition: "easeIn",
+        }}
+      >
+        Swipe Up
+      </motion.div>
+      <div className="mb-5 h-3 w-[30%] rounded-md bg-white"></div>
     </section>
   );
 });
