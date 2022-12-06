@@ -10,11 +10,32 @@ import Footer from "./components/Footer";
 function App() {
   const [theme, setTheme] = useState(null);
   const [removePage, removePageHandler] = useState(false);
+  const [scrollY, setScrollY] = useState(window.scrollY);
+  const [toolBarHidden, setToolBarHidden] = useState(false);
 
   const introductionRef = useRef(null);
   const portfolioRef = useRef(null);
   const timeLineRef = useRef(null);
   const contactRef = useRef(null);
+
+  useEffect(() => {
+    console.log(toolBarHidden);
+
+    const handleScroll = (event) => {
+      if (scrollY < window.scrollY) {
+        setToolBarHidden(true);
+      } else {
+        setToolBarHidden(false);
+      }
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollY]);
 
   const refs = {
     introductionRef,
@@ -61,6 +82,7 @@ function App() {
       />
       {!removePage ? (
         <IntroAnimate
+          toolBarHidden={toolBarHidden}
           removePageHandler={removePageHandler}
           ref={introductionRef}
         />

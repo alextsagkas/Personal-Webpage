@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import Introduction from "./Introduction";
 
-const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
+const IntroAnimate = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
   const [isDraggedDown, isDraggedDownHandler] = useState(true);
 
   return (
@@ -33,7 +33,7 @@ const IntroAnimate = forwardRef(({ removePageHandler }, ref) => {
           }
         }}
       >
-        <Introduction ref={ref} />
+        <Introduction toolBarHidden={toolBarHidden} ref={ref} />
       </motion.div>
       {isDraggedDown ? (
         <div className="fixed top-0 left-0 z-10 h-[99%] w-screen bg-bgLight-50 dark:bg-bgDark-900"></div>

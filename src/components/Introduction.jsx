@@ -1,7 +1,7 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const Introduction = forwardRef((props, ref) => {
+const Introduction = forwardRef(({ toolBarHidden }, ref) => {
   return (
     <section
       ref={ref}
@@ -34,7 +34,11 @@ const Introduction = forwardRef((props, ref) => {
       >
         Swipe Up
       </motion.div>
-      <div className="mb-24 h-4 w-[30%] rounded-md bg-bgDark-900 dark:bg-white sm:mb-5"></div>
+      <div
+        className={`${
+          toolBarHidden ? "mb-6" : "mb-24"
+        } h-6 w-[35%] rounded-md bg-bgDark-900 dark:bg-white sm:mb-10`}
+      ></div>
     </section>
   );
 });
