@@ -11,7 +11,7 @@ const Portfolio = forwardRef((props, ref) => {
       <Title>Portfolio</Title>
       <Carousel>
         {portfolio.map((project) => (
-          <CarouselItem>
+          <CarouselItem key={project.id}>
             <PortfolioItem
               key={project.id}
               id={project.id}

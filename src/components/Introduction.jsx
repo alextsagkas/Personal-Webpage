@@ -23,7 +23,7 @@ const Introduction = forwardRef((props, ref) => {
       </p>
       <div className="h-full" />
       <motion.div
-        className="mb-[0.3rem] text-[8px] text-bgDark-900 dark:text-white md:text-[10px]"
+        className="mb-[0.3rem] text-[10px] text-bgDark-900 dark:text-white "
         animate={{ y: -4 }}
         transition={{
           repeat: Infinity,
@@ -34,7 +34,7 @@ const Introduction = forwardRef((props, ref) => {
       >
         Swipe Up
       </motion.div>
-      <div className="mb-5 h-3 w-[30%] rounded-md bg-bgDark-900 dark:bg-white"></div>
+      <div className="mb-7 h-3 w-[30%] rounded-md bg-bgDark-900 dark:bg-white"></div>
     </section>
   );
 });
