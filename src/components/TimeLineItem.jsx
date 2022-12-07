@@ -13,8 +13,8 @@ function TimeLineItem({ year, title, duration, details }) {
           <div className="my-1 text-sm font-normal leading-none text-bgDark-400 dark:text-bgDark-500">
             {duration}
           </div>
-          <p className="my-2 text-base font-normal text-bgDark-500 dark:text-bgDark-400">
-            {details}
+          <p className="my-2 w-full text-base font-normal text-bgDark-500 dark:text-bgDark-400">
+            <div className="md:w-11/12 lg:w-10/12 xl:w-9/12">{details}</div>
           </p>
         </div>
       </li>

@@ -71,24 +71,26 @@ function App() {
   }, [removePage]);
 
   return (
-    <div className="mx-auto min-h-screen bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
+    <div className="mx-auto min-h-screen min-w-[320px] bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
       <NavBar
         theme={theme}
         themeSwitcherHandler={themeSwitcherHandler}
         removePageHandler={removePageHandler}
         refs={refs}
       />
-      {!removePage ? (
-        <IntroAnimate
-          toolBarHidden={toolBarHidden}
-          removePageHandler={removePageHandler}
-          ref={introductionRef}
-        />
-      ) : null}
-      <Portfolio ref={portfolioRef} homeScreenVisible={!removePage} />
-      <TimeLine ref={timeLineRef} />
-      <Contact ref={contactRef} />
-      <Footer />
+      <div className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
+        {!removePage ? (
+          <IntroAnimate
+            toolBarHidden={toolBarHidden}
+            removePageHandler={removePageHandler}
+            ref={introductionRef}
+          />
+        ) : null}
+        <Portfolio ref={portfolioRef} homeScreenVisible={!removePage} />
+        <TimeLine ref={timeLineRef} />
+        <Contact ref={contactRef} />
+        <Footer />
+      </div>
     </div>
   );
 }

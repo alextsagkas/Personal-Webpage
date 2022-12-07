@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       screens: {
         smallPhone: "380px",
+        smallest: "320px",
+        navbar: "340px",
       },
       fontFamily: {
         inter: ["inter", "serif"],

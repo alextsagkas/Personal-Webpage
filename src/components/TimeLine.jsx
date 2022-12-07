@@ -6,10 +6,7 @@ import Title from "./Title";
 
 const TimeLine = forwardRef((props, ref) => {
   return (
-    <section
-      ref={ref}
-      className="mx-auto flex w-11/12 max-w-5xl flex-col justify-center px-4 md:w-8/12 md:flex-row"
-    >
+    <section ref={ref} className="flex flex-col justify-center">
       <div>
         <Title>Timeline</Title>
         {timeline.map((event) => (

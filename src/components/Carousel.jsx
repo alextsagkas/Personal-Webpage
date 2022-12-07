@@ -63,19 +63,19 @@ const Carousel = ({ children, homeScreenVisible }) => {
     }
   }, [homeScreenVisible]);
 
-  useEffect(() => {
-    if (!pause) {
-      const interval = setInterval(() => {
-        updateIndex(activeIndex + 1);
-      }, 2000);
+  // useEffect(() => {
+  //   if (!pause) {
+  //     const interval = setInterval(() => {
+  //       updateIndex(activeIndex + 1);
+  //     }, 2000);
 
-      return () => {
-        if (interval) {
-          clearInterval(interval);
-        }
-      };
-    }
-  }, [activeIndex, pause, windowWidth]);
+  //     return () => {
+  //       if (interval) {
+  //         clearInterval(interval);
+  //       }
+  //     };
+  //   }
+  // }, [activeIndex, pause, windowWidth]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
@@ -109,16 +109,16 @@ const Carousel = ({ children, homeScreenVisible }) => {
           return child;
         })}
       </div>
-      <div className="mt-5 flex items-center justify-center">
-        <button
+      <div className="mt-6 flex items-center justify-center">
+        {/* <button
           className="rounded-md bg-bgDark-300 p-1 text-black"
           onClick={() => {
             updateIndex(activeIndex - 1);
           }}
         >
           Prev
-        </button>
-        <div className="mx-4 flex flex-row gap-4">
+        </button> */}
+        <div className="flex w-[40%] flex-row justify-center gap-5">
           {React.Children.map(children, (child, index) => {
             return index < pageNumber ? (
               <button
@@ -134,14 +134,14 @@ const Carousel = ({ children, homeScreenVisible }) => {
             ) : null;
           })}
         </div>
-        <button
+        {/* <button
           className="rounded-md bg-bgDark-300 p-1 text-black"
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}
         >
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );

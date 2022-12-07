@@ -7,7 +7,7 @@ import Carousel, { CarouselItem } from "./Carousel";
 
 const Portfolio = forwardRef(({ homeScreenVisible }, ref) => {
   return (
-    <section ref={ref} className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
+    <section ref={ref}>
       <Title>Portfolio</Title>
       <Carousel homeScreenVisible={homeScreenVisible}>
         {portfolio.map((project) => (

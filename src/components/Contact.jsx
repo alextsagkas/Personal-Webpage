@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Title from "./Title";
 
 const Contact = forwardRef((props, ref) => (
-  <section ref={ref} className="mx-auto flex max-w-5xl flex-col px-4 md:w-8/12">
+  <section ref={ref} className="flex flex-col">
     <div className="flex items-center justify-center">
       {/* TODO: Check if this works on deployment */}
       <form
