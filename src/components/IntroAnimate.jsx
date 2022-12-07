@@ -35,6 +35,7 @@ const IntroAnimate = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
       >
         <Introduction toolBarHidden={toolBarHidden} ref={ref} />
       </motion.div>
+      {/* Helper Div so as not to display the background when dragged downwards */}
       {isDraggedDown ? (
         <div className="fixed top-0 left-0 z-10 h-[99%] w-screen bg-bgLight-50 dark:bg-bgDark-900"></div>
       ) : null}
