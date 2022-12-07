@@ -74,7 +74,9 @@ const Carousel = ({ children }) => {
             return (
               <button
                 className={`h-4 w-4 rounded-full ${
-                  activeIndex === index ? "bg-bgDark-400" : "bg-bgDark-600"
+                  activeIndex === index
+                    ? "bg-bgDark-500 dark:bg-bgDark-400"
+                    : "bg-bgDark-300 dark:bg-bgDark-600"
                 }`}
                 onClick={() => {
                   updateIndex(index);
