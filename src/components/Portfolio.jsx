@@ -13,7 +13,6 @@ const Portfolio = forwardRef(({ homeScreenVisible }, ref) => {
         {portfolio.map((project) => (
           <CarouselItem key={project.id}>
             <PortfolioItem
-              key={project.id}
               id={project.id}
               imgUrl={project.imgUrl}
               title={project.title}
