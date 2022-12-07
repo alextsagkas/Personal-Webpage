@@ -16,31 +16,22 @@ const Carousel = ({ children, homeScreenVisible }) => {
   const childrenNumber = React.Children.count(children);
   const lg = 1024;
   const doubleXl = 1536;
-  const stopPixel = 300;
+  const stopPixel = 250;
 
-  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
   const [scrollY, scrollYHandler] = useState(0);
+  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
   const [activeIndex, activeIndexHandler] = useState(0);
   const [pause, pauseHandler] = useState(false);
   const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
   const [pageNumber, pageNumberHandler] = useState(childrenNumber);
 
+  // Pause Carousel if scrolled beyond it
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleScroll = () => {
       scrollYHandler(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollY]);
-
-  useEffect(() => {
-    function handleWindowResize() {
-      windowWidthHandler(window.innerWidth);
-    }
 
     if (scrollY > stopPixel) {
       pauseHandler(true);
@@ -48,35 +39,47 @@ const Carousel = ({ children, homeScreenVisible }) => {
       pauseHandler(false);
     }
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollY]);
+
+  // Set the activeIndex & pageNumber depending on windowWidth
+  useEffect(() => {
+    function handleWindowResize() {
+      windowWidthHandler(window.innerWidth);
+    }
+
     window.addEventListener("resize", handleWindowResize);
 
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, [scrollY > stopPixel]);
+    if (childrenNumber === itemsOnScreen) {
+      pauseHandler(true);
+    }
 
-  // TODO: Bug with dots in Portfolio
-
-  useEffect(() => {
     if (windowWidth < lg) {
       activeIndexHandler(0);
       itemsOnScreenHandler(1);
-      pageNumberHandler(Math.ceil(childrenNumber));
+      pageNumberHandler(childrenNumber);
     }
 
     if (windowWidth > lg && windowWidth < doubleXl) {
       activeIndexHandler(0);
       itemsOnScreenHandler(2);
-      pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
+      pageNumberHandler(Math.ceil(childrenNumber / 2));
     }
 
     if (windowWidth > doubleXl) {
       activeIndexHandler(0);
       itemsOnScreenHandler(3);
-      pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
+      pageNumberHandler(Math.ceil(childrenNumber / 3));
     }
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
   }, [windowWidth]);
 
+  // Pause Carousel if the Home is visible
   useEffect(() => {
     if (homeScreenVisible) {
       pauseHandler(true);
@@ -85,6 +88,7 @@ const Carousel = ({ children, homeScreenVisible }) => {
     }
   }, [homeScreenVisible]);
 
+  // Carousel Animation
   useEffect(() => {
     if (!pause) {
       const interval = setInterval(() => {
@@ -99,11 +103,13 @@ const Carousel = ({ children, homeScreenVisible }) => {
     }
   }, [activeIndex, pause, windowWidth]);
 
+  //  Swipe Carousel on phone screens
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
 
+  // Update Index with loop
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = pageNumber - 1;
@@ -113,6 +119,15 @@ const Carousel = ({ children, homeScreenVisible }) => {
 
     activeIndexHandler(newIndex);
   };
+
+  // console.log(
+  //   "Active Index: ",
+  //   activeIndex,
+  //   "On Screen: ",
+  //   itemsOnScreen,
+  //   "Pages: ",
+  //   pageNumber
+  // );
 
   return (
     <div className="overflow-hidden">
@@ -132,14 +147,6 @@ const Carousel = ({ children, homeScreenVisible }) => {
         })}
       </div>
       <div className="mt-6 flex items-center justify-center">
-        {/* <button
-          className="rounded-md bg-bgDark-300 p-1 text-black"
-          onClick={() => {
-            updateIndex(activeIndex - 1);
-          }}
-        >
-          Prev
-        </button> */}
         <div className="flex w-[40%] flex-row justify-center gap-5">
           {React.Children.map(children, (child, index) => {
             return index < pageNumber ? (
@@ -156,14 +163,6 @@ const Carousel = ({ children, homeScreenVisible }) => {
             ) : null;
           })}
         </div>
-        {/* <button
-          className="rounded-md bg-bgDark-300 p-1 text-black"
-          onClick={() => {
-            updateIndex(activeIndex + 1);
-          }}
-        >
-          Next
-        </button> */}
       </div>
     </div>
   );
