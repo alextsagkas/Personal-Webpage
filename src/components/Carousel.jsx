@@ -16,16 +16,36 @@ const Carousel = ({ children, homeScreenVisible }) => {
   const childrenNumber = React.Children.count(children);
   const lg = 1024;
   const doubleXl = 1536;
+  const stopPixel = 300;
 
   const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
+  const [scrollY, scrollYHandler] = useState(0);
   const [activeIndex, activeIndexHandler] = useState(0);
   const [pause, pauseHandler] = useState(false);
   const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
   const [pageNumber, pageNumberHandler] = useState(childrenNumber);
 
   useEffect(() => {
+    const handleScroll = (event) => {
+      scrollYHandler(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollY]);
+
+  useEffect(() => {
     function handleWindowResize() {
       windowWidthHandler(window.innerWidth);
+    }
+
+    if (scrollY > stopPixel) {
+      pauseHandler(true);
+    } else {
+      pauseHandler(false);
     }
 
     window.addEventListener("resize", handleWindowResize);
@@ -33,9 +53,8 @@ const Carousel = ({ children, homeScreenVisible }) => {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, []);
+  }, [scrollY > stopPixel]);
 
-  // TODO: Pause when scrolling further down
   // TODO: Bug with dots in Portfolio
 
   useEffect(() => {
