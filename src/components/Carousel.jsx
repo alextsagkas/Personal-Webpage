@@ -1,4 +1,3 @@
-import { transform } from "framer-motion";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
@@ -14,8 +13,44 @@ export const CarouselItem = ({ children }) => {
 };
 
 const Carousel = ({ children }) => {
+  const childrenNumber = React.Children.count(children);
+  const lg = 1024;
+  const doubleXl = 1536;
+
+  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
   const [activeIndex, activeIndexHandler] = useState(0);
   const [pause, pauseHandler] = useState(false);
+  const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
+  const [pageNumber, pageNumberHandler] = useState(childrenNumber);
+
+  useEffect(() => {
+    function handleWindowResize() {
+      windowWidthHandler(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < lg) {
+      itemsOnScreenHandler(1);
+      pageNumberHandler(Math.ceil(childrenNumber));
+    }
+
+    if (windowWidth > lg && windowWidth < doubleXl) {
+      itemsOnScreenHandler(2);
+      pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
+    }
+
+    if (windowWidth > doubleXl) {
+      itemsOnScreenHandler(3);
+      pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
+    }
+  }, [windowWidth]);
 
   // useEffect(() => {
   //   if (!pause) {
@@ -42,8 +77,8 @@ const Carousel = ({ children }) => {
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex > React.Children.count(children) - 1) {
+      newIndex = pageNumber - 1;
+    } else if (newIndex > pageNumber - 1) {
       newIndex = 0;
     }
 
@@ -56,9 +91,12 @@ const Carousel = ({ children }) => {
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
-        className={`duration-700 -translate-x-[${
-          activeIndex * 100
-        }%] whitespace-nowrap transition-transform`}
+        className={`whitespace-nowrap transition-transform duration-700`}
+        style={{
+          transform: `translateX(-${
+            Math.ceil(activeIndex / itemsOnScreen) * 100
+          }%)`,
+        }}
       >
         {React.Children.map(children, (child, index) => {
           return child;
@@ -75,7 +113,7 @@ const Carousel = ({ children }) => {
         </button>
         <div className="mx-4 flex flex-row gap-4">
           {React.Children.map(children, (child, index) => {
-            return (
+            return index < pageNumber ? (
               <button
                 className={`h-4 w-4 rounded-full ${
                   activeIndex === index
@@ -86,7 +124,7 @@ const Carousel = ({ children }) => {
                   updateIndex(index);
                 }}
               />
-            );
+            ) : null;
           })}
         </div>
         <button

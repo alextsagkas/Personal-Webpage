@@ -19,8 +19,6 @@ function App() {
   const contactRef = useRef(null);
 
   useEffect(() => {
-    console.log(toolBarHidden);
-
     const handleScroll = (event) => {
       if (scrollY < window.scrollY) {
         setToolBarHidden(true);
