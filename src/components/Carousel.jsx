@@ -52,8 +52,10 @@ const Carousel = ({ children, homeScreenVisible }) => {
 
     window.addEventListener("resize", handleWindowResize);
 
-    if (childrenNumber === itemsOnScreen) {
+    if (childrenNumber <= itemsOnScreen) {
       pauseHandler(true);
+    } else {
+      pauseHandler(false);
     }
 
     if (windowWidth < lg) {
