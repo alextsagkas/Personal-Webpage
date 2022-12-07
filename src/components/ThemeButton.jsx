@@ -37,7 +37,7 @@ function ThemeButton({ themeSwitcherHandler, theme }) {
     <button
       type="button"
       onClick={themeSwitcherHandler}
-      className="mr-3 rounded-md bg-violet-300 p-[4px] text-lg dark:bg-orange-300"
+      className="rounded-md bg-violet-300 p-[4px] text-lg dark:bg-orange-300"
     >
       {theme === "dark" ? sun : moon}
     </button>

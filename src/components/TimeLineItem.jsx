@@ -1,6 +1,6 @@
 function TimeLineItem({ year, title, duration, details }) {
   return (
-    <ol className="relative flex flex-col border-l-[1.7px] border-bgDark-300 dark:border-bgDark-700 md:flex-row">
+    <ol className="relative ml-2 flex flex-col border-l-[1.7px] border-bgDark-300 dark:border-bgDark-700 md:flex-row">
       <li className="mb-10 ml-4">
         <div className="absolute -left-[8.7px] mt-1.5 h-4 w-4 rounded-full border-[3.5px] border-bgLight-50 bg-bgDark-300 dark:border-bgDark-900 dark:bg-bgDark-700" />
         <div className="flex flex-row flex-wrap items-center justify-start gap-4 text-xs md:text-sm">
@@ -14,7 +14,7 @@ function TimeLineItem({ year, title, duration, details }) {
             {duration}
           </div>
           <p className="my-2 w-full text-base font-normal text-bgDark-500 dark:text-bgDark-400">
-            <div className="md:w-11/12 lg:w-10/12 xl:w-9/12">{details}</div>
+            {details}
           </p>
         </div>
       </li>

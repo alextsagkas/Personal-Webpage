@@ -10,7 +10,7 @@ export default [
   {
     id: 2,
     year: "Today",
-    title: "Human Resources Manager in Young Minds NKUA",
+    title: "HR Manager in Young Minds NKUA",
     duration: "1 year",
     details:
       "Contribute as a Volunteer in Young Minds NKUA Section with my fellow students and friends. The main reason I choose to be in that positions is that I warmly support the three main goals of Young Minds (education, networking and outreach). Also, I hone my skills in organization of teams, leadership and communication.",
