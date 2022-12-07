@@ -7,7 +7,7 @@ import Carousel, { CarouselItem } from "./Carousel";
 
 const Portfolio = forwardRef((props, ref) => {
   return (
-    <section ref={ref} className="mx-auto w-screen max-w-5xl px-4 md:w-8/12">
+    <section ref={ref} className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
       <Title>Portfolio</Title>
       <Carousel>
         {portfolio.map((project) => (
