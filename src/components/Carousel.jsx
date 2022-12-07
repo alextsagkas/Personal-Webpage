@@ -37,16 +37,19 @@ const Carousel = ({ children, homeScreenVisible }) => {
 
   useEffect(() => {
     if (windowWidth < lg) {
+      activeIndexHandler(0);
       itemsOnScreenHandler(1);
       pageNumberHandler(Math.ceil(childrenNumber));
     }
 
     if (windowWidth > lg && windowWidth < doubleXl) {
+      activeIndexHandler(0);
       itemsOnScreenHandler(2);
       pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
     }
 
     if (windowWidth > doubleXl) {
+      activeIndexHandler(0);
       itemsOnScreenHandler(3);
       pageNumberHandler(Math.ceil(childrenNumber / itemsOnScreen));
     }
@@ -78,8 +81,6 @@ const Carousel = ({ children, homeScreenVisible }) => {
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
-
-  // TODO:Pause when intro page is removed
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
