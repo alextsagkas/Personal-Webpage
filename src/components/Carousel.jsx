@@ -1,3 +1,4 @@
+import { transform } from "framer-motion";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
@@ -16,21 +17,21 @@ const Carousel = ({ children }) => {
   const [activeIndex, activeIndexHandler] = useState(0);
   const [pause, pauseHandler] = useState(false);
 
-  //   useEffect(() => {
-  //     if (!pause) {
-  //       const interval = setInterval(() => {
-  //         updateIndex(activeIndex + 1);
-  //       }, 1000);
+  // useEffect(() => {
+  //   if (!pause) {
+  //     const interval = setInterval(() => {
+  //       updateIndex(activeIndex + 1);
+  //     }, 2000);
 
-  //       console.log(activeIndex);
+  //     console.log(activeIndex);
 
-  //       return () => {
-  //         if (interval) {
-  //           clearInterval(interval);
-  //         }
-  //       };
-  //     }
-  //   }, [activeIndex, pause]);
+  //     return () => {
+  //       if (interval) {
+  //         clearInterval(interval);
+  //       }
+  //     };
+  //   }
+  // }, [activeIndex, pause]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
@@ -55,7 +56,7 @@ const Carousel = ({ children }) => {
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
-        className={`duration-400 -translate-x-[${
+        className={`duration-700 -translate-x-[${
           activeIndex * 100
         }%] whitespace-nowrap transition-transform`}
       >
