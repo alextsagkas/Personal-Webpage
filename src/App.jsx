@@ -18,6 +18,7 @@ function App() {
   const timeLineRef = useRef(null);
   const contactRef = useRef(null);
 
+  // Toolbar Logic
   useEffect(() => {
     const handleScroll = (event) => {
       if (scrollY < window.scrollY) {
@@ -35,13 +36,7 @@ function App() {
     };
   }, [scrollY]);
 
-  const refs = {
-    introductionRef,
-    portfolioRef,
-    timeLineRef,
-    contactRef,
-  };
-
+  // Color Theme
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setTheme("dark");
@@ -50,10 +45,7 @@ function App() {
     }
   }, []);
 
-  const themeSwitcherHandler = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
+  // Change Theme
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -62,6 +54,7 @@ function App() {
     }
   }, [theme]);
 
+  // Div Behind Introduction
   useEffect(() => {
     if (!removePage) {
       document.body.style.overflow = "hidden";
@@ -70,8 +63,19 @@ function App() {
     }
   }, [removePage]);
 
+  const themeSwitcherHandler = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const refs = {
+    introductionRef,
+    portfolioRef,
+    timeLineRef,
+    contactRef,
+  };
+
   return (
-    <div className="mx-auto min-h-screen min-w-[320px] bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
+    <div className="min-h-screen min-w-[320px] bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
       <NavBar
         theme={theme}
         themeSwitcherHandler={themeSwitcherHandler}
