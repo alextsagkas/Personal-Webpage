@@ -85,7 +85,7 @@ function App() {
           ref={introductionRef}
         />
       ) : null}
-      <Portfolio ref={portfolioRef} />
+      <Portfolio ref={portfolioRef} homeScreenVisible={!removePage} />
       <TimeLine ref={timeLineRef} />
       <Contact ref={contactRef} />
       <Footer />

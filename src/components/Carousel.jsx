@@ -12,7 +12,7 @@ export const CarouselItem = ({ children }) => {
   );
 };
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, homeScreenVisible }) => {
   const childrenNumber = React.Children.count(children);
   const lg = 1024;
   const doubleXl = 1536;
@@ -52,21 +52,27 @@ const Carousel = ({ children }) => {
     }
   }, [windowWidth]);
 
-  // useEffect(() => {
-  //   if (!pause) {
-  //     const interval = setInterval(() => {
-  //       updateIndex(activeIndex + 1);
-  //     }, 2000);
+  useEffect(() => {
+    if (homeScreenVisible) {
+      pauseHandler(true);
+    } else {
+      pauseHandler(false);
+    }
+  }, [homeScreenVisible]);
 
-  //     console.log(activeIndex);
+  useEffect(() => {
+    if (!pause) {
+      const interval = setInterval(() => {
+        updateIndex(activeIndex + 1);
+      }, 2000);
 
-  //     return () => {
-  //       if (interval) {
-  //         clearInterval(interval);
-  //       }
-  //     };
-  //   }
-  // }, [activeIndex, pause]);
+      return () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+      };
+    }
+  }, [activeIndex, pause, windowWidth]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),

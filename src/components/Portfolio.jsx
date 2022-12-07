@@ -5,11 +5,11 @@ import PortfolioItem from "./PortfolioItem";
 import Title from "./Title";
 import Carousel, { CarouselItem } from "./Carousel";
 
-const Portfolio = forwardRef((props, ref) => {
+const Portfolio = forwardRef(({ homeScreenVisible }, ref) => {
   return (
     <section ref={ref} className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
       <Title>Portfolio</Title>
-      <Carousel>
+      <Carousel homeScreenVisible={homeScreenVisible}>
         {portfolio.map((project) => (
           <CarouselItem key={project.id}>
             <PortfolioItem
