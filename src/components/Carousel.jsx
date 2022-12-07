@@ -35,6 +35,9 @@ const Carousel = ({ children, homeScreenVisible }) => {
     };
   }, []);
 
+  // TODO: Pause when scrolling further down
+  // TODO: Bug with dots in Portfolio
+
   useEffect(() => {
     if (windowWidth < lg) {
       activeIndexHandler(0);
@@ -63,19 +66,19 @@ const Carousel = ({ children, homeScreenVisible }) => {
     }
   }, [homeScreenVisible]);
 
-  // useEffect(() => {
-  //   if (!pause) {
-  //     const interval = setInterval(() => {
-  //       updateIndex(activeIndex + 1);
-  //     }, 2000);
+  useEffect(() => {
+    if (!pause) {
+      const interval = setInterval(() => {
+        updateIndex(activeIndex + 1);
+      }, 2000);
 
-  //     return () => {
-  //       if (interval) {
-  //         clearInterval(interval);
-  //       }
-  //     };
-  //   }
-  // }, [activeIndex, pause, windowWidth]);
+      return () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+      };
+    }
+  }, [activeIndex, pause, windowWidth]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),

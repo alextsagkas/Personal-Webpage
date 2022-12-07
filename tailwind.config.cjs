@@ -9,7 +9,8 @@ module.exports = {
       screens: {
         smallPhone: "380px",
         smallest: "320px",
-        navbar: "340px",
+        navbar: "400px",
+        navbarPadding: "360px",
       },
       fontFamily: {
         inter: ["inter", "serif"],
