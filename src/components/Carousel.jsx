@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export const CarouselItem = ({ children, width }) => {
+export const CarouselItem = ({ children }) => {
   return (
-    <div className={`inline-flex w-[${width}] items-center justify-center`}>
+    <div
+      className={`inline-flex w-[100%] items-center justify-center lg:w-[50%] 2xl:w-[33.33%]`}
+    >
       {children}
     </div>
   );
@@ -53,11 +55,12 @@ const Carousel = ({ children }) => {
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
-        className="duration-400 whitespace-nowrap transition-transform"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        className={`duration-400 -translate-x-[${
+          activeIndex * 100
+        }%] whitespace-nowrap transition-transform`}
       >
         {React.Children.map(children, (child, index) => {
-          return React.cloneElement(child, { width: "100%" });
+          return child;
         })}
       </div>
       <div className="mt-5 flex items-center justify-center">

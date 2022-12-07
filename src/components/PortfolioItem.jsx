@@ -4,12 +4,12 @@ function PortfolioItem({ id, title, imgUrl, stack, link }) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="overflow-hidden rounded-md border-2 border-bgDark-900 dark:border-white"
+      className="w-72 overflow-hidden rounded-md border-2 border-bgDark-900 dark:border-white"
     >
       <img
         src={imgUrl}
         alt="portfolio-img"
-        className="m:h-48 h-36 w-full cursor-pointer object-cover "
+        className="md:h-38 h-36 w-full cursor-pointer object-cover"
       />
       <div className="w-full p-4">
         <h3 className="mb-2 text-lg font-semibold dark:text-white md:mb-3 md:text-xl">

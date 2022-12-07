@@ -73,7 +73,7 @@ function App() {
   }, [removePage]);
 
   return (
-    <div className="mx-auto min-h-screen w-11/12 min-w-fit max-w-5xl bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
+    <div className="mx-auto min-h-screen bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
       <NavBar
         theme={theme}
         themeSwitcherHandler={themeSwitcherHandler}

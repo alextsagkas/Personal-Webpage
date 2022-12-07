@@ -3,13 +3,13 @@ import { forwardRef } from "react";
 import Title from "./Title";
 
 const Contact = forwardRef((props, ref) => (
-  <section ref={ref} className="mx-auto flex flex-col px-4">
+  <section ref={ref} className="mx-auto flex max-w-5xl flex-col px-4 md:w-8/12">
     <div className="flex items-center justify-center">
       {/* TODO: Check if this works on deployment */}
       <form
         action="https://getform.io/f/13faa335-225a-4d88-8561-0f5940673221"
         method="POST"
-        className="flex w-full flex-col md:w-7/12"
+        className="flex w-full flex-col"
       >
         <Title>Contact</Title>
         <input
