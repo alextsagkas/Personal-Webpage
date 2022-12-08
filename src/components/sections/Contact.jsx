@@ -70,12 +70,7 @@ const Contact = forwardRef((props, ref) => {
     <section ref={ref} className="flex flex-col">
       <div className="flex items-center justify-center">
         {/* TODO: Form Post Logic */}
-        <form
-          onSubmit={submitForm}
-          // action="https://getform.io/f/13faa335-225a-4d88-8561-0f5940673221"
-          method="POST"
-          className="flex w-full flex-col"
-        >
+        <form onSubmit={submitForm} className="flex w-full flex-col">
           <Title>Contact</Title>
           <div className="flex flex-col gap-4">
             <NameInput
