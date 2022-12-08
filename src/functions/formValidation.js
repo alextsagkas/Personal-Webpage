@@ -1,11 +1,10 @@
 export const checkName = (name) => {
   var isEmpty = true;
   var isSmall = true;
+  var isBig = false;
 
   if (name != undefined) {
     const text = name.trim(name);
-
-    console.log("text: ", text);
 
     if (text.length > 0) {
       isEmpty = false;
@@ -15,9 +14,15 @@ export const checkName = (name) => {
       } else {
         isSmall = false;
       }
+
+      if (text.length > 100) {
+        isBig = true;
+      } else {
+        isBig = false;
+      }
     }
 
-    return { isEmpty, isSmall };
+    return { isEmpty, isSmall, isBig };
   }
 };
 

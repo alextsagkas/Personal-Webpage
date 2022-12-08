@@ -21,6 +21,7 @@ const Contact = forwardRef((props, ref) => {
     isInitial: true,
     isEmpty: false,
     isSmall: false,
+    isBig: false,
   });
 
   const [emailValidation, setEmailValidation] = useState({

@@ -1,5 +1,5 @@
-function NameFailure({ isInitial, isEmpty, isSmall }) {
-  const failure = !isInitial && (isEmpty || isSmall);
+function NameFailure({ isInitial, isEmpty, isSmall, isBig }) {
+  const failure = !isInitial && (isEmpty || isSmall || isBig);
 
   var errorText = "";
 
@@ -9,6 +9,10 @@ function NameFailure({ isInitial, isEmpty, isSmall }) {
 
   if (!isEmpty && isSmall) {
     errorText = "Name is small";
+  }
+
+  if (!isEmpty && isBig) {
+    errorText = "Name is beyond the character limit";
   }
 
   return failure ? (

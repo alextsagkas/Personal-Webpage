@@ -3,10 +3,10 @@ import { forwardRef } from "react";
 import NameFailure from "./NameFailure";
 
 const NameInput = forwardRef(({ text, validation }, ref) => {
-  const { isInitial, isEmpty, isSmall } = validation;
+  const { isInitial, isEmpty, isSmall, isBig } = validation;
 
-  const failure = (isSmall || isEmpty) & !isInitial;
-  const success = (!isSmall && !isEmpty) & !isInitial;
+  const failure = (isSmall || isEmpty || isBig) & !isInitial;
+  const success = (!isSmall && !isEmpty && !isBig) & !isInitial;
 
   return (
     <div>
@@ -19,7 +19,12 @@ const NameInput = forwardRef(({ text, validation }, ref) => {
         } 
       ${success ? "border-success-500 delay-75" : null}`}
       />
-      <NameFailure isInitial={isInitial} isEmpty={isEmpty} isSmall={isSmall} />
+      <NameFailure
+        isInitial={isInitial}
+        isEmpty={isEmpty}
+        isSmall={isSmall}
+        isBig={isBig}
+      />
     </div>
   );
 });
