@@ -6,7 +6,11 @@ import EmailInput from "../helpers/EmailInput";
 import TextArea from "../helpers/TextArea";
 import SubmitButton from "../helpers/SubmitButton";
 
-import { checkName, checkEmail } from "../../functions/formValidation";
+import {
+  checkName,
+  checkEmail,
+  checkMessage,
+} from "../../functions/formValidation";
 
 const Contact = forwardRef((props, ref) => {
   const nameRef = useRef("");
@@ -26,6 +30,12 @@ const Contact = forwardRef((props, ref) => {
     endsWithDotCom: false,
   });
 
+  const [messageValidation, setMessageValidation] = useState({
+    isInitial: true,
+    isEmpty: false,
+    isSmall: false,
+  });
+
   const submitForm = (event) => {
     event.preventDefault();
 
@@ -39,11 +49,17 @@ const Contact = forwardRef((props, ref) => {
       ...checkEmail(emailRef.current.value),
     });
 
+    setMessageValidation({
+      isInitial: false,
+      ...checkMessage(messageRef.current.value),
+    });
+
     console.log("name: ", nameRef.current.value);
     console.log("email: ", emailRef.current.value);
     console.log("message: ", messageRef.current.value);
     console.log("check name: ", nameValidation);
     console.log("check email: ", emailValidation);
+    console.log("check message: ", messageValidation);
   };
 
   return (
@@ -68,7 +84,11 @@ const Contact = forwardRef((props, ref) => {
               ref={emailRef}
               validation={emailValidation}
             />
-            <TextArea text={"Message"} ref={messageRef} />
+            <TextArea
+              text={"Message"}
+              ref={messageRef}
+              validation={messageValidation}
+            />
             {/* For Spambots */}
             <input type="hidden" className="hidden" />
             <SubmitButton />

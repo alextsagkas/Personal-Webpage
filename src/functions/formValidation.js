@@ -1,15 +1,19 @@
 export const checkName = (name) => {
   var isEmpty = true;
-  var isSmall = false;
+  var isSmall = true;
 
   if (name != undefined) {
     const text = name.trim(name);
+
+    console.log("text: ", text);
 
     if (text.length > 0) {
       isEmpty = false;
 
       if (text.length < 2) {
         isSmall = true;
+      } else {
+        isSmall = false;
       }
     }
 
@@ -38,4 +42,25 @@ export const checkEmail = (email) => {
     }
   }
   return { isEmpty, containsAt, endsWithDotCom };
+};
+
+export const checkMessage = (message) => {
+  var isEmpty = true;
+  var isSmall = true;
+
+  if (message != undefined) {
+    const text = message.trim(message);
+
+    if (text.length > 0) {
+      isEmpty = false;
+
+      if (text.length < 20) {
+        isSmall = true;
+      } else {
+        isSmall = false;
+      }
+    }
+  }
+
+  return { isEmpty, isSmall };
 };
