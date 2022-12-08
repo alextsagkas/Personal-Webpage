@@ -41,12 +41,6 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
 
     window.addEventListener("resize", handleWindowResize);
 
-    if (childrenNumber <= itemsOnScreen) {
-      pauseHandler(true);
-    } else {
-      pauseHandler(false);
-    }
-
     if (windowWidth < lg) {
       activeIndexHandler(0);
       itemsOnScreenHandler(1);
@@ -69,6 +63,15 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, [windowWidth]);
+
+  // Pause Carousel when there are no pages to slide
+  useEffect(() => {
+    if (childrenNumber <= itemsOnScreen) {
+      pauseHandler(true);
+    } else {
+      pauseHandler(false);
+    }
+  }, [itemsOnScreen]);
 
   // Pause Carousel if the Home is visible
   useEffect(() => {
