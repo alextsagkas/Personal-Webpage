@@ -5,6 +5,13 @@ import EmailFailure from "./EmailFailure";
 const EmailInput = forwardRef(({ text, validation }, ref) => {
   const { isInitial, isEmpty, containsAt, endsWithDotCom, isBig } = validation;
 
+  const failure =
+    ((!isEmpty && !containsAt) || (!isEmpty && isBig) || !endsWithDotCom) &
+    !isInitial;
+
+  const success =
+    (!isEmpty && containsAt && endsWithDotCom && !isBig) & !isInitial;
+
   return (
     <div>
       <input
@@ -12,16 +19,8 @@ const EmailInput = forwardRef(({ text, validation }, ref) => {
         type="text"
         placeholder={text}
         className={`w-full rounded-md border-2 border-bgDark-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400 dark:selection:bg-orange-300 dark:selection:text-bgDark-900 dark:focus:border-bgLight-200 ${
-          ((!isEmpty && !containsAt) ||
-            (!isEmpty && isBig) ||
-            !endsWithDotCom) & !isInitial
-            ? "border-failure-500 delay-75"
-            : null
-        } ${
-          (!isEmpty && containsAt && endsWithDotCom && !isBig) & !isInitial
-            ? "border-success-500 delay-75"
-            : null
-        }`}
+          failure ? "border-failure-500 delay-75" : null
+        } ${success ? "border-success-500 delay-75" : null}`}
       />
       <EmailFailure
         isInitial={isInitial}

@@ -73,7 +73,7 @@ export const checkMessage = (message) => {
         isSmall = false;
       }
 
-      if (text.length > 400) {
+      if (text.length > 2000) {
         isBig = true;
       } else {
         isBig = false;

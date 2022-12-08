@@ -6,6 +6,8 @@ import EmailInput from "../helpers/EmailInput";
 import TextArea from "../helpers/TextArea";
 import SubmitButton from "../helpers/SubmitButton";
 
+// TODO: extract error logic from component to the top of the file
+
 import {
   checkName,
   checkEmail,

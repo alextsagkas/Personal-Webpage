@@ -5,6 +5,9 @@ import MessageFailure from "./MessageFailure";
 const TextArea = forwardRef(({ text, validation }, ref) => {
   const { isInitial, isEmpty, isSmall, isBig } = validation;
 
+  const failure = (isSmall || isEmpty || isBig) & !isInitial;
+  const success = (!isSmall && !isEmpty && !isBig) & !isInitial;
+
   return (
     <div>
       <textarea
@@ -13,14 +16,8 @@ const TextArea = forwardRef(({ text, validation }, ref) => {
         placeholder={text}
         rows="10"
         className={`w-full resize-none rounded-md border-2 border-bgDark-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400  dark:selection:bg-orange-300 dark:selection:text-bgDark-900  dark:focus:border-bgLight-200 ${
-          (isSmall || isEmpty || isBig) & !isInitial
-            ? "border-failure-500 delay-75"
-            : null
-        } ${
-          (!isSmall && !isEmpty && !isBig) & !isInitial
-            ? "border-success-500 delay-75"
-            : null
-        }`}
+          failure ? "border-failure-500 delay-75" : null
+        } ${success ? "border-success-500 delay-75" : null}`}
       />
       <MessageFailure
         isInitial={isInitial}
