@@ -28,6 +28,7 @@ const Contact = forwardRef((props, ref) => {
     isEmpty: false,
     containsAt: false,
     endsWithDotCom: false,
+    isBig: false,
   });
 
   const [messageValidation, setMessageValidation] = useState({

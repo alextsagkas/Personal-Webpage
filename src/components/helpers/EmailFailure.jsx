@@ -1,4 +1,10 @@
-function EmailFailure({ isInitial, isEmpty, containsAt, endsWithDotCom }) {
+function EmailFailure({
+  isInitial,
+  isEmpty,
+  containsAt,
+  endsWithDotCom,
+  isBig,
+}) {
   const failure = !isInitial && (isEmpty || !containsAt || !endsWithDotCom);
 
   var errorText = "";
@@ -17,6 +23,10 @@ function EmailFailure({ isInitial, isEmpty, containsAt, endsWithDotCom }) {
 
   if (!isEmpty && !containsAt && !endsWithDotCom) {
     errorText = 'Email does not contain "@" sign or end with ".com"';
+  }
+
+  if (!isEmpty && isBig) {
+    errorText = "Email is beyond character limit";
   }
 
   return failure ? (

@@ -25,6 +25,7 @@ export const checkEmail = (email) => {
   var isEmpty = true;
   var containsAt = false;
   var endsWithDotCom = false;
+  var isBig = false;
 
   if (email != undefined) {
     const text = email.trim(email);
@@ -40,8 +41,14 @@ export const checkEmail = (email) => {
     if (text.endsWith(".com")) {
       endsWithDotCom = true;
     }
+
+    if (text.length > 320) {
+      isBig = true;
+    } else {
+      isBig = false;
+    }
   }
-  return { isEmpty, containsAt, endsWithDotCom };
+  return { isEmpty, containsAt, endsWithDotCom, isBig };
 };
 
 export const checkMessage = (message) => {
