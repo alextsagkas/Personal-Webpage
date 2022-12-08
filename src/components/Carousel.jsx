@@ -10,7 +10,7 @@ export const CarouselItem = ({ children }) => {
   );
 };
 
-const Carousel = ({ children, homeScreenVisible }) => {
+const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   const childrenNumber = React.Children.count(children);
 
   const stopPixel = 250;
@@ -18,7 +18,6 @@ const Carousel = ({ children, homeScreenVisible }) => {
   const lg = 1024;
   const doubleXl = 1536;
 
-  const [scrollY, scrollYHandler] = useState(0);
   const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
   const [activeIndex, activeIndexHandler] = useState(0);
   const [pause, pauseHandler] = useState(false);
@@ -27,21 +26,11 @@ const Carousel = ({ children, homeScreenVisible }) => {
 
   // Pause Carousel when scrolling beyond the Section
   useEffect(() => {
-    const handleScroll = () => {
-      scrollYHandler(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     if (scrollY > stopPixel) {
       pauseHandler(true);
     } else {
       pauseHandler(false);
     }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, [scrollY]);
 
   // Set the activeIndex & pageNumber depending on windowWidth
