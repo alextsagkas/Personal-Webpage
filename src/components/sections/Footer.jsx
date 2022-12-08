@@ -1,3 +1,4 @@
+import FooterItem from "../helpers/FooterItem";
 import { LinkedIn, Github } from "../icons/Icons";
 
 function Footer() {
@@ -5,19 +6,14 @@ function Footer() {
     <section className="mt-28 text-center">
       <div className="container mx-auto max-w-screen-lg">
         <div className="flex flex-wrap justify-center gap-3 pb-4">
-          <a
-            href="https://www.linkedin.com/in/alexandros-tsagkaropoulos/"
-            className="inline-flex items-center rounded-lg bg-bgDark-400 p-2 font-semibold text-white"
+          <FooterItem
+            link={"https://www.linkedin.com/in/alexandros-tsagkaropoulos/"}
           >
             <LinkedIn />
-          </a>
-          <a
-            href="https://github.com/alextsagkas"
-            className="inline-flex items-center rounded-lg bg-bgDark-400 p-2
-               font-semibold text-white"
-          >
+          </FooterItem>
+          <FooterItem link={"https://github.com/alextsagkas"}>
             <Github />
-          </a>
+          </FooterItem>
         </div>
       </div>
       <p className="mt-1 mb-4 text-sm opacity-50">
