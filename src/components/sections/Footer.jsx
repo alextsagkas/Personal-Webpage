@@ -1,4 +1,4 @@
-import { LinkedIn, Github } from "./icons/Icons";
+import { LinkedIn, Github } from "../icons/Icons";
 
 function Footer() {
   return (

@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 
-import timeline from "../data/timeline";
-import TimeLineItem from "./TimeLineItem";
-import Title from "./Title";
+import timeline from "../../data/timeline";
+import TimeLineItem from "../helpers/TimeLineItem";
+import Title from "../utility/Title";
 
 const TimeLine = forwardRef((props, ref) => {
   return (

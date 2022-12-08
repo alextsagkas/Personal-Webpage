@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import Title from "./Title";
+import Title from "../utility/Title";
 
 const Contact = forwardRef((props, ref) => (
   <section ref={ref} className="flex flex-col">

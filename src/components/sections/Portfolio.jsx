@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 
-import portfolio from "../data/portfolio";
-import PortfolioItem from "./PortfolioItem";
-import Title from "./Title";
-import Carousel, { CarouselItem } from "./Carousel";
+import portfolio from "../../data/portfolio";
+import PortfolioItem from "../helpers/PortfolioItem";
+import Title from "../utility/Title";
+import Carousel, { CarouselItem } from "../utility/Carousel";
 
 const Portfolio = forwardRef(({ homeScreenVisible, scrollY }, ref) => {
   return (

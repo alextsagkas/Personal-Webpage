@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-import NavBar from "./components/NavBar";
-import IntroAnimate from "./components/IntroAnimate";
-import Portfolio from "./components/Portfolio";
-import TimeLine from "./components/TimeLine";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import NavBar from "./components/sections/NavBar";
+import IntroSlider from "./components/sections/IntroSlider";
+import Portfolio from "./components/sections/Portfolio";
+import TimeLine from "./components/sections/TimeLine";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
 
 function App() {
   const [theme, setTheme] = useState(null);
@@ -84,7 +84,7 @@ function App() {
       />
       <div className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
         {!removePage ? (
-          <IntroAnimate
+          <IntroSlider
             toolBarHidden={toolBarHidden}
             removePageHandler={removePageHandler}
             ref={introductionRef}

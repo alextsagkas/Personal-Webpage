@@ -1,9 +1,9 @@
 import { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import Introduction from "./Introduction";
+import Introduction from "../helpers/Introduction";
 
-const IntroAnimate = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
+const IntroSlider = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
   const [isDraggedDown, isDraggedDownHandler] = useState(true);
 
   return (
@@ -43,4 +43,4 @@ const IntroAnimate = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
   );
 });
 
-export default IntroAnimate;
+export default IntroSlider;

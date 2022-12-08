@@ -1,4 +1,4 @@
-import { Sun, Moon } from "./icons/Icons";
+import { Sun, Moon } from "../icons/Icons";
 
 function ThemeButton({ themeSwitcherHandler, theme }) {
   return (
