@@ -4,9 +4,7 @@ import { useSwipeable } from "react-swipeable";
 
 export const CarouselItem = ({ children }) => {
   return (
-    <div
-      className={`inline-flex w-[100%] items-center justify-center lg:w-[50%] 2xl:w-[33.33%]`}
-    >
+    <div className="inline-flex w-[100%] items-center justify-center lg:w-[50%] 2xl:w-[33.33%]">
       {children}
     </div>
   );
@@ -14,9 +12,11 @@ export const CarouselItem = ({ children }) => {
 
 const Carousel = ({ children, homeScreenVisible }) => {
   const childrenNumber = React.Children.count(children);
+
+  const stopPixel = 250;
+  // TailwindCSS default values
   const lg = 1024;
   const doubleXl = 1536;
-  const stopPixel = 250;
 
   const [scrollY, scrollYHandler] = useState(0);
   const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
@@ -25,7 +25,7 @@ const Carousel = ({ children, homeScreenVisible }) => {
   const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
   const [pageNumber, pageNumberHandler] = useState(childrenNumber);
 
-  // Pause Carousel if scrolled beyond it
+  // Pause Carousel when scrolling beyond the Section
   useEffect(() => {
     const handleScroll = () => {
       scrollYHandler(window.scrollY);
@@ -118,18 +118,8 @@ const Carousel = ({ children, homeScreenVisible }) => {
     } else if (newIndex > pageNumber - 1) {
       newIndex = 0;
     }
-
     activeIndexHandler(newIndex);
   };
-
-  // console.log(
-  //   "Active Index: ",
-  //   activeIndex,
-  //   "On Screen: ",
-  //   itemsOnScreen,
-  //   "Pages: ",
-  //   pageNumber
-  // );
 
   return (
     <div className="overflow-hidden">
