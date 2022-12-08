@@ -34,6 +34,7 @@ const Contact = forwardRef((props, ref) => {
     isInitial: true,
     isEmpty: false,
     isSmall: false,
+    isBig: false,
   });
 
   const submitForm = (event) => {
@@ -54,12 +55,13 @@ const Contact = forwardRef((props, ref) => {
       ...checkMessage(messageRef.current.value),
     });
 
-    console.log("name: ", nameRef.current.value);
-    console.log("email: ", emailRef.current.value);
-    console.log("message: ", messageRef.current.value);
-    console.log("check name: ", nameValidation);
-    console.log("check email: ", emailValidation);
-    console.log("check message: ", messageValidation);
+    // // Debugging
+    // console.log("name: ", nameRef.current.value);
+    // console.log("email: ", emailRef.current.value);
+    // console.log("message: ", messageRef.current.value);
+    // console.log("check name: ", nameValidation);
+    // console.log("check email: ", emailValidation);
+    // console.log("check message: ", messageValidation);
   };
 
   return (

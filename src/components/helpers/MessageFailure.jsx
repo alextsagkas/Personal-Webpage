@@ -1,5 +1,5 @@
-function MessageFailure({ isInitial, isEmpty, isSmall }) {
-  const failure = !isInitial && (isEmpty || isSmall);
+function MessageFailure({ isInitial, isEmpty, isSmall, isBig }) {
+  const failure = !isInitial && (isEmpty || isSmall || isBig);
 
   var errorText = "";
 
@@ -9,6 +9,10 @@ function MessageFailure({ isInitial, isEmpty, isSmall }) {
 
   if (!isEmpty && isSmall) {
     errorText = "Message is small";
+  }
+
+  if (!isEmpty && isBig) {
+    errorText = "Message is extensive";
   }
 
   return failure ? (

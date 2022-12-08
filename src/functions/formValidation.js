@@ -47,6 +47,7 @@ export const checkEmail = (email) => {
 export const checkMessage = (message) => {
   var isEmpty = true;
   var isSmall = true;
+  var isBig = false;
 
   if (message != undefined) {
     const text = message.trim(message);
@@ -59,8 +60,14 @@ export const checkMessage = (message) => {
       } else {
         isSmall = false;
       }
+
+      if (text.length > 400) {
+        isBig = true;
+      } else {
+        isBig = false;
+      }
     }
   }
 
-  return { isEmpty, isSmall };
+  return { isEmpty, isSmall, isBig };
 };
