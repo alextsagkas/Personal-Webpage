@@ -1,6 +1,9 @@
-function TextArea({ text }) {
+import { forwardRef } from "react";
+
+const TextArea = forwardRef(({ text }, ref) => {
   return (
     <textarea
+      ref={ref}
       name={text}
       placeholder={text}
       rows="10"
@@ -8,6 +11,6 @@ function TextArea({ text }) {
       required
     />
   );
-}
+});
 
 export default TextArea;
