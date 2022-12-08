@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useRef, useState, useEffect } from "react";
 
 import Title from "../utility/Title";
 import NameInput from "../helpers/form/NameInput";
@@ -56,6 +56,39 @@ const Contact = forwardRef((props, ref) => {
       isInitial: false,
       ...checkMessage(messageRef.current.value),
     });
+
+    const readyForSubmission =
+      !emailValidation.isEmpty &
+      !nameValidation.isSmall &
+      !nameValidation.isBig &
+      !emailValidation.isEmpty &
+      emailValidation.containsAt &
+      emailValidation.endsWithDotCom &
+      !emailValidation.isBig &
+      !messageValidation.isEmpty &
+      !emailValidation.isSmall &
+      !emailValidation.isBig;
+
+    if (readyForSubmission) {
+    }
+
+    const formData = new FormData();
+
+    console.log("in ", import.meta.env.VITE_API_KEY);
+
+    formData.append("name", nameRef.current.value);
+    formData.append("email", emailRef.current.value);
+    formData.append("message", messageRef.current.value);
+
+    // fetch(`https://getform.io/f/${import.meta.env.VITE_API_KEY}`, {
+    //   method: "POST",
+    //   body: formData,
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    // })
+    //   .then((response) => console.log(response.json()))
+    //   .catch((error) => console.log(error));
 
     // // Debugging
     // console.log("name: ", nameRef.current.value);
