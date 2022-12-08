@@ -1,8 +1,8 @@
 export const checkName = (name) => {
-  var isEmpty = false;
+  var isEmpty = true;
   var isSmall = false;
 
-  if (name) {
+  if (name != undefined) {
     const text = name.trim(name);
 
     if (text.length > 0) {
@@ -18,11 +18,11 @@ export const checkName = (name) => {
 };
 
 export const checkEmail = (email) => {
-  var isEmpty = false;
+  var isEmpty = true;
   var containsAt = false;
   var endsWithDotCom = false;
 
-  if (email) {
+  if (email != undefined) {
     const text = email.trim(email);
 
     if (text.length > 0) {
