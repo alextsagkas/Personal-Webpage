@@ -1,12 +1,10 @@
 import { forwardRef, useRef, useState } from "react";
 
 import Title from "../utility/Title";
-import NameInput from "../helpers/NameInput";
-import EmailInput from "../helpers/EmailInput";
-import TextArea from "../helpers/TextArea";
+import NameInput from "../helpers/form/NameInput";
+import EmailInput from "../helpers/form/EmailInput";
+import MessageInput from "../helpers/form/MessageInput";
 import SubmitButton from "../helpers/SubmitButton";
-
-// TODO: extract error logic from component to the top of the file
 
 import {
   checkName,
@@ -90,7 +88,7 @@ const Contact = forwardRef((props, ref) => {
               ref={emailRef}
               validation={emailValidation}
             />
-            <TextArea
+            <MessageInput
               text={"Message"}
               ref={messageRef}
               validation={messageValidation}

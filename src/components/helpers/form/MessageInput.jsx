@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 
 import MessageFailure from "./MessageFailure";
 
-const TextArea = forwardRef(({ text, validation }, ref) => {
+const MessageInput = forwardRef(({ text, validation }, ref) => {
   const { isInitial, isEmpty, isSmall, isBig } = validation;
 
   const failure = (isSmall || isEmpty || isBig) & !isInitial;
@@ -29,4 +29,4 @@ const TextArea = forwardRef(({ text, validation }, ref) => {
   );
 });
 
-export default TextArea;
+export default MessageInput;
