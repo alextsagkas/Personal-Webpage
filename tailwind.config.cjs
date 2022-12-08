@@ -6,18 +6,14 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      screens: {
-        smallPhone: "380px",
-        smallest: "320px",
-        navbar: "400px",
-        navbarPadding: "360px",
-      },
       fontFamily: {
         inter: ["inter", "serif"],
       },
       colors: {
         bgDark: colors.neutral,
         bgLight: colors.orange,
+        failure: colors.red,
+        success: colors.green,
       },
     },
   },
