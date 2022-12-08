@@ -12,7 +12,7 @@ function NameFailure({ isInitial, isEmpty, isSmall }) {
   }
 
   return failure ? (
-    <div className="ml- mt-2 text-sm text-failure-500">{errorText}</div>
+    <div className="mt-2 text-sm text-failure-500">{errorText}</div>
   ) : null;
 }
 
