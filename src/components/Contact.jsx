@@ -16,23 +16,26 @@ const Contact = forwardRef((props, ref) => (
           type="text"
           name="name"
           placeholder="Name"
-          className="rounded-md border-2 border-gray-300 bg-transparent p-2 caret-violet-500 focus:border-gray-400 focus:outline-none dark:caret-orange-400 dark:focus:border-bgLight-200"
+          className="rounded-md border-2 border-bgDark-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400 dark:selection:bg-orange-300 dark:selection:text-bgDark-900 dark:focus:border-bgLight-200"
+          required
         />
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="my-4 rounded-md border-2 border-gray-300 bg-transparent p-2 caret-violet-500 focus:border-gray-400 focus:outline-none dark:caret-orange-400 dark:focus:border-bgLight-200"
+          className="my-4 rounded-md border-2 border-bgDark-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400 dark:selection:bg-orange-300 dark:selection:text-bgDark-900 dark:focus:border-bgLight-200"
+          required
         />
         <textarea
           name="message"
           placeholder="Message"
           rows="10"
-          className="mb-4 resize-none rounded-md border-2 border-gray-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-gray-400 focus:outline-none dark:caret-orange-300 dark:selection:bg-orange-400 dark:selection:text-bgDark-900 dark:focus:border-bgLight-200"
+          className="mb-4 resize-none rounded-md border-2 border-bgDark-300 bg-transparent p-2 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400  dark:selection:bg-orange-300 dark:selection:text-bgDark-900  dark:focus:border-bgLight-200"
+          required
         />
         <button
           type="button"
-          className="w-max rounded-md bg-gradient-to-r from-blue-500 to-violet-400 stroke-white px-8 py-3 text-center text-base font-medium text-white drop-shadow-md hover:inline-block focus:outline-white dark:to-orange-400"
+          className="w-max rounded-md bg-gradient-to-r from-blue-500 to-violet-400 stroke-white px-8 py-3 text-center text-base font-medium text-white hover:inline-block focus:outline-bgDark-900 dark:to-orange-400 dark:focus:outline-white"
         >
           Work with Me
         </button>
