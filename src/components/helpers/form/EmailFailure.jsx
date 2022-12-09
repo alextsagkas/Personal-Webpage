@@ -1,12 +1,4 @@
-function EmailFailure({
-  isInitial,
-  isEmpty,
-  containsAt,
-  endsWithDotCom,
-  isBig,
-}) {
-  const failure = !isInitial && (isEmpty || !containsAt || !endsWithDotCom);
-
+function EmailFailure({ isEmpty, containsAt, endsWithDotCom, isBig, failure }) {
   var errorText = "";
 
   if (isEmpty) {

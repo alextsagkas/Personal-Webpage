@@ -31,6 +31,7 @@ const Contact = forwardRef((props, ref) => {
     containsAt: false,
     endsWithDotCom: false,
     isBig: false,
+    isOkay: false,
   });
 
   const [messageValidation, setMessageValidation] = useState({
@@ -60,13 +61,10 @@ const Contact = forwardRef((props, ref) => {
 
     const readyForSubmission =
       nameValidation.isOkay &
-      !emailValidation.isEmpty &
-      emailValidation.containsAt &
-      emailValidation.endsWithDotCom &
-      !emailValidation.isBig &
+      emailValidation.isOkay &
       !messageValidation.isEmpty &
-      !emailValidation.isSmall &
-      !emailValidation.isBig;
+      !messageValidation.isSmall &
+      !messageValidation.isBig;
 
     if (readyForSubmission) {
     }
