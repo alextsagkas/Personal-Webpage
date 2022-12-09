@@ -4,10 +4,10 @@ import NameFailure from "./NameFailure";
 import InputMark from "./InputMark";
 
 const NameInput = forwardRef(({ text, validation }, ref) => {
-  const { isInitial, isEmpty, isSmall, isBig } = validation;
+  const { isInitial, isEmpty, isSmall, isBig, isOkay } = validation;
 
-  const failure = (isSmall || isEmpty || isBig) & !isInitial;
-  const success = (!isSmall && !isEmpty && !isBig) & !isInitial;
+  const failure = !isInitial && !isOkay;
+  const success = !isInitial && isOkay;
 
   return (
     <div>
@@ -21,12 +21,12 @@ const NameInput = forwardRef(({ text, validation }, ref) => {
         } 
       ${success ? "border-success-500" : null}`}
       />
-      <InputMark failure={failure} success={success} />
+      <InputMark success={success} failure={failure} />
       <NameFailure
-        isInitial={isInitial}
         isEmpty={isEmpty}
         isSmall={isSmall}
         isBig={isBig}
+        failure={failure}
       />
     </div>
   );

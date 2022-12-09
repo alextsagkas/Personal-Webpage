@@ -2,6 +2,7 @@ export const checkName = (name) => {
   var isEmpty = true;
   var isSmall = true;
   var isBig = false;
+  var isOkay = false;
 
   if (name != undefined) {
     const text = name.trim(name);
@@ -22,7 +23,13 @@ export const checkName = (name) => {
       }
     }
 
-    return { isEmpty, isSmall, isBig };
+    if (!isEmpty && !isSmall && !isBig) {
+      isOkay = true;
+    } else {
+      isOkay = false;
+    }
+
+    return { isEmpty, isSmall, isBig, isOkay };
   }
 };
 

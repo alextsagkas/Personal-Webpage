@@ -1,6 +1,6 @@
 import { Tick, Cross } from "../../icons/Icons";
 
-function InputMark({ failure, success }) {
+function InputMark({ success, failure }) {
   if (success) {
     return (
       <div className="absolute w-11/12 max-w-5xl -translate-x-[1rem] md:w-8/12">

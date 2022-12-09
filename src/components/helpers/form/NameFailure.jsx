@@ -1,6 +1,4 @@
-function NameFailure({ isInitial, isEmpty, isSmall, isBig }) {
-  const failure = !isInitial && (isEmpty || isSmall || isBig);
-
+function NameFailure({ isEmpty, isSmall, isBig, failure }) {
   var errorText = "";
 
   if (isEmpty) {
