@@ -14,7 +14,7 @@ const NameInput = forwardRef(({ text, validation }, ref) => {
       <input
         ref={ref}
         type="text"
-        name={text.toLowerCase()}
+        name={"name"}
         placeholder={text}
         className={`w-full rounded-md border-2 border-bgDark-300 bg-transparent pt-2 pb-2 pl-2 pr-10 caret-violet-500 selection:bg-violet-400 focus:border-violet-400 focus:outline-none dark:caret-orange-400 dark:selection:bg-orange-300 dark:selection:text-bgDark-900 dark:focus:border-bgLight-200 ${
           failure ? "border-failure-500 " : null

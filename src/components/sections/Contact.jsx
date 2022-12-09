@@ -5,12 +5,13 @@ import NameInput from "../helpers/form/NameInput";
 import EmailInput from "../helpers/form/EmailInput";
 import MessageInput from "../helpers/form/MessageInput";
 import SubmitButton from "../helpers/SubmitButton";
-
 import {
   checkName,
   checkEmail,
   checkMessage,
 } from "../../functions/formValidation";
+
+import { fetchData } from "../../functions/fetchData";
 
 const Contact = forwardRef((props, ref) => {
   const nameRef = useRef("");
@@ -41,6 +42,8 @@ const Contact = forwardRef((props, ref) => {
     isBig: false,
     isOkay: false,
   });
+  const [disableButton, setDisableButton] = useState(false);
+  const [successFetch, setSuccessFetch] = useState(false);
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -62,43 +65,40 @@ const Contact = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    // // Debugging
-    // console.log("name: ", nameRef.current.value);
-    // console.log("email: ", emailRef.current.value);
-    // console.log("message: ", messageRef.current.value);
-    // console.log("check name: ", nameValidation);
-    // console.log("check email: ", emailValidation);
-    // console.log("check message: ", messageValidation);
-
     const readyForSubmission =
       nameValidation.isOkay & emailValidation.isOkay & messageValidation.isOkay;
 
     if (readyForSubmission) {
-      const formData = new FormData();
-
-      console.log("Ready for submission");
-
-      formData.append("name", nameRef.current.value);
-      formData.append("email", emailRef.current.value);
-      formData.append("message", messageRef.current.value);
-
-      // fetch(`https://getform.io/f/${import.meta.env.VITE_API_KEY}`, {
-      //   method: "POST",
-      //   body: formData,
-      //   headers: {
-      //     Accept: "application/json",
-      //   },
-      // })
-      //   .then((response) => console.log(response.json()))
-      //   .catch((error) => console.log(error));
+      setDisableButton(true);
+      fetchData(
+        nameRef.current.value,
+        emailRef.current.value,
+        messageRef.current.value
+      ).then((success) => {
+        setSuccessFetch(success);
+        setDisableButton(false);
+      });
     }
   }, [nameValidation, emailValidation, messageValidation]);
+
+  // // Debugging
+  // console.log("name: ", nameRef.current.value);
+  // console.log("email: ", emailRef.current.value);
+  // console.log("message: ", messageRef.current.value);
+  // console.log("check name: ", nameValidation);
+  // console.log("check email: ", emailValidation);
+  // console.log("check message: ", messageValidation);
 
   return (
     <section ref={ref} className="flex flex-col">
       <div className="flex items-center justify-center">
         {/* TODO: Form Post Logic */}
-        <form onSubmit={submitForm} className="flex w-full flex-col">
+        <form
+          onSubmit={submitForm}
+          method="POST"
+          accept-charset="UTF-8"
+          className="flex w-full flex-col"
+        >
           <Title>Contact</Title>
           <div className="flex flex-col gap-4">
             <NameInput
@@ -118,7 +118,7 @@ const Contact = forwardRef((props, ref) => {
             />
             {/* For Spambots */}
             <input type="hidden" className="hidden" />
-            <SubmitButton />
+            <SubmitButton disableButton={disableButton} />
           </div>
         </form>
       </div>
