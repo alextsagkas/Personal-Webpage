@@ -1,6 +1,4 @@
-function MessageFailure({ isInitial, isEmpty, isSmall, isBig }) {
-  const failure = !isInitial && (isEmpty || isSmall || isBig);
-
+function MessageFailure({ isEmpty, isSmall, isBig, failure }) {
   var errorText = "";
 
   if (isEmpty) {

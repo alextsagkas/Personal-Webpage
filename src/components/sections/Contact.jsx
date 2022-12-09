@@ -39,6 +39,7 @@ const Contact = forwardRef((props, ref) => {
     isEmpty: false,
     isSmall: false,
     isBig: false,
+    isOkay: false,
   });
 
   const submitForm = (event) => {
@@ -58,35 +59,9 @@ const Contact = forwardRef((props, ref) => {
       isInitial: false,
       ...checkMessage(messageRef.current.value),
     });
+  };
 
-    const readyForSubmission =
-      nameValidation.isOkay &
-      emailValidation.isOkay &
-      !messageValidation.isEmpty &
-      !messageValidation.isSmall &
-      !messageValidation.isBig;
-
-    if (readyForSubmission) {
-    }
-
-    const formData = new FormData();
-
-    console.log("in ", import.meta.env.VITE_API_KEY);
-
-    formData.append("name", nameRef.current.value);
-    formData.append("email", emailRef.current.value);
-    formData.append("message", messageRef.current.value);
-
-    // fetch(`https://getform.io/f/${import.meta.env.VITE_API_KEY}`, {
-    //   method: "POST",
-    //   body: formData,
-    //   headers: {
-    //     Accept: "application/json",
-    //   },
-    // })
-    //   .then((response) => console.log(response.json()))
-    //   .catch((error) => console.log(error));
-
+  useEffect(() => {
     // // Debugging
     // console.log("name: ", nameRef.current.value);
     // console.log("email: ", emailRef.current.value);
@@ -94,7 +69,30 @@ const Contact = forwardRef((props, ref) => {
     // console.log("check name: ", nameValidation);
     // console.log("check email: ", emailValidation);
     // console.log("check message: ", messageValidation);
-  };
+
+    const readyForSubmission =
+      nameValidation.isOkay & emailValidation.isOkay & messageValidation.isOkay;
+
+    if (readyForSubmission) {
+      const formData = new FormData();
+
+      console.log("Ready for submission");
+
+      formData.append("name", nameRef.current.value);
+      formData.append("email", emailRef.current.value);
+      formData.append("message", messageRef.current.value);
+
+      // fetch(`https://getform.io/f/${import.meta.env.VITE_API_KEY}`, {
+      //   method: "POST",
+      //   body: formData,
+      //   headers: {
+      //     Accept: "application/json",
+      //   },
+      // })
+      //   .then((response) => console.log(response.json()))
+      //   .catch((error) => console.log(error));
+    }
+  }, [nameValidation, emailValidation, messageValidation]);
 
   return (
     <section ref={ref} className="flex flex-col">

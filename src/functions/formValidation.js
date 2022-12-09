@@ -74,6 +74,7 @@ export const checkMessage = (message) => {
   var isEmpty = true;
   var isSmall = true;
   var isBig = false;
+  var isOkay = false;
 
   if (message != undefined) {
     const text = message.trim(message);
@@ -93,7 +94,13 @@ export const checkMessage = (message) => {
         isBig = false;
       }
     }
+
+    if (!isEmpty && !isSmall && !isBig) {
+      isOkay = true;
+    } else {
+      isOkay = false;
+    }
   }
 
-  return { isEmpty, isSmall, isBig };
+  return { isEmpty, isSmall, isBig, isOkay };
 };
