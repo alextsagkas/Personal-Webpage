@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState, useEffect } from "react";
+import { forwardRef, useState, useEffect } from "react";
 
 import Title from "../utility/Title";
 import NameInput from "../helpers/form/NameInput";
@@ -15,74 +15,99 @@ import {
 import { fetchData } from "../../functions/fetchData";
 
 const Contact = forwardRef((props, ref) => {
-  const nameRef = useRef("");
-  const emailRef = useRef("");
-  const messageRef = useRef("");
-
-  const [validation, setValidation] = useState({
-    name: {
-      isEmpty: true,
-      isSmall: true,
-      isBig: false,
-      isOkay: false,
-    },
-    email: {
-      isEmpty: true,
-      containsAt: false,
-      endsWithDotCom: false,
-      isBig: false,
-      isOkay: false,
-    },
-    message: {
-      isEmpty: true,
-      isSmall: true,
-      isBig: false,
-      isOkay: false,
-    },
+  const [name, setName] = useState("");
+  const [nameIsInitial, setNameIsInitial] = useState(true);
+  const [nameValidation, setNameValidation] = useState({
+    isEmpty: true,
+    isSmall: true,
+    isBig: false,
+    isOkay: false,
+  });
+  const [email, setEmail] = useState("");
+  const [emailIsInitial, setEmailIsInitial] = useState(true);
+  const [emailValidation, setEmailValidation] = useState({
+    isEmpty: true,
+    containsAt: false,
+    endsWithDotCom: false,
+    isBig: false,
+    isOkay: false,
+  });
+  const [message, setMessage] = useState("");
+  const [messageIsInitial, setMessageIsInitial] = useState(true);
+  const [messageValidation, setMessageValidation] = useState({
+    isEmpty: true,
+    isSmall: true,
+    isBig: false,
+    isOkay: false,
   });
   const [isInitial, setIsInitial] = useState(true);
+  const [buttonPressed, setButtonPressed] = useState(false);
   const [allowFetch, setAllowFetch] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
   const [successFetch, setSuccessFetch] = useState(false);
 
+  useEffect(() => {
+    if (name.length === 0) {
+      setNameIsInitial(true);
+    } else {
+      setNameValidation(checkName(name));
+      setNameIsInitial(false);
+    }
+  }, [name]);
+
+  useEffect(() => {
+    if (email.length === 0) {
+      setEmailIsInitial(true);
+    } else {
+      setEmailValidation(checkEmail(email));
+      setEmailIsInitial(false);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (message.length === 0) {
+      setMessageIsInitial(true);
+    } else {
+      setMessageValidation(checkMessage(message));
+      setMessageIsInitial(false);
+    }
+  }, [message]);
+
   const submitForm = (event) => {
     event.preventDefault();
 
-    setValidation({
-      name: checkName(nameRef.current.value),
-      email: checkEmail(emailRef.current.value),
-      message: checkMessage(messageRef.current.value),
-    });
+    setNameValidation(checkName(name));
+    setEmailValidation(checkEmail(email));
+    setMessageValidation(checkMessage(message));
+
     setIsInitial(false);
+    setButtonPressed(true);
   };
 
   useEffect(() => {
     if (
-      !isInitial &&
-      validation.name.isOkay &&
-      validation.email.isOkay &&
-      validation.message.isOkay
+      buttonPressed &&
+      nameValidation.isOkay &&
+      emailValidation.isOkay &&
+      messageValidation.isOkay
     ) {
       setAllowFetch(true);
     } else {
       setAllowFetch(false);
+      setButtonPressed(false);
     }
-  }, [validation, isInitial]);
+  }, [buttonPressed, nameValidation, emailValidation, messageValidation]);
 
   useEffect(() => {
     if (allowFetch) {
       setDisableButton(true);
-      fetchData(
-        nameRef.current.value,
-        emailRef.current.value,
-        messageRef.current.value
-      ).then((success) => {
+      fetchData(name, email, message).then((success) => {
         setSuccessFetch(success);
         setDisableButton(false);
         if (success) {
-          nameRef.current.value = "";
-          emailRef.current.value = "";
-          messageRef.current.value = "";
+          setName("");
+          setEmail("");
+          setMessage("");
           const timeout = setTimeout(() => {
             setIsInitial(true);
           }, 3000);
@@ -92,6 +117,7 @@ const Contact = forwardRef((props, ref) => {
         }
       });
     }
+    setButtonPressed(false);
   }, [allowFetch]);
 
   return (
@@ -106,27 +132,36 @@ const Contact = forwardRef((props, ref) => {
           <Title>Contact</Title>
           <div className="flex flex-col gap-4">
             <NameInput
+              name={name}
               text={"Name"}
-              ref={nameRef}
-              validation={{ isInitial, ...validation.name }}
+              setName={setName}
+              isInitial={isInitial}
+              validation={{ nameIsInitial, ...nameValidation }}
             />
             <EmailInput
+              email={email}
               text={"Email"}
-              ref={emailRef}
-              validation={{ isInitial, ...validation.email }}
+              setEmail={setEmail}
+              isInitial={isInitial}
+              validation={{ emailIsInitial, ...emailValidation }}
             />
             <MessageInput
+              message={message}
               text={"Message"}
-              ref={messageRef}
-              validation={{ isInitial, ...validation.message }}
+              setMessage={setMessage}
+              isInitial={isInitial}
+              validation={{ messageIsInitial, ...messageValidation }}
             />
             {/* For Spambots */}
             <input type="hidden" className="hidden" />
             <div className="flex flex-row justify-between">
               <SubmitButton disableButton={disableButton} />
-              {allowFetch ? (
-                <FetchMessage success={successFetch} pending={disableButton} />
-              ) : null}
+              <FetchMessage
+                success={successFetch}
+                pending={disableButton}
+                buttonPressed={buttonPressed}
+                isInitial={isInitial}
+              />
             </div>
           </div>
         </form>
