@@ -94,6 +94,7 @@ const Contact = forwardRef((props, ref) => {
       setAllowFetch(true);
     } else {
       setAllowFetch(false);
+      setSuccessFetch(false);
       setButtonPressed(false);
     }
   }, [buttonPressed, nameValidation, emailValidation, messageValidation]);
@@ -154,12 +155,11 @@ const Contact = forwardRef((props, ref) => {
             />
             {/* For Spambots */}
             <input type="hidden" className="hidden" />
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-col justify-between min-[375px]:flex-row">
               <SubmitButton disableButton={disableButton} />
               <FetchMessage
                 success={successFetch}
                 pending={disableButton}
-                buttonPressed={buttonPressed}
                 isInitial={isInitial}
               />
             </div>
