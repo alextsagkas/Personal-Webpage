@@ -8,7 +8,7 @@ export const fetchData = async (name, email, message) => {
 
   try {
     const response = await fetch(
-      `https://getform.io/f/${import.meta.env.VITE_API_KEY}a`,
+      `https://getform.io/f/${import.meta.env.VITE_API_KEY}`,
       {
         method: "POST",
         body: formData,

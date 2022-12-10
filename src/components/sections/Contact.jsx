@@ -5,12 +5,13 @@ import NameInput from "../helpers/form/NameInput";
 import EmailInput from "../helpers/form/EmailInput";
 import MessageInput from "../helpers/form/MessageInput";
 import SubmitButton from "../helpers/SubmitButton";
+import FetchMessage from "../helpers/form/FetchMessage";
+
 import {
   checkName,
   checkEmail,
   checkMessage,
 } from "../../functions/formValidation";
-
 import { fetchData } from "../../functions/fetchData";
 
 const Contact = forwardRef((props, ref) => {
@@ -18,57 +19,58 @@ const Contact = forwardRef((props, ref) => {
   const emailRef = useRef("");
   const messageRef = useRef("");
 
-  const [nameValidation, setNameValidation] = useState({
-    isInitial: true,
-    isEmpty: false,
-    isSmall: false,
-    isBig: false,
-    isOkay: false,
+  const [validation, setValidation] = useState({
+    name: {
+      isEmpty: true,
+      isSmall: true,
+      isBig: false,
+      isOkay: false,
+    },
+    email: {
+      isEmpty: true,
+      containsAt: false,
+      endsWithDotCom: false,
+      isBig: false,
+      isOkay: false,
+    },
+    message: {
+      isEmpty: true,
+      isSmall: true,
+      isBig: false,
+      isOkay: false,
+    },
   });
-
-  const [emailValidation, setEmailValidation] = useState({
-    isInitial: true,
-    isEmpty: false,
-    containsAt: false,
-    endsWithDotCom: false,
-    isBig: false,
-    isOkay: false,
-  });
-
-  const [messageValidation, setMessageValidation] = useState({
-    isInitial: true,
-    isEmpty: false,
-    isSmall: false,
-    isBig: false,
-    isOkay: false,
-  });
+  const [isInitial, setIsInitial] = useState(true);
+  const [allowFetch, setAllowFetch] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
   const [successFetch, setSuccessFetch] = useState(false);
 
   const submitForm = (event) => {
     event.preventDefault();
 
-    setNameValidation({
-      isInitial: false,
-      ...checkName(nameRef.current.value),
+    setValidation({
+      name: checkName(nameRef.current.value),
+      email: checkEmail(emailRef.current.value),
+      message: checkMessage(messageRef.current.value),
     });
-
-    setEmailValidation({
-      isInitial: false,
-      ...checkEmail(emailRef.current.value),
-    });
-
-    setMessageValidation({
-      isInitial: false,
-      ...checkMessage(messageRef.current.value),
-    });
+    setIsInitial(false);
   };
 
   useEffect(() => {
-    const readyForSubmission =
-      nameValidation.isOkay & emailValidation.isOkay & messageValidation.isOkay;
+    if (
+      !isInitial &&
+      validation.name.isOkay &&
+      validation.email.isOkay &&
+      validation.message.isOkay
+    ) {
+      setAllowFetch(true);
+    } else {
+      setAllowFetch(false);
+    }
+  }, [validation, isInitial]);
 
-    if (readyForSubmission) {
+  useEffect(() => {
+    if (allowFetch) {
       setDisableButton(true);
       fetchData(
         nameRef.current.value,
@@ -77,26 +79,28 @@ const Contact = forwardRef((props, ref) => {
       ).then((success) => {
         setSuccessFetch(success);
         setDisableButton(false);
+        if (success) {
+          nameRef.current.value = "";
+          emailRef.current.value = "";
+          messageRef.current.value = "";
+          const timeout = setTimeout(() => {
+            setIsInitial(true);
+          }, 3000);
+          return () => {
+            clearTimeout(timeout);
+          };
+        }
       });
     }
-  }, [nameValidation, emailValidation, messageValidation]);
-
-  // // Debugging
-  // console.log("name: ", nameRef.current.value);
-  // console.log("email: ", emailRef.current.value);
-  // console.log("message: ", messageRef.current.value);
-  // console.log("check name: ", nameValidation);
-  // console.log("check email: ", emailValidation);
-  // console.log("check message: ", messageValidation);
+  }, [allowFetch]);
 
   return (
     <section ref={ref} className="flex flex-col">
       <div className="flex items-center justify-center">
-        {/* TODO: Form Post Logic */}
         <form
           onSubmit={submitForm}
           method="POST"
-          accept-charset="UTF-8"
+          acceptCharset="UTF-8"
           className="flex w-full flex-col"
         >
           <Title>Contact</Title>
@@ -104,21 +108,26 @@ const Contact = forwardRef((props, ref) => {
             <NameInput
               text={"Name"}
               ref={nameRef}
-              validation={nameValidation}
+              validation={{ isInitial, ...validation.name }}
             />
             <EmailInput
               text={"Email"}
               ref={emailRef}
-              validation={emailValidation}
+              validation={{ isInitial, ...validation.email }}
             />
             <MessageInput
               text={"Message"}
               ref={messageRef}
-              validation={messageValidation}
+              validation={{ isInitial, ...validation.message }}
             />
             {/* For Spambots */}
             <input type="hidden" className="hidden" />
-            <SubmitButton disableButton={disableButton} />
+            <div className="flex flex-row justify-between">
+              <SubmitButton disableButton={disableButton} />
+              {allowFetch ? (
+                <FetchMessage success={successFetch} pending={disableButton} />
+              ) : null}
+            </div>
           </div>
         </form>
       </div>
@@ -127,3 +136,11 @@ const Contact = forwardRef((props, ref) => {
 });
 
 export default Contact;
+
+// // Debugging
+// console.log("name: ", nameRef.current.value);
+// console.log("email: ", emailRef.current.value);
+// console.log("message: ", messageRef.current.value);
+// console.log("check name: ", nameValidation);
+// console.log("check email: ", emailValidation);
+// console.log("check message: ", messageValidation);
