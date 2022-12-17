@@ -12,14 +12,14 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
         Alexandros Tsagkaropoulos
       </h1>
       <p className="mb-6 text-base font-semibold md:text-xl">
-        Physics Student & Developer
+        Physics Student & Software Engineer
       </p>
       <p className="mb-6 max-w-xl px-7 text-sm font-medium">
         I'm a Bachelor Physics Student trying to figure out the world we live
-        in. I specialize in Electronics and Computers and I seek to apply my
-        knowledge to Software Development Projects. All Software Engineering
-        Projects are carefully outlined, designed and implemented to solve real
-        world problems efficiently.
+        in. I specialize in Computer Science and I seek to apply my knowledge to
+        Software Development Projects. All projects I undertake are carefully
+        outlined, designed and implemented to solve real world problems
+        efficiently and elegantly.
       </p>
       <div className="h-full" />
       <motion.div
