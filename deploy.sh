@@ -16,7 +16,7 @@ echo > .nojekyll
 echo 'alextsagkas.com' > CNAME
 
 git init
-git checkout -B main
+git checkout -B master
 git add -A
 git commit -m 'deploy'
 
@@ -25,5 +25,6 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:alextsagkas/Personal-Website.git main:gh-pages
+
 
 cd -
