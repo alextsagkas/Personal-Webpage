@@ -1,6 +1,6 @@
 # Personal Webpage
 
-This is an attempt to create a personal webpage and inspire others to create their own. My inspiration for this project was the [tutorial](https://www.youtube.com/watch?v=b0pkpcD8Ms4) by ForrestKnight on YouTube. His repository can be found [here](https://github.com/ForrestKnight/minimal-portfolio).
+This is an attempt to create a personal webpage and inspire others to create their own. My inspiration for this project was the [tutorial](https://www.youtube.com/watch?v=b0pkpcD8Ms4) by ForrestKnight on YouTube. His repository on GitHub can be found [here](https://github.com/ForrestKnight/minimal-portfolio).
 
 The project is implemented with **React** and **TailwindCSS** and **Vite** is used as the bundler. Also, GitHub Pages is used to deploy the app and assign to it a custom domain name.
 
