@@ -113,10 +113,6 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     activeIndexHandler(newIndex);
   };
 
-  useEffect(() => {
-    console.log(activeIndex);
-  }, [activeIndex]);
-
   return (
     <div className="overflow-hidden">
       <div
