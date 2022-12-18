@@ -5,7 +5,7 @@ export default [
     title: "Physics Bachelor's Degree",
     duration: "4 years",
     details:
-      "My passion for understanding what constitutes reality and how humans can influence it lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my main interest. I'm currently on my last year of studies and I'm looking forward to the next step of my career.",
+      "My passion for understanding what constitutes reality and how humans can influence it, lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my main interest. I'm currently on my last year of studies and I'm looking forward to the next step of my career.",
   },
   {
     id: 4,
@@ -13,7 +13,7 @@ export default [
     title: "Image Processing",
     duration: "3 months",
     details:
-      "My Thesis is about detecting clouds in images taken from low-cost sky cameras. The project is based on classifying different image pixels as cloudy or cloudless based on information from the RGB and HSV channels. The project is written in Python and the main libraries used are Numpy and Scikit-Image. The project is still in progress and I am currently working on perfecting the classification algorithm, in terms of efficiency and accuracy.",
+      "My Thesis is about detecting clouds in images taken from low-cost sky cameras. The project is based on classifying different image pixels as cloudy or cloudless, depending on information from the RGB and HSV channels. The project is written in Python and the main libraries used are Numpy and Scikit-Image. The project is still in progress and I am currently working on perfecting the classification algorithm, in terms of efficiency and accuracy.",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export default [
     title: "Internship at 7L International",
     duration: "2 months",
     details:
-      "Worked as Software Engineer, specialized in Web Development, at 7L International. At first, I took two Udemy Courses about React.js and Next.js. Also, I built REST APIs with Next.js and used them to make the Web Apps interact with a MongoDB Database. Alongside, I learned how to work in a team with git and git management systems (GitLab, GitHub). The last three weeks I prepared a Webinar, with a colleague, for the IT Team. The topic was a newly developed framework at that moment, Qwik.js, and comparison with Remix.js. For the sake of the Webinar I also developed a Qwik.js app for showcase.",
+      "Worked as Software Engineer, specialized in Web Development, at 7L International. At first, I took two Udemy Courses about React.js and Next.js. Also, I built REST APIs with Next.js and used them to make the Web Apps interact with a MongoDB Database. Alongside, I learned how to work in a team with git and git management systems (GitLab, GitHub). The last three weeks I prepared a Webinar, with a colleague, for the IT Team. The topic was a newly developed framework at that moment, Qwik.js, and a comparison with Remix.js. For the sake of the Webinar I also developed a Qwik.js app for showcase.",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export default [
     title: "IT Member in Young Minds NKUA",
     duration: "6 months",
     details:
-      "Contribute as a volunteer in Young Minds NKUA Section by undertaking IT responsibilities. Namely, I helped to set up the website of the section with Wordpress. From this experience I learned how to use a CMS, integrate different plugins to Web Apps and frontend design patterns.",
+      "Contributed as a volunteer in Young Minds NKUA Section by undertaking IT responsibilities. Namely, I helped to set up the website of the section with Wordpress. From this experience I learned how to use a CMS, integrate different plugins to Web Apps and frontend design patterns.",
   },
   {
     id: 1,
