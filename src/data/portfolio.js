@@ -23,7 +23,7 @@ export default [
   {
     id: 3,
     title: "ATLAS Long Lived Particles",
-    imgUrl: "assets/ATLAS.png",
+    imgUrl: "assets/atlas.png",
     stack: ["C++", "ROOT"],
     link: "https://github.com/alextsagkas/ATLAS-Long_Lived_Particles",
   },
