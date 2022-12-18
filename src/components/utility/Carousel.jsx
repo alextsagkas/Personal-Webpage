@@ -87,7 +87,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     if (!pause) {
       const interval = setInterval(() => {
         updateIndex(activeIndex + 1);
-      }, 2000);
+      }, 2500);
 
       return () => {
         if (interval) {
@@ -113,6 +113,10 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     activeIndexHandler(newIndex);
   };
 
+  useEffect(() => {
+    console.log(activeIndex);
+  }, [activeIndex]);
+
   return (
     <div className="overflow-hidden">
       <div
@@ -121,9 +125,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
         onMouseLeave={() => pauseHandler(false)}
         className={`whitespace-nowrap transition-transform duration-700`}
         style={{
-          transform: `translateX(-${
-            Math.ceil(activeIndex / itemsOnScreen) * 100
-          }%)`,
+          transform: `translateX(-${activeIndex * 100}%)`,
         }}
       >
         {React.Children.map(children, (child, index) => {
@@ -131,7 +133,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
         })}
       </div>
       <div className="mt-6 flex items-center justify-center">
-        <div className="flex w-[40%] flex-row justify-center gap-5">
+        <div className="flex w-9/12 flex-row flex-wrap justify-center gap-y-4 gap-x-5 min-[320px]:w-7/12 min-[390px]:w-5/12 min-[500px]:w-4/12">
           {React.Children.map(children, (child, index) => {
             return index < pageNumber ? (
               <button
