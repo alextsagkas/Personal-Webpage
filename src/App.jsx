@@ -90,11 +90,7 @@ function App() {
             ref={introductionRef}
           />
         ) : null}
-        <Portfolio
-          ref={portfolioRef}
-          homeScreenVisible={!removePage}
-          scrollY={scrollY}
-        />
+        <Portfolio ref={portfolioRef} />
         <TimeLine ref={timeLineRef} />
         <Contact ref={contactRef} />
         <Footer />

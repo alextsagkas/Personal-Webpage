@@ -23,11 +23,11 @@ const portfolioCarousel = [
   },
 ];
 
-const Portfolio = forwardRef(({ homeScreenVisible, scrollY }, ref) => {
+const Portfolio = forwardRef((props, ref) => {
   return (
     <section ref={ref}>
       <Title>Portfolio</Title>
-      <Carousel homeScreenVisible={homeScreenVisible} scrollY={scrollY}>
+      <Carousel>
         {portfolioCarousel.map((project) => (
           <CarouselItem key={project.id}>
             <PortfolioItem

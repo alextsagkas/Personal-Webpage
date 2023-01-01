@@ -4,110 +4,50 @@ import { useSwipeable } from "react-swipeable";
 
 export const CarouselItem = ({ children }) => {
   return (
-    <div className="inline-flex w-[100%] items-center justify-center lg:w-[50%] 2xl:w-[33.33%]">
+    <div className="inline-flex w-[100%] items-center justify-center">
       {children}
     </div>
   );
 };
 
-const Carousel = ({ children, homeScreenVisible, scrollY }) => {
+const Carousel = ({ children }) => {
   const childrenNumber = React.Children.count(children);
   const nonRepeatingChildrenNumber = childrenNumber - 2;
 
-  const stopPixel = 250;
-  // TailwindCSS default values
-  const lg = 1024;
-  const doubleXl = 1536;
+  // const stopPixel = 250;
+  // // TailwindCSS default values
+  // const lg = 1024;
+  // const doubleXl = 1536;
 
-  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
   const [activeIndex, activeIndexHandler] = useState(1);
-  const [pause, pauseHandler] = useState(false);
-  const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
-  const [pageNumber, pageNumberHandler] = useState(childrenNumber);
   const [infiniteLoop, infiniteLoopHandler] = useState(false);
   const [swipedRight, swipedRightHandler] = useState(false);
   const [swipedLeft, swipedLeftHandler] = useState(false);
 
-  // Pause Carousel when scrolling beyond the Section
-  useEffect(() => {
-    if (scrollY > stopPixel) {
-      pauseHandler(true);
-    } else {
-      pauseHandler(false);
-    }
-  }, [scrollY]);
-
-  // Set the activeIndex & pageNumber depending on windowWidth
-  useEffect(() => {
-    function handleWindowResize() {
-      windowWidthHandler(window.innerWidth);
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    if (windowWidth < lg) {
-      activeIndexHandler(1);
-      itemsOnScreenHandler(1);
-      pageNumberHandler(childrenNumber);
-    }
-
-    if (windowWidth > lg && windowWidth < doubleXl) {
-      activeIndexHandler(1);
-      itemsOnScreenHandler(2);
-      pageNumberHandler(Math.ceil(childrenNumber / 2));
-    }
-
-    if (windowWidth > doubleXl) {
-      activeIndexHandler(1);
-      itemsOnScreenHandler(3);
-      pageNumberHandler(Math.ceil(childrenNumber / 3));
-    }
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, [windowWidth]);
-
-  // Pause Carousel when there are no pages to slide
-  useEffect(() => {
-    if (childrenNumber <= itemsOnScreen) {
-      pauseHandler(true);
-    } else {
-      pauseHandler(false);
-    }
-  }, [itemsOnScreen]);
-
-  // Pause Carousel if the Home is visible
-  useEffect(() => {
-    if (homeScreenVisible) {
-      pauseHandler(true);
-    } else {
-      pauseHandler(false);
-    }
-  }, [homeScreenVisible]);
-
   // Illusion for infinite loop - Disable Swipe Animation
   useEffect(() => {
     if (
-      (activeIndex == pageNumber - 1 && swipedLeft) ||
+      (activeIndex == childrenNumber - 1 && swipedLeft) ||
       (activeIndex == 0 && swipedRight)
     ) {
-      const timeout = setTimeout(() => {
+      setTimeout(() => {
         infiniteLoopHandler(true);
-        return clearTimeout(timeout);
-      }, 700);
+      }, 600);
     } else {
-      infiniteLoopHandler(false);
+      setTimeout(() => {
+        infiniteLoopHandler(false);
+      }, 10);
     }
   }, [activeIndex]);
 
   // Illusion for infinite loop - Active Index Cycle
   useEffect(() => {
+    console.log(infiniteLoop);
     if (infiniteLoop) {
-      if (activeIndex == pageNumber - 1) {
+      if (activeIndex == childrenNumber - 1) {
         updateIndex(1);
       } else {
-        updateIndex(pageNumber - 2);
+        updateIndex(childrenNumber - 2);
       }
     }
   }, [infiniteLoop]);
@@ -115,11 +55,17 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   //  Swipe Carousel on phone screens
   const handlers = useSwipeable({
     onSwipedLeft: () => {
+      if (activeIndex == childrenNumber - 1 || activeIndex == 0) {
+        return;
+      }
       swipedRightHandler(false);
       swipedLeftHandler(true);
       updateIndex(activeIndex + 1);
     },
     onSwipedRight: () => {
+      if (activeIndex == childrenNumber - 1 || activeIndex == 0) {
+        return;
+      }
       swipedLeftHandler(false);
       swipedRightHandler(true);
       updateIndex(activeIndex - 1);
@@ -130,8 +76,8 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex > pageNumber - 1) {
-      newIndex = pageNumber - 1;
+    } else if (newIndex > childrenNumber - 1) {
+      newIndex = childrenNumber - 1;
     }
     activeIndexHandler(newIndex);
   };
@@ -139,8 +85,8 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   // Cycle thought activeIndexes
   const carouselIndex = (index) => {
     if (index == 0) {
-      return pageNumber - 2;
-    } else if (index == pageNumber - 1) {
+      return childrenNumber - 2;
+    } else if (index == childrenNumber - 1) {
       return 1;
     } else {
       return index;
@@ -294,11 +240,10 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     <div className="overflow-hidden">
       <div
         {...handlers}
-        onMouseEnter={() => pauseHandler(true)}
-        onMouseLeave={() => pauseHandler(false)}
         className={`whitespace-nowrap ${
           infiniteLoop ? "" : "transition-transform duration-[600ms]"
-        }`}
+        }
+          `}
         style={{
           transform: `translateX(-${activeIndex * 100}%)`,
         }}
@@ -307,7 +252,6 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
           return child;
         })}
       </div>
-
       <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden border-2 border-red-500">
         <div
           className={`whitespace-nowrap ${
@@ -318,7 +262,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
           }}
         >
           {React.Children.map(children, (child, index) => {
-            if (index > 0 && index < pageNumber - 1) {
+            if (index > 0 && index < childrenNumber - 1) {
               if (index === carouselIndex(activeIndex)) {
                 return <ActiveButton index={index} />;
               } else {
