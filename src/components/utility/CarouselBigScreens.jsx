@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export const CarouselPhoneItem = ({ children }) => {
+export const CarouselBigScreensItem = ({ children }) => {
   return (
     <div className="inline-flex w-[100%] items-center justify-center">
       {children}
@@ -10,7 +10,7 @@ export const CarouselPhoneItem = ({ children }) => {
   );
 };
 
-const CarouselPhone = ({ children }) => {
+const CarouselBigScreens = ({ children }) => {
   const childrenNumber = React.Children.count(children);
   const nonRepeatingChildrenNumber = childrenNumber - 2;
 
@@ -246,7 +246,7 @@ const CarouselPhone = ({ children }) => {
           return child;
         })}
       </div>
-      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden">
+      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden border-2 border-red-500">
         <div
           className={`whitespace-nowrap ${
             infiniteLoop ? "" : "transition-transform duration-[600ms]"
@@ -276,4 +276,4 @@ const CarouselPhone = ({ children }) => {
   );
 };
 
-export default CarouselPhone;
+export default CarouselBigScreens;

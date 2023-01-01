@@ -1,9 +1,12 @@
-import { forwardRef } from "react";
+import { forwardRef, useState, useEffect } from "react";
 
 import portfolio from "../../data/portfolio";
 import PortfolioItem from "../helpers/PortfolioItem";
 import Title from "../utility/Title";
 import CarouselPhone, { CarouselPhoneItem } from "../utility/CarouselPhone";
+import CarouselBigScreens, {
+  CarouselBigScreensItem,
+} from "../utility/CarouselBigScreens";
 
 const portfolioCarousel = [
   {
@@ -24,7 +27,38 @@ const portfolioCarousel = [
 ];
 
 const Portfolio = forwardRef((props, ref) => {
-  return (
+  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleWindowResize() {
+      windowWidthHandler(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [windowWidth]);
+
+  return windowWidth > 1024 ? (
+    <section ref={ref}>
+      <Title>Portfolio</Title>
+      <CarouselBigScreens>
+        {portfolioCarousel.map((project) => (
+          <CarouselBigScreensItem key={project.id}>
+            <PortfolioItem
+              id={project.id}
+              imgUrl={project.imgUrl}
+              title={project.title}
+              stack={project.stack}
+              link={project.link}
+            />
+          </CarouselBigScreensItem>
+        ))}
+      </CarouselBigScreens>
+    </section>
+  ) : (
     <section ref={ref}>
       <Title>Portfolio</Title>
       <CarouselPhone>
