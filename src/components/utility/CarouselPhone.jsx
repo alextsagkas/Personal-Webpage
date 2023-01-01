@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export const CarouselItem = ({ children }) => {
+export const CarouselPhoneItem = ({ children }) => {
   return (
     <div className="inline-flex w-[100%] items-center justify-center">
       {children}
@@ -10,7 +10,7 @@ export const CarouselItem = ({ children }) => {
   );
 };
 
-const Carousel = ({ children }) => {
+const CarouselPhone = ({ children }) => {
   const childrenNumber = React.Children.count(children);
   const nonRepeatingChildrenNumber = childrenNumber - 2;
 
@@ -281,4 +281,4 @@ const Carousel = ({ children }) => {
   );
 };
 
-export default Carousel;
+export default CarouselPhone;

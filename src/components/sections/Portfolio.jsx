@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import portfolio from "../../data/portfolio";
 import PortfolioItem from "../helpers/PortfolioItem";
 import Title from "../utility/Title";
-import Carousel, { CarouselItem } from "../utility/Carousel";
+import CarouselPhone, { CarouselPhoneItem } from "../utility/CarouselPhone";
 
 const portfolioCarousel = [
   {
@@ -27,9 +27,9 @@ const Portfolio = forwardRef((props, ref) => {
   return (
     <section ref={ref}>
       <Title>Portfolio</Title>
-      <Carousel>
+      <CarouselPhone>
         {portfolioCarousel.map((project) => (
-          <CarouselItem key={project.id}>
+          <CarouselPhoneItem key={project.id}>
             <PortfolioItem
               id={project.id}
               imgUrl={project.imgUrl}
@@ -37,9 +37,9 @@ const Portfolio = forwardRef((props, ref) => {
               stack={project.stack}
               link={project.link}
             />
-          </CarouselItem>
+          </CarouselPhoneItem>
         ))}
-      </Carousel>
+      </CarouselPhone>
     </section>
   );
 });
