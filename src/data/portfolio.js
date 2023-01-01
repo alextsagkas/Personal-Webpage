@@ -34,18 +34,18 @@ export default [
     stack: ["Bootstrap", "ExpressJS"],
     link: "https://github.com/alextsagkas/Newsletter-NodeJS",
   },
-  {
-    id: 5,
-    title: "Simon Game",
-    imgUrl: "assets/simon-game.png",
-    stack: ["html", "CSS", "JS"],
-    link: "https://alextsagkas.github.io/Simon-Game/",
-  },
-  {
-    id: 6,
-    title: "Computational Physics",
-    imgUrl: "assets/computational-physics.png",
-    stack: ["Python", "Numpy", "Matplotlib"],
-    link: "https://github.com/alextsagkas/CompPhysics/tree/master/studentsCode/AlexTsagkas",
-  },
+  // {
+  //   id: 5,
+  //   title: "Simon Game",
+  //   imgUrl: "assets/simon-game.png",
+  //   stack: ["html", "CSS", "JS"],
+  //   link: "https://alextsagkas.github.io/Simon-Game/",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Computational Physics",
+  //   imgUrl: "assets/computational-physics.png",
+  //   stack: ["Python", "Numpy", "Matplotlib"],
+  //   link: "https://github.com/alextsagkas/CompPhysics/tree/master/studentsCode/AlexTsagkas",
+  // },
 ];

@@ -12,6 +12,7 @@ export const CarouselItem = ({ children }) => {
 
 const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   const childrenNumber = React.Children.count(children);
+  const nonReapeatingChildrenNumber = childrenNumber - 2;
 
   const stopPixel = 250;
   // TailwindCSS default values
@@ -19,10 +20,13 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   const doubleXl = 1536;
 
   const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
-  const [activeIndex, activeIndexHandler] = useState(0);
+  const [activeIndex, activeIndexHandler] = useState(1);
   const [pause, pauseHandler] = useState(false);
   const [itemsOnScreen, itemsOnScreenHandler] = useState(1);
   const [pageNumber, pageNumberHandler] = useState(childrenNumber);
+  const [infiniteLoop, infiniteLoopHandler] = useState(false);
+  const [swipedRight, swipedRightHandler] = useState(false);
+  const [swipedLeft, swipedLeftHandler] = useState(false);
 
   // Pause Carousel when scrolling beyond the Section
   useEffect(() => {
@@ -42,19 +46,19 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     window.addEventListener("resize", handleWindowResize);
 
     if (windowWidth < lg) {
-      activeIndexHandler(0);
+      activeIndexHandler(1);
       itemsOnScreenHandler(1);
       pageNumberHandler(childrenNumber);
     }
 
     if (windowWidth > lg && windowWidth < doubleXl) {
-      activeIndexHandler(0);
+      activeIndexHandler(1);
       itemsOnScreenHandler(2);
       pageNumberHandler(Math.ceil(childrenNumber / 2));
     }
 
     if (windowWidth > doubleXl) {
-      activeIndexHandler(0);
+      activeIndexHandler(1);
       itemsOnScreenHandler(3);
       pageNumberHandler(Math.ceil(childrenNumber / 3));
     }
@@ -82,44 +86,76 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     }
   }, [homeScreenVisible]);
 
-  // Carousel Animation
+  // Illusion for infinite loop - Disable Swipe Animation
   useEffect(() => {
-    if (!pause) {
-      const interval = setInterval(() => {
-        updateIndex(activeIndex + 1);
-      }, 2500);
-
-      return () => {
-        if (interval) {
-          clearInterval(interval);
-        }
-      };
+    if (
+      (activeIndex == pageNumber - 1 && swipedLeft) ||
+      (activeIndex == 0 && swipedRight)
+    ) {
+      const timeout = setTimeout(() => {
+        infiniteLoopHandler(true);
+        return clearTimeout(timeout);
+      }, 700);
+    } else {
+      infiniteLoopHandler(false);
     }
-  }, [activeIndex, pause, windowWidth]);
+  }, [activeIndex]);
+
+  // Illusion for infinite loop - Active Index Cycle
+  useEffect(() => {
+    if (infiniteLoop) {
+      if (activeIndex == pageNumber - 1) {
+        updateIndex(1);
+      } else {
+        updateIndex(pageNumber - 2);
+      }
+    }
+  }, [infiniteLoop]);
 
   //  Swipe Carousel on phone screens
   const handlers = useSwipeable({
-    onSwipedLeft: () => updateIndex(activeIndex + 1),
-    onSwipedRight: () => updateIndex(activeIndex - 1),
+    onSwipedLeft: () => {
+      swipedRightHandler(false);
+      swipedLeftHandler(true);
+      updateIndex(activeIndex + 1);
+    },
+    onSwipedRight: () => {
+      swipedLeftHandler(false);
+      swipedRightHandler(true);
+      updateIndex(activeIndex - 1);
+    },
   });
 
   // Update Index with loop
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
-      newIndex = pageNumber - 1;
-    } else if (newIndex > pageNumber - 1) {
       newIndex = 0;
+    } else if (newIndex > pageNumber - 1) {
+      newIndex = pageNumber - 1;
     }
     activeIndexHandler(newIndex);
   };
 
+  // Cycle thought activeIndexes
+  const carouselIndex = (index) => {
+    if (index == 0) {
+      return pageNumber - 2;
+    } else if (index == pageNumber - 1) {
+      return 1;
+    } else {
+      return index;
+    }
+  };
+
   return (
-    <div className="overflow-hidden">
+    <div>
       <div
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
-        className={`whitespace-nowrap transition-transform duration-700`}
+        className={`whitespace-nowrap ${
+          infiniteLoop ? "" : "transition-transform duration-700"
+        }`}
         style={{
           transform: `translateX(-${activeIndex * 100}%)`,
         }}
@@ -128,26 +164,99 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
           return child;
         })}
       </div>
-      <div className="mt-6 flex items-center justify-center">
-        <div className="flex w-9/12 flex-row flex-wrap justify-center gap-y-4 gap-x-5 min-[320px]:w-7/12 min-[390px]:w-5/12 min-[500px]:w-4/12">
+
+      <div className="mx-auto mt-6 flex w-64 items-center justify-center border-2 border-red-500">
+        <div className="flex w-9/12 flex-row flex-wrap items-center justify-center gap-y-4 gap-x-5 min-[320px]:w-7/12 min-[390px]:w-5/12 min-[500px]:w-4/12">
           {React.Children.map(children, (child, index) => {
-            return index < pageNumber ? (
-              <button
-                className={`h-4 w-4 rounded-full ${
-                  activeIndex === index
-                    ? "bg-bgDark-500 dark:bg-bgDark-400"
-                    : "bg-bgDark-300 dark:bg-bgDark-600"
-                }`}
-                onClick={() => {
-                  updateIndex(index);
-                }}
-              />
-            ) : null;
+            if (index === carouselIndex(activeIndex)) {
+              return <ActiveButton key={index} />;
+            } else {
+              return <NonActiveButton key={index} />;
+            }
           })}
         </div>
       </div>
     </div>
   );
 };
+
+// {
+//   React.Children.map(children, (child, index) => {
+//     if (index < pageNumber - 1 && index > 0 && index <= 6) {
+//       if (index === carouselIndex(activeIndex)) {
+//         return <ActiveButton />;
+//       }
+
+//       if (index !== carouselIndex(activeIndex)) {
+//         if (nonReapeatingChildrenNumber <= 5) {
+//           return <NonActiveButton />;
+//         }
+
+//         if (nonReapeatingChildrenNumber <= 6) {
+//           if (index === 7) {
+//             return <NonActiveButtonS />;
+//           } else {
+//             return <NonActiveButtonXS />;
+//           }
+//         }
+//       }
+//     }
+//   });
+// }
+
+// // Carousel Animation
+// useEffect(() => {
+//   if (!pause) {
+//     var delay;
+
+//     if (activeIndex == pageNumber - 1 || activeIndex == 0) {
+//       delay = 700;
+//     } else if (
+//       (activeIndex == 1 && !swipedLeft) ||
+//       (activeIndex == pageNumber - 2 && swipedRight)
+//     ) {
+//       delay = 1800;
+//     } else {
+//       delay = 2500;
+//     }
+
+//     const interval = setInterval(() => {
+//       updateIndex(activeIndex + direction);
+//     }, delay);
+
+//     return () => {
+//       if (interval) {
+//         clearInterval(interval);
+//       }
+//     };
+//   }
+// }, [activeIndex, pause, windowWidth]);
+
+export const ActiveButton = (key) => (
+  <button
+    key={key}
+    className={"h-3 w-3 rounded-full bg-bgDark-500 dark:bg-bgDark-400"}
+  />
+);
+
+export const NonActiveButton = (key) => (
+  <button
+    key={key}
+    className={"h-3 w-3 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+  />
+);
+export const NonActiveButtonS = (key) => (
+  <button
+    key={key}
+    className={"h-2 w-2 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+  />
+);
+
+export const NonActiveButtonXS = (key) => (
+  <button
+    key={key}
+    className={"h-1 w-1 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+  />
+);
 
 export default Carousel;
