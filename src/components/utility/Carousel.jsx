@@ -243,6 +243,53 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     );
   };
 
+  const ActiveButton = ({ index }) => (
+    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+      <button
+        key={index}
+        className={
+          "h-[0.78rem] w-[0.78rem] rounded-full bg-bgDark-500 align-middle dark:bg-bgDark-400"
+        }
+      />
+    </div>
+  );
+
+  const NonActiveButton = ({ index }) => (
+    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+      <button
+        key={index}
+        onClick={() => updateIndex(index)}
+        className={
+          "h-3 w-3 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
+        }
+      />
+    </div>
+  );
+
+  const NonActiveButtonS = ({ index }) => (
+    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+      <button
+        key={index}
+        onClick={() => updateIndex(index)}
+        className={
+          "h-2 w-2 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
+        }
+      />
+    </div>
+  );
+
+  const NonActiveButtonXS = ({ index }) => (
+    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+      <button
+        key={index}
+        onClick={() => updateIndex(index)}
+        className={
+          "h-1 w-1 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
+        }
+      />
+    </div>
+  );
+
   return (
     <div className="overflow-hidden">
       <div
@@ -261,7 +308,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
         })}
       </div>
 
-      <div className="mx-auto mt-6 w-[150px] overflow-hidden">
+      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden border-2 border-red-500">
         <div
           className={`whitespace-nowrap ${
             infiniteLoop ? "" : "transition-transform duration-[600ms]"
@@ -273,14 +320,14 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
           {React.Children.map(children, (child, index) => {
             if (index > 0 && index < pageNumber - 1) {
               if (index === carouselIndex(activeIndex)) {
-                return <ActiveButton key={index} />;
+                return <ActiveButton index={index} />;
               } else {
                 if (smallNonActiveButtonConditions(index)) {
-                  return <NonActiveButtonS key={index} />;
+                  return <NonActiveButtonS index={index} />;
                 } else if (extraSmallNonActiveButtonConditions(index)) {
-                  return <NonActiveButtonXS key={index} />;
+                  return <NonActiveButtonXS index={index} />;
                 } else {
-                  return <NonActiveButton key={index} />;
+                  return <NonActiveButton index={index} />;
                 }
               }
             }
@@ -290,94 +337,5 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     </div>
   );
 };
-
-// {
-//   React.Children.map(children, (child, index) => {
-//     if (index < pageNumber - 1 && index > 0 && index <= 6) {
-//       if (index === carouselIndex(activeIndex)) {
-//         return <ActiveButton />;
-//       }
-
-//       if (index !== carouselIndex(activeIndex)) {
-//         if (nonRepeatingChildrenNumber <= 5) {
-//           return <NonActiveButton />;
-//         }
-
-//         if (nonRepeatingChildrenNumber <= 6) {
-//           if (index === 7) {
-//             return <NonActiveButtonS />;
-//           } else {
-//             return <NonActiveButtonXS />;
-//           }
-//         }
-//       }
-//     }
-//   });
-// }
-
-// // Carousel Animation
-// useEffect(() => {
-//   if (!pause) {
-//     var delay;
-
-//     if (activeIndex == pageNumber - 1 || activeIndex == 0) {
-//       delay = 700;
-//     } else if (
-//       (activeIndex == 1 && !swipedLeft) ||
-//       (activeIndex == pageNumber - 2 && swipedRight)
-//     ) {
-//       delay = 1800;
-//     } else {
-//       delay = 2500;
-//     }
-
-//     const interval = setInterval(() => {
-//       updateIndex(activeIndex + direction);
-//     }, delay);
-
-//     return () => {
-//       if (interval) {
-//         clearInterval(interval);
-//       }
-//     };
-//   }
-// }, [activeIndex, pause, windowWidth]);
-
-// Update Index with loop
-
-export const ActiveButton = (key) => (
-  <div className="inline-block w-[30px] text-center">
-    <div
-      key={key}
-      className={"h-3 w-3 rounded-full bg-bgDark-500 dark:bg-bgDark-400"}
-    />
-  </div>
-);
-
-export const NonActiveButton = (key) => (
-  <div className="inline-block w-[30px] text-center">
-    <div
-      key={key}
-      className={"h-3 w-3 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-    />
-  </div>
-);
-export const NonActiveButtonS = (key) => (
-  <div className="inline-block w-[30px] text-center">
-    <div
-      key={key}
-      className={"h-2 w-2 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-    />
-  </div>
-);
-
-export const NonActiveButtonXS = (key) => (
-  <div className="inline-block w-[30px] text-center">
-    <div
-      key={key}
-      className={"h-1 w-1 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-    />
-  </div>
-);
 
 export default Carousel;
