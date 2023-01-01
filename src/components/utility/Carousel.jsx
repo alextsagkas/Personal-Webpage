@@ -42,7 +42,6 @@ const Carousel = ({ children }) => {
 
   // Illusion for infinite loop - Active Index Cycle
   useEffect(() => {
-    console.log(infiniteLoop);
     if (infiniteLoop) {
       if (activeIndex == childrenNumber - 1) {
         updateIndex(1);
@@ -190,7 +189,7 @@ const Carousel = ({ children }) => {
   };
 
   const ActiveButton = ({ index }) => (
-    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+    <div className="inline-block w-[30px] text-center">
       <button
         key={index}
         className={
@@ -201,7 +200,7 @@ const Carousel = ({ children }) => {
   );
 
   const NonActiveButton = ({ index }) => (
-    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+    <div className="inline-block w-[30px] text-center">
       <button
         key={index}
         onClick={() => updateIndex(index)}
@@ -213,7 +212,7 @@ const Carousel = ({ children }) => {
   );
 
   const NonActiveButtonS = ({ index }) => (
-    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+    <div className="inline-block w-[30px] text-center">
       <button
         key={index}
         onClick={() => updateIndex(index)}
@@ -225,7 +224,7 @@ const Carousel = ({ children }) => {
   );
 
   const NonActiveButtonXS = ({ index }) => (
-    <div className="inline-block w-[30px] border-2 border-green-500 text-center">
+    <div className="inline-block w-[30px] text-center">
       <button
         key={index}
         onClick={() => updateIndex(index)}
@@ -252,7 +251,7 @@ const Carousel = ({ children }) => {
           return child;
         })}
       </div>
-      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden border-2 border-red-500">
+      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden">
         <div
           className={`whitespace-nowrap ${
             infiniteLoop ? "" : "transition-transform duration-[600ms]"
