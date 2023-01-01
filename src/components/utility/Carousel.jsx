@@ -147,6 +147,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     }
   };
 
+  // Translate bullets' Carousel
   const translateBullets = () => {
     // No need to translate when we have less than 5 items
     if (nonRepeatingChildrenNumber <= 5) {
@@ -183,6 +184,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     }
   };
 
+  // Conditions to display small inactive button
   const smallNonActiveButtonConditions = (index) => {
     return (
       // Right side of activeIndex - middle
@@ -203,6 +205,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     );
   };
 
+  // Conditions to display extra small inactive button
   const extraSmallNonActiveButtonConditions = (index) => {
     return (
       // Right side of activeIndex - Middle
@@ -247,7 +250,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
         onMouseEnter={() => pauseHandler(true)}
         onMouseLeave={() => pauseHandler(false)}
         className={`whitespace-nowrap ${
-          infiniteLoop ? "" : "transition-transform duration-700"
+          infiniteLoop ? "" : "transition-transform duration-[600ms]"
         }`}
         style={{
           transform: `translateX(-${activeIndex * 100}%)`,
@@ -261,7 +264,7 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
       <div className="mx-auto mt-6 w-[150px] overflow-hidden">
         <div
           className={`whitespace-nowrap ${
-            infiniteLoop ? "" : "transition-transform duration-700"
+            infiniteLoop ? "" : "transition-transform duration-[600ms]"
           }`}
           style={{
             transform: translateBullets(),
@@ -340,9 +343,11 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
 //   }
 // }, [activeIndex, pause, windowWidth]);
 
+// Update Index with loop
+
 export const ActiveButton = (key) => (
   <div className="inline-block w-[30px] text-center">
-    <button
+    <div
       key={key}
       className={"h-3 w-3 rounded-full bg-bgDark-500 dark:bg-bgDark-400"}
     />
@@ -351,7 +356,7 @@ export const ActiveButton = (key) => (
 
 export const NonActiveButton = (key) => (
   <div className="inline-block w-[30px] text-center">
-    <button
+    <div
       key={key}
       className={"h-3 w-3 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
     />
@@ -359,7 +364,7 @@ export const NonActiveButton = (key) => (
 );
 export const NonActiveButtonS = (key) => (
   <div className="inline-block w-[30px] text-center">
-    <button
+    <div
       key={key}
       className={"h-2 w-2 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
     />
@@ -368,7 +373,7 @@ export const NonActiveButtonS = (key) => (
 
 export const NonActiveButtonXS = (key) => (
   <div className="inline-block w-[30px] text-center">
-    <button
+    <div
       key={key}
       className={"h-1 w-1 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
     />
