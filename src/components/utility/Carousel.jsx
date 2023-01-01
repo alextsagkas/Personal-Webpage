@@ -12,7 +12,7 @@ export const CarouselItem = ({ children }) => {
 
 const Carousel = ({ children, homeScreenVisible, scrollY }) => {
   const childrenNumber = React.Children.count(children);
-  const nonReapeatingChildrenNumber = childrenNumber - 2;
+  const nonRepeatingChildrenNumber = childrenNumber - 2;
 
   const stopPixel = 250;
   // TailwindCSS default values
@@ -147,8 +147,101 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
     }
   };
 
+  const translateBullets = () => {
+    // No need to translate when we have less than 5 items
+    if (nonRepeatingChildrenNumber <= 5) {
+      return "";
+    }
+
+    if (nonRepeatingChildrenNumber > 5) {
+      //  Do not translate on start
+      if (activeIndex <= 3 && activeIndex != 0) {
+        return "";
+      }
+
+      // Do not translate on end
+      if (
+        activeIndex >= nonRepeatingChildrenNumber - 2 &&
+        activeIndex != nonRepeatingChildrenNumber + 1
+      ) {
+        return `translateX(-${(nonRepeatingChildrenNumber - 5) * 30}px)`;
+      }
+
+      // Loops' end - Right translation
+      if (activeIndex == nonRepeatingChildrenNumber + 1) {
+        return "";
+      }
+
+      // Loops' start - Left translation
+      if (activeIndex == 0) {
+        return `translateX(-${(nonRepeatingChildrenNumber - 5) * 30}px)`;
+      }
+
+      // Translate Left
+
+      return `translateX(-${(activeIndex - 3) * 30}px)`;
+    }
+  };
+
+  const smallNonActiveButtonConditions = (index) => {
+    return (
+      // Right side of activeIndex - middle
+      (index - activeIndex === 1 &&
+        activeIndex > 3 &&
+        activeIndex <= nonRepeatingChildrenNumber - 3) ||
+      // Right side of activeIndex - start
+      (activeIndex <= 3 && index === 4) ||
+      (activeIndex == nonRepeatingChildrenNumber + 1 && index === 4) ||
+      // Left side of activeIndex - middle
+      (nonRepeatingChildrenNumber - activeIndex >= 3 &&
+        activeIndex >= 4 &&
+        index === activeIndex - 1) ||
+      // Left side of activeIndex - start
+      (nonRepeatingChildrenNumber - activeIndex <= 3 &&
+        index === nonRepeatingChildrenNumber - 3) ||
+      (activeIndex == 0 && index === nonRepeatingChildrenNumber - 3)
+    );
+  };
+
+  const extraSmallNonActiveButtonConditions = (index) => {
+    return (
+      // Right side of activeIndex - Middle
+      (index - activeIndex >= 2 &&
+        activeIndex > 3 &&
+        activeIndex != 0 &&
+        activeIndex < nonRepeatingChildrenNumber - 3) ||
+      (activeIndex == nonRepeatingChildrenNumber - 3 &&
+        index === nonRepeatingChildrenNumber - 1) ||
+      // Right side of activeIndex - Start
+      (activeIndex <= 3 && activeIndex != 0 && index >= 5) ||
+      // Right side of activeIndex - Start Loop
+      (activeIndex == nonRepeatingChildrenNumber + 1 && index === 5) ||
+      // Left side of activeIndex - Middle
+      (nonRepeatingChildrenNumber - activeIndex >= 3 &&
+        activeIndex > 4 &&
+        activeIndex != 0 &&
+        index <= activeIndex - 2) ||
+      (activeIndex === 4 && index === 2) ||
+      // Left side of activeIndex - Start
+      (nonRepeatingChildrenNumber - activeIndex <= 3 &&
+        activeIndex != nonRepeatingChildrenNumber + 1 &&
+        index <= nonRepeatingChildrenNumber - 4 &&
+        index != 1) ||
+      // Left side of activeIndex - Start Loop
+      (activeIndex == 0 && index === nonRepeatingChildrenNumber - 4) ||
+      // Middle Loop
+      (nonRepeatingChildrenNumber >= 11 &&
+        index >= 5 &&
+        index <= nonRepeatingChildrenNumber - 4 &&
+        (activeIndex == 0 ||
+          activeIndex == nonRepeatingChildrenNumber + 1 ||
+          activeIndex == 1 ||
+          activeIndex == nonRepeatingChildrenNumber))
+    );
+  };
+
   return (
-    <div>
+    <div className="overflow-hidden">
       <div
         {...handlers}
         onMouseEnter={() => pauseHandler(true)}
@@ -165,13 +258,28 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
         })}
       </div>
 
-      <div className="mx-auto mt-6 flex w-64 items-center justify-center border-2 border-red-500">
-        <div className="flex w-9/12 flex-row flex-wrap items-center justify-center gap-y-4 gap-x-5 min-[320px]:w-7/12 min-[390px]:w-5/12 min-[500px]:w-4/12">
+      <div className="mx-auto mt-6 w-[150px] overflow-hidden">
+        <div
+          className={`whitespace-nowrap ${
+            infiniteLoop ? "" : "transition-transform duration-700"
+          }`}
+          style={{
+            transform: translateBullets(),
+          }}
+        >
           {React.Children.map(children, (child, index) => {
-            if (index === carouselIndex(activeIndex)) {
-              return <ActiveButton key={index} />;
-            } else {
-              return <NonActiveButton key={index} />;
+            if (index > 0 && index < pageNumber - 1) {
+              if (index === carouselIndex(activeIndex)) {
+                return <ActiveButton key={index} />;
+              } else {
+                if (smallNonActiveButtonConditions(index)) {
+                  return <NonActiveButtonS key={index} />;
+                } else if (extraSmallNonActiveButtonConditions(index)) {
+                  return <NonActiveButtonXS key={index} />;
+                } else {
+                  return <NonActiveButton key={index} />;
+                }
+              }
             }
           })}
         </div>
@@ -188,11 +296,11 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
 //       }
 
 //       if (index !== carouselIndex(activeIndex)) {
-//         if (nonReapeatingChildrenNumber <= 5) {
+//         if (nonRepeatingChildrenNumber <= 5) {
 //           return <NonActiveButton />;
 //         }
 
-//         if (nonReapeatingChildrenNumber <= 6) {
+//         if (nonRepeatingChildrenNumber <= 6) {
 //           if (index === 7) {
 //             return <NonActiveButtonS />;
 //           } else {
@@ -233,30 +341,38 @@ const Carousel = ({ children, homeScreenVisible, scrollY }) => {
 // }, [activeIndex, pause, windowWidth]);
 
 export const ActiveButton = (key) => (
-  <button
-    key={key}
-    className={"h-3 w-3 rounded-full bg-bgDark-500 dark:bg-bgDark-400"}
-  />
+  <div className="inline-block w-[30px] text-center">
+    <button
+      key={key}
+      className={"h-3 w-3 rounded-full bg-bgDark-500 dark:bg-bgDark-400"}
+    />
+  </div>
 );
 
 export const NonActiveButton = (key) => (
-  <button
-    key={key}
-    className={"h-3 w-3 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-  />
+  <div className="inline-block w-[30px] text-center">
+    <button
+      key={key}
+      className={"h-3 w-3 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+    />
+  </div>
 );
 export const NonActiveButtonS = (key) => (
-  <button
-    key={key}
-    className={"h-2 w-2 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-  />
+  <div className="inline-block w-[30px] text-center">
+    <button
+      key={key}
+      className={"h-2 w-2 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+    />
+  </div>
 );
 
 export const NonActiveButtonXS = (key) => (
-  <button
-    key={key}
-    className={"h-1 w-1 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
-  />
+  <div className="inline-block w-[30px] text-center">
+    <button
+      key={key}
+      className={"h-1 w-1 rounded-full bg-bgDark-300 dark:bg-bgDark-600"}
+    />
+  </div>
 );
 
 export default Carousel;
