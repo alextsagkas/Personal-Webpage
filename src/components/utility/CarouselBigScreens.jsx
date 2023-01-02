@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useSwipeable } from "react-swipeable";
+import React, { useState, useEffect } from "react";
+
+import { LeftArrow, RightArrow } from "../icons/Icons";
 
 export const CarouselBigScreensItem = ({ children }) => {
   return (
-    <div className="inline-flex w-[100%] items-center justify-center">
+    <div className="inline-flex w-[100%] items-center justify-center lg:w-[50%] 2xl:w-[33.33%]">
       {children}
     </div>
   );
@@ -12,174 +12,108 @@ export const CarouselBigScreensItem = ({ children }) => {
 
 const CarouselBigScreens = ({ children }) => {
   const childrenNumber = React.Children.count(children);
-  const nonRepeatingChildrenNumber = childrenNumber - 2;
 
-  const [activeIndex, activeIndexHandler] = useState(1);
-  const [infiniteLoop, infiniteLoopHandler] = useState(false);
-  const [swipedRight, swipedRightHandler] = useState(false);
-  const [swipedLeft, swipedLeftHandler] = useState(false);
+  // TailwindCSS default values
+  const lg = 1024;
+  const doubleXl = 1536;
 
-  // Illusion for infinite loop - Disable Swipe Animation
+  const [activeIndex, activeIndexHandler] = useState(0);
+  const [itemsOnScreen, itemsOnScreenHandler] = useState(0);
+  const [pageNumber, pageNumberHandler] = useState(childrenNumber);
+  const [windowWidth, windowWidthHandler] = useState(window.innerWidth);
+
+  // Update windowWidth & set pageNumber
   useEffect(() => {
-    if (
-      (activeIndex == childrenNumber - 1 && swipedLeft) ||
-      (activeIndex == 0 && swipedRight)
-    ) {
-      setTimeout(() => {
-        infiniteLoopHandler(true);
-      }, 600);
-    } else {
-      setTimeout(() => {
-        infiniteLoopHandler(false);
-      }, 10);
+    function handleWindowResize() {
+      windowWidthHandler(window.innerWidth);
     }
-  }, [activeIndex]);
 
-  // Illusion for infinite loop - Active Index Cycle
-  useEffect(() => {
-    if (infiniteLoop) {
-      if (activeIndex == childrenNumber - 1) {
-        updateIndex(1);
-      } else {
-        updateIndex(childrenNumber - 2);
-      }
+    window.addEventListener("resize", handleWindowResize);
+
+    if (windowWidth > lg && windowWidth < doubleXl) {
+      activeIndexHandler(0);
+      itemsOnScreenHandler(2);
+      pageNumberHandler(Math.ceil(childrenNumber / 2));
     }
-  }, [infiniteLoop]);
 
-  //  Swipe Carousel on phone screens
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (activeIndex == childrenNumber - 1 || activeIndex == 0) {
-        return;
-      }
-      swipedRightHandler(false);
-      swipedLeftHandler(true);
-      updateIndex(activeIndex + 1);
-    },
-    onSwipedRight: () => {
-      if (activeIndex == childrenNumber - 1 || activeIndex == 0) {
-        return;
-      }
-      swipedLeftHandler(false);
-      swipedRightHandler(true);
-      updateIndex(activeIndex - 1);
-    },
-  });
-
-  // Update Index with loop
-  const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
-      newIndex = 0;
-    } else if (newIndex > childrenNumber - 1) {
-      newIndex = childrenNumber - 1;
+    if (windowWidth > doubleXl) {
+      activeIndexHandler(0);
+      itemsOnScreenHandler(3);
+      pageNumberHandler(Math.ceil(childrenNumber / 3));
     }
-    activeIndexHandler(newIndex);
-  };
 
-  // Cycle thought activeIndexes
-  const carouselIndex = (index) => {
-    if (index == 0) {
-      return childrenNumber - 2;
-    } else if (index == childrenNumber - 1) {
-      return 1;
-    } else {
-      return index;
-    }
-  };
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [windowWidth]);
 
   // Translate bullets' Carousel
   const translateBullets = () => {
     // No need to translate when we have less than 5 items
-    if (nonRepeatingChildrenNumber <= 5) {
+    if (pageNumber <= 5) {
       return "";
     }
 
-    if (nonRepeatingChildrenNumber > 5) {
+    if (pageNumber > 5) {
       //  Do not translate on start
-      if (activeIndex <= 3 && activeIndex != 0) {
+      if (activeIndex <= 2) {
         return "";
       }
 
       // Do not translate on end
-      if (
-        activeIndex >= nonRepeatingChildrenNumber - 2 &&
-        activeIndex != nonRepeatingChildrenNumber + 1
-      ) {
-        return `translateX(-${(nonRepeatingChildrenNumber - 5) * 30}px)`;
-      }
-
-      // Loops' end - Right translation
-      if (activeIndex == nonRepeatingChildrenNumber + 1) {
-        return "";
-      }
-
-      // Loops' start - Left translation
-      if (activeIndex == 0) {
-        return `translateX(-${(nonRepeatingChildrenNumber - 5) * 30}px)`;
+      if (activeIndex >= pageNumber - 3) {
+        return `translateX(-${(pageNumber - 5) * 30}px)`;
       }
 
       // Translate Left
-
-      return `translateX(-${(activeIndex - 3) * 30}px)`;
+      return `translateX(-${(activeIndex - 2) * 30}px)`;
     }
+    return "";
   };
 
   // Conditions to display small inactive button
   const smallNonActiveButtonConditions = (index) => {
+    if (pageNumber <= 5) {
+      return false;
+    }
+
     return (
       // Right side of activeIndex - middle
       (index - activeIndex === 1 &&
-        activeIndex > 3 &&
-        activeIndex <= nonRepeatingChildrenNumber - 3) ||
+        activeIndex > 2 &&
+        activeIndex <= pageNumber - 4) ||
       // Right side of activeIndex - start
-      (activeIndex <= 3 && index === 4) ||
-      (activeIndex == nonRepeatingChildrenNumber + 1 && index === 4) ||
+      (activeIndex <= 2 && index === 3) ||
       // Left side of activeIndex - middle
-      (nonRepeatingChildrenNumber - activeIndex >= 3 &&
-        activeIndex >= 4 &&
+      (pageNumber - activeIndex > 3 &&
+        activeIndex >= 3 &&
         index === activeIndex - 1) ||
       // Left side of activeIndex - start
-      (nonRepeatingChildrenNumber - activeIndex <= 3 &&
-        index === nonRepeatingChildrenNumber - 3) ||
-      (activeIndex == 0 && index === nonRepeatingChildrenNumber - 3)
+      (pageNumber - activeIndex <= 3 && index === pageNumber - 4)
     );
   };
 
   // Conditions to display extra small inactive button
   const extraSmallNonActiveButtonConditions = (index) => {
+    if (pageNumber <= 5) {
+      return false;
+    }
+
     return (
       // Right side of activeIndex - Middle
       (index - activeIndex >= 2 &&
-        activeIndex > 3 &&
-        activeIndex != 0 &&
-        activeIndex < nonRepeatingChildrenNumber - 3) ||
-      (activeIndex == nonRepeatingChildrenNumber - 3 &&
-        index === nonRepeatingChildrenNumber - 1) ||
+        activeIndex > 2 &&
+        activeIndex < pageNumber - 3 &&
+        index != pageNumber - 1) ||
       // Right side of activeIndex - Start
-      (activeIndex <= 3 && activeIndex != 0 && index >= 5) ||
-      // Right side of activeIndex - Start Loop
-      (activeIndex == nonRepeatingChildrenNumber + 1 && index === 5) ||
+      (activeIndex <= 2 && index >= 4) ||
       // Left side of activeIndex - Middle
-      (nonRepeatingChildrenNumber - activeIndex >= 3 &&
-        activeIndex > 4 &&
-        activeIndex != 0 &&
-        index <= activeIndex - 2) ||
-      (activeIndex === 4 && index === 2) ||
+      (pageNumber - activeIndex > 3 &&
+        activeIndex >= 3 &&
+        index <= activeIndex - 2 &&
+        index != 0) ||
       // Left side of activeIndex - Start
-      (nonRepeatingChildrenNumber - activeIndex <= 3 &&
-        activeIndex != nonRepeatingChildrenNumber + 1 &&
-        index <= nonRepeatingChildrenNumber - 4 &&
-        index != 1) ||
-      // Left side of activeIndex - Start Loop
-      (activeIndex == 0 && index === nonRepeatingChildrenNumber - 4) ||
-      // Middle Loop
-      (nonRepeatingChildrenNumber >= 11 &&
-        index >= 5 &&
-        index <= nonRepeatingChildrenNumber - 4 &&
-        (activeIndex == 0 ||
-          activeIndex == nonRepeatingChildrenNumber + 1 ||
-          activeIndex == 1 ||
-          activeIndex == nonRepeatingChildrenNumber))
+      (pageNumber - activeIndex <= 3 && index <= pageNumber - 5)
     );
   };
 
@@ -198,7 +132,7 @@ const CarouselBigScreens = ({ children }) => {
     <div className="inline-block w-[30px] text-center">
       <button
         key={index}
-        onClick={() => updateIndex(index)}
+        onClick={() => activeIndexHandler(index)}
         className={
           "h-3 w-3 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
         }
@@ -210,7 +144,7 @@ const CarouselBigScreens = ({ children }) => {
     <div className="inline-block w-[30px] text-center">
       <button
         key={index}
-        onClick={() => updateIndex(index)}
+        onClick={() => activeIndexHandler(index)}
         className={
           "h-2 w-2 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
         }
@@ -222,7 +156,7 @@ const CarouselBigScreens = ({ children }) => {
     <div className="inline-block w-[30px] text-center">
       <button
         key={index}
-        onClick={() => updateIndex(index)}
+        onClick={() => activeIndexHandler(index)}
         className={
           "h-1 w-1 rounded-full bg-bgDark-300 align-middle dark:bg-bgDark-600"
         }
@@ -231,13 +165,10 @@ const CarouselBigScreens = ({ children }) => {
   );
 
   return (
+    // Carousel
     <div className="overflow-hidden">
       <div
-        {...handlers}
-        className={`whitespace-nowrap ${
-          infiniteLoop ? "" : "transition-transform duration-[600ms]"
-        }
-          `}
+        className={"whitespace-nowrap transition-transform duration-[600ms]"}
         style={{
           transform: `translateX(-${activeIndex * 100}%)`,
         }}
@@ -246,31 +177,68 @@ const CarouselBigScreens = ({ children }) => {
           return child;
         })}
       </div>
-      <div className="mx-auto mt-6 h-fit w-[150px] overflow-hidden border-2 border-red-500">
-        <div
-          className={`whitespace-nowrap ${
-            infiniteLoop ? "" : "transition-transform duration-[600ms]"
+      {/* Bullets */}
+      <div className="mt-10 flex flex-row justify-center gap-8">
+        <button
+          className={`${
+            activeIndex === 0
+              ? "text-bgDark-400 dark:text-bgDark-500"
+              : "text-bgDark-500 dark:text-bgDark-400"
           }`}
-          style={{
-            transform: translateBullets(),
+          onClick={() => {
+            if (activeIndex === 0) {
+              return;
+            }
+            activeIndexHandler(activeIndex - 1);
           }}
         >
-          {React.Children.map(children, (child, index) => {
-            if (index > 0 && index < childrenNumber - 1) {
-              if (index === carouselIndex(activeIndex)) {
-                return <ActiveButton index={index} />;
-              } else {
-                if (smallNonActiveButtonConditions(index)) {
-                  return <NonActiveButtonS index={index} />;
-                } else if (extraSmallNonActiveButtonConditions(index)) {
-                  return <NonActiveButtonXS index={index} />;
+          <LeftArrow />
+        </button>
+        <div
+          className={`h-fit overflow-hidden ${
+            pageNumber >= 5 ? "w-[150px]" : ""
+          }`}
+        >
+          <div
+            className={
+              "whitespace-nowrap transition-transform duration-[600ms]"
+            }
+            style={{
+              transform: translateBullets(),
+            }}
+          >
+            {React.Children.map(children, (child, index) => {
+              if (index < pageNumber) {
+                if (index === activeIndex) {
+                  return <ActiveButton index={index} />;
                 } else {
-                  return <NonActiveButton index={index} />;
+                  if (smallNonActiveButtonConditions(index)) {
+                    return <NonActiveButtonS index={index} />;
+                  } else if (extraSmallNonActiveButtonConditions(index)) {
+                    return <NonActiveButtonXS index={index} />;
+                  } else {
+                    return <NonActiveButton index={index} />;
+                  }
                 }
               }
-            }
-          })}
+            })}
+          </div>
         </div>
+        <button
+          className={`${
+            activeIndex === pageNumber - 1
+              ? "text-bgDark-400 dark:text-bgDark-500"
+              : "text-bgDark-500 dark:text-bgDark-400"
+          }`}
+          onClick={() => {
+            if (activeIndex === pageNumber - 1) {
+              return;
+            }
+            activeIndexHandler(activeIndex + 1);
+          }}
+        >
+          <RightArrow />
+        </button>
       </div>
     </div>
   );
