@@ -48,6 +48,7 @@ const CarouselPhone = ({ children }) => {
 
   //  Swipe Carousel on phone screens
   const handlers = useSwipeable({
+    preventScrollOnSwipe: true,
     onSwipedLeft: () => {
       if (activeIndex == childrenNumber - 1 || activeIndex == 0) {
         return;
