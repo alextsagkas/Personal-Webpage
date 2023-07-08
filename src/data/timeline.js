@@ -7,14 +7,14 @@ export default [
     details:
       "My passion for understanding what constitutes reality and how humans can influence it, lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my main interest. I'm currently on my last year of studies and I'm looking forward to the next step of my career.",
   },
-  {
-    id: 5,
-    year: "2023",
-    title: "Cloud Coverage in PV Parks",
-    duration: "3 weeks",
-    details:
-      "My first publication is about my Bachelor Thesis and is submitted in Emerging Tech Conference Edge Intelligence 2023. It focuses on efficient solutions for the development of PV park controllers by comparing the results of applying the cloud coverage algorithm I developed to cameras of different costs. Furthermore, the cloud recognition capabilities are compared with the commercial software that is provided by the sky imagers' vendors.",
-  },
+  // {
+  //   id: 5,
+  //   year: "2023",
+  //   title: "Cloud Coverage in PV Parks",
+  //   duration: "3 weeks",
+  //   details:
+  //     "My first publication is about my Bachelor Thesis and is submitted in Emerging Tech Conference Edge Intelligence 2023. It focuses on efficient solutions for the development of PV park controllers by comparing the results of applying the cloud coverage algorithm I developed to cameras of different costs. Furthermore, the cloud recognition capabilities are compared with the commercial software that is provided by the sky imagers' vendors.",
+  // },
   {
     id: 4,
     year: "2023",
