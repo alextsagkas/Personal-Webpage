@@ -1,19 +1,27 @@
 export default [
   {
-    id: 5,
-    year: "Today",
+    id: 6,
+    year: "2023",
     title: "Physics Bachelor's Degree",
     duration: "4 years",
     details:
       "My passion for understanding what constitutes reality and how humans can influence it, lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my main interest. I'm currently on my last year of studies and I'm looking forward to the next step of my career.",
   },
   {
-    id: 4,
-    year: "Today",
-    title: "Image Processing",
-    duration: "3 months",
+    id: 5,
+    year: "2023",
+    title: "Cloud Coverage in PV Parks",
+    duration: "3 weeks",
     details:
-      "My Thesis is about detecting clouds in images taken from low-cost sky cameras. The project is based on classifying different image pixels as cloudy or cloudless, depending on information from the RGB and HSV channels. The project is written in Python and the main libraries used are Numpy and Scikit-Image. The project is still in progress and I am currently working on perfecting the classification algorithm, in terms of efficiency and accuracy.",
+      "My first publication is about my Bachelor Thesis and is submitted in Emerging Tech Conference Edge Intelligence 2023. It focuses on efficient solutions for the development of PV park controllers by comparing the results of applying the cloud coverage algorithm I developed to cameras of different costs. Furthermore, the cloud recognition capabilities are compared with the commercial software that is provided by the sky imagers' vendors.",
+  },
+  {
+    id: 4,
+    year: "2023",
+    title: "Cloud Detection Algorithm",
+    duration: "8 months",
+    details:
+      "My Thesis is about detecting clouds in images taken from all-sky cameras (180 degree view of the sky). The project is based on classifying different image pixels as cloudy or cloudless, depending on information from the RGB and HSV channels, using an image segmentation, thresholding algorithm. It is written in Python and the main libraries used are numpy and scikit-image. As for the results, they are exceptional in overcast and clear skies, and the algorithm successfully separates the bright solar area from surrounding clouds, in partly cloudy skies.",
   },
   {
     id: 3,
