@@ -12,12 +12,14 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
         Alexandros Tsagkaropoulos
       </h1>
       <p className="mb-6 text-base font-semibold md:text-xl">
-        Physics Student & Software Engineer
+        Software Engineer
       </p>
       <p className="mb-6 max-w-xl px-7 text-sm font-medium">
-        I'm a Bachelor Physics Student trying to figure out the world we live
-        in. I specialize in Computer Science and I seek to apply my knowledge to
-        Software Development Projects. All projects I undertake are carefully
+        I am studying for M.Sc. in Control and Computing at the National and Kapodistrian
+        University of Athens.
+        I specialize in systems programming and I seek to apply my knowledge to
+        Software Development projects. 
+        All projects I undertake are carefully
         outlined, designed and implemented to solve real world problems
         efficiently and elegantly.
       </p>

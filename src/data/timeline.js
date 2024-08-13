@@ -1,20 +1,36 @@
 export default [
   {
+    id: 8,
+    year: "2023",
+    title: "Solar Irradiance Forrecast",
+    duration: "",
+    details:
+      "Digital Systems Team achieved short-term irradiance forrecasting for PV parks by using novel nueral networks. The application is suitable for edge devices and constitues the key factor for controlling variations in PV pwer production. Our work is published on MDPI Information Journal.",
+  },
+  {
+    id: 7,
+    year: "2023",
+    title: "IKY Scholarship",
+    duration: "",
+    details:
+      "IKY (State Scholarships Foundation) awarded me with the Excellence Scholarship for the academic year 2022-2023.",
+  },
+  {
     id: 6,
     year: "2023",
-    title: "Physics Bachelor's Degree",
+    title: "Cloud Coverage in PV Parks",
+    duration: "",
+    details:
+      "My first publication is about my Bachelor Thesis and is submitted in Emerging Tech Conference Edge Intelligence 2023. It focuses on efficient solutions for the development of PV park controllers by comparing the results of applying the cloud coverage algorithm I developed to cameras of different costs. Furthermore, the cloud recognition capabilities are compared with the commercial software that is provided by the sky imagers' vendors.",
+  },
+  {
+    id: 5,
+    year: "2023",
+    title: "Physics Bachelor’s Degree",
     duration: "4 years",
     details:
-      "My passion for understanding what constitutes reality and how humans can influence it, lead me to major in Physics. My 4 years of experience and interaction with students and teachers ensured me that Computer Science is my main interest. I'm currently on my last year of studies and I'm looking forward to the next step of my career.",
+      "My passion for understanding what constitutes reality and how humans can influence it, lead me to major in Physics. My insatiable curiosity for the uknown led me to be ranked first among all graduents of my department, in the academic year 2022-2023.",
   },
-  // {
-  //   id: 5,
-  //   year: "2023",
-  //   title: "Cloud Coverage in PV Parks",
-  //   duration: "3 weeks",
-  //   details:
-  //     "My first publication is about my Bachelor Thesis and is submitted in Emerging Tech Conference Edge Intelligence 2023. It focuses on efficient solutions for the development of PV park controllers by comparing the results of applying the cloud coverage algorithm I developed to cameras of different costs. Furthermore, the cloud recognition capabilities are compared with the commercial software that is provided by the sky imagers' vendors.",
-  // },
   {
     id: 4,
     year: "2023",
@@ -45,7 +61,7 @@ export default [
     title: "ATLAS Long Lived Particles",
     duration: "6 months",
     details:
-      "Built a program that searches for and identifies displaced vertices, participating in New Particle Search at Cern. The program was written in C++ and have been developed around ROOT data analysis framework. The aim of the project was to compare the accuracy of algorithmic methods to human input and check how accurate the computer generated results can be. Furthermore, a paper was written so as to aggregate the results of the algorithm development.",
+      "I built a program that searches for and identifies displaced vertices, participating in New Particle Search at Cern. The program was written in C++ and have been developed around ROOT data analysis framework. The aim of the project was to compare the accuracy of algorithmic methods to human input and check how accurate the computer generated results can be. Furthermore, a paper was written so as to aggregate the results of the algorithm development.",
   },
   {
     id: 0,
