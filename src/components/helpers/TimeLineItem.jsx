@@ -10,9 +10,11 @@ function TimeLineItem({ year, title, duration, details }) {
           <h3 className="text-lg font-semibold text-bgDark-900 dark:text-white">
             {title}
           </h3>
-          <div className="my-1 text-sm font-medium leading-none text-bgDark-400 dark:text-bgDark-500">
-            {duration}
-          </div>
+          {duration == "" ? null : (
+            <div className="my-1 text-sm font-medium leading-none text-bgDark-400 dark:text-bgDark-500">
+              {duration}
+            </div>
+          )}
           <p className="my-2 w-full text-base font-normal text-bgDark-500 dark:text-bgDark-400">
             {details}
           </p>
