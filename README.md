@@ -12,7 +12,7 @@ The app is made responsive through the handy **TailwindCSS** classes. Some theme
 
 ## Storage
 
-The data for the portfolio and the timeline sections are stored in `src/data/data` folder. Therefore, in every section the Component maps to the data array a ComponentItem each time, so as to construct the whole section.
+The data for the projects and the timeline sections are stored in `src/data/data` folder. Therefore, in every section the Component maps to the data array a ComponentItem each time, so as to construct the whole section.
 
 ## Contact Form
 
@@ -20,6 +20,6 @@ The data from the form submission is sent to the [getform.io](https://getform.io
 
 The functionality of the form is implemented with functions located in `src/functions/formValidation.js` file. Furthermore, the data are fetched with the `fetchData` function located in `src/functions/fetchData.js` file.
 
-## Portfolio Carousel
+## Projects Carousel
 
-The portfolio's Carousel is built from ground up with **React** and **TailwindCSS**. It is responsive and can be used on any device. The Carousel can also be navigated with gestures implemented with **react-swipeable** package.
+The projects' Carousel is built from ground up with **React** and **TailwindCSS**. It is responsive and can be used on any device. The Carousel can also be navigated with gestures implemented with **react-swipeable** package.

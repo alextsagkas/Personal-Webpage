@@ -43,7 +43,7 @@ const Portfolio = forwardRef((props, ref) => {
 
   return windowWidth > 1024 ? (
     <section ref={ref}>
-      <Title>Portfolio</Title>
+      <Title>Projects</Title>
       <CarouselBigScreens>
         {portfolio.map((project) => (
           <CarouselBigScreensItem key={project.id}>
@@ -60,7 +60,7 @@ const Portfolio = forwardRef((props, ref) => {
     </section>
   ) : (
     <section ref={ref}>
-      <Title>Portfolio</Title>
+      <Title>Projects</Title>
       <CarouselPhone>
         {portfolioCarousel.map((project) => (
           <CarouselPhoneItem key={project.id}>

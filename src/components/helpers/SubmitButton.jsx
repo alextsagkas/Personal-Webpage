@@ -9,7 +9,7 @@ function SubmitButton({ disableButton }) {
           : "transition duration-300 ease-in-out hover:scale-105 hover:from-blue-500 hover:to-violet-500  focus:outline-bgDark-900 hover:dark:to-orange-500 dark:focus:outline-white"
       }`}
     >
-      Work with Me
+      Send
     </button>
   );
 }

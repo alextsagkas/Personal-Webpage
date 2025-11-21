@@ -12,16 +12,15 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
         Alexandros Tsagkaropoulos
       </h1>
       <p className="mb-6 text-base font-semibold md:text-xl">
-        Software Engineer
+        M.Sc. Student
       </p>
       <p className="mb-6 max-w-xl px-7 text-sm font-medium">
-        I am studying for M.Sc. in Control and Computing at the National and Kapodistrian
-        University of Athens.
-        I specialize in systems programming and I seek to apply my knowledge to
-        Software Development projects. 
-        All projects I undertake are carefully
-        outlined, designed and implemented to solve real world problems
-        efficiently and elegantly.
+        I am pursuing an M.Sc. in Electronics-Radioelectrology and in Control and Computing
+        at the National and Kapodistrian University of Athens.
+        My research interests center on the design, optimization and development of
+        resource-constrained and high-throughput computer systems.
+        I approach every project with emphasis on rigor, clarity and practicality,
+        aiming to address real-world problems efficiently and elegantly.
       </p>
       <div className="h-full" />
       <motion.div

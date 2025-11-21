@@ -90,8 +90,8 @@ function App() {
             ref={introductionRef}
           />
         ) : null}
-        <Portfolio ref={portfolioRef} />
         <TimeLine ref={timeLineRef} />
+        <Portfolio ref={portfolioRef} />
         <Contact ref={contactRef} />
         <Footer />
       </div>

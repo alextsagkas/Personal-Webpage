@@ -14,7 +14,7 @@ function NavBar({ theme, themeSwitcherHandler, removePageHandler, refs }) {
         >
           Home
         </button>
-        <NavBarItem ref={portfolioRef} text={"Portfolio"} />
+        <NavBarItem ref={portfolioRef} text={"Projects"} />
         <NavBarItem ref={timeLineRef} text={"Timeline"} />
         <NavBarItem ref={contactRef} text={"Contact"} />
         <div className="min-[400px]:inline-block hidden w-full"></div>
