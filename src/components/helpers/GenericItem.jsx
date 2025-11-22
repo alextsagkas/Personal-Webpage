@@ -22,7 +22,10 @@ function GenericItem({year, title, subtitle, details, DetailsRenderer}) {
               {subtitle}
             </h4>
           </div>
-          {DetailsRenderer && <DetailsRenderer details={details}/>}
+          <div
+            className="md:pr-20 text-sm">
+            {DetailsRenderer && <DetailsRenderer details={details}/>}
+          </div>
         </div>
       </li>
     </ol>);
