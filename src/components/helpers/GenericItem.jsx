@@ -10,20 +10,20 @@ function GenericItem({year, title, subtitle, details, DetailsRenderer}) {
             <div
               className="flex flex-row gap-x-3">
               <span
-                className="basis-10 text-xs flex items-center py-0 px-2 justify-center text-center text-middle rounded-md bg-bgDark-900 font-semibold text-white dark:bg-white dark:text-bgDark-900">
+                className="basis-10 text-xs flex items-center py-1 px-2 justify-center text-center text-middle rounded-md bg-bgDark-900 font-semibold text-white dark:bg-white dark:text-bgDark-900">
                 {year}
               </span>
-              <h3 className="text-base font-semibold text-bgDark-900 dark:text-white">
+              <h3 className="self-center text-lg font-semibold text-bgDark-900 dark:text-white">
                 {title}
               </h3>
             </div>
             <h4
-              className="text-sm font-semibold text-bgDark-600 dark:text-bgDark-200">
+              className="text-base italic text-bgDark-800 dark:text-bgDark-50">
               {subtitle}
             </h4>
           </div>
           <div
-            className="md:pr-20 text-sm">
+            className="md:pr-20 text-base text-bgDark-700 dark:text-bgDark-300">
             {DetailsRenderer && <DetailsRenderer details={details}/>}
           </div>
         </div>

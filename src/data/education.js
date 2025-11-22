@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    year: "March 2026",
+    year: "Mar 2026",
     title: "National and Kapodistrian University of Athens",
     subtitle: "M.Sc. in Electronics-Radioelectrology and in Control and Computing",
     details: [
@@ -15,7 +15,7 @@ export default [
     ]
   }, {
     id: 0,
-    year: "July 2023",
+    year: "Jul 2023",
     title: "National and Kapodistrian University of Athens",
     subtitle: "B.Sc. in Physics",
     details: [
