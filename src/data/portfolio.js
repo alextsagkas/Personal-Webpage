@@ -1,57 +1,44 @@
 export default [
   {
-    id: 0,
-    title: "Personal Website",
-    imgUrl: "assets/personal-website.png",
-    stack: ["React", "TailwindCSS", "Vite"],
-    link: "",
+    id: 5,
+    title: "Tower of Light",
+    imgUrl: "assets/tower-of-light.png",
+    stack: ["Java", "RPG", "Rogue-Like"],
+    link: "https://github.com/alextsagkas/tower_of_light"
   },
-  {id: 1,
+  {
+    id: 4,
+    title: "ARM Multicycle Processor",
+    imgUrl: "assets/arm-multicycle-processor.png",
+    stack: ["VHDL", "Scripting"],
+    link: "https://github.com/alextsagkas/ARM-multicycle-processor"
+  },
+  {
+    id: 3,
     title: "Old Times",
-  imgUrl: "assets/old-times.png",
-  stack: ["Next", "TailwindCSS", "Prisma"],
+    imgUrl: "assets/old-times.png",
+    stack: ["Next", "TailwindCSS", "Prisma"],
     link: "https://oldtimescorfu.com"
   },
   {
     id: 2,
-    title: "Link Tree",
-    imgUrl: "assets/link-tree.png",
-    stack: ["React", "TailwindCSS", "Vite"],
-    link: "https://alextsagkas.github.io/Link-Tree/",
-  },
-  {
-    id: 3,
-    title: "Tikz Graphics",
-    imgUrl: "assets/tikz.png",
-    stack: ["LaTeX", "Tikz"],
-    link: "https://tikz.net/author/alex/",
-  },
-  {
-    id: 4,
     title: "ATLAS Long Lived Particles",
     imgUrl: "assets/atlas.png",
     stack: ["C++", "ROOT"],
     link: "https://github.com/alextsagkas/ATLAS-Long_Lived_Particles",
   },
   {
-    id: 5,
-    title: "Newsletter App",
-    imgUrl: "assets/newsletter.png",
-    stack: ["Bootstrap", "ExpressJS"],
-    link: "https://github.com/alextsagkas/Newsletter-NodeJS",
-  },
-  {
-    id: 6,
-    title: "Simon Game",
-    imgUrl: "assets/simon-game.png",
-    stack: ["html", "CSS", "JS"],
-    link: "https://alextsagkas.github.io/Simon-Game/",
-  },
-  {
-    id: 7,
+    id: 1,
     title: "Computational Physics",
     imgUrl: "assets/computational-physics.png",
     stack: ["Python", "Numpy", "Matplotlib"],
     link: "https://github.com/alextsagkas/CompPhysics/tree/master/studentsCode/AlexTsagkas",
+  },
+  {
+    id: 0,
+    title: "Tikz Graphics",
+    imgUrl: "assets/tikz.png",
+    stack: ["LaTeX", "Tikz"],
+    link: "https://tikz.net/author/alex/",
   },
 ];
