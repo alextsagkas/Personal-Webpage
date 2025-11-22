@@ -19,7 +19,7 @@ function NavBar({ theme, themeSwitcherHandler, removePageHandler, refs }) {
         <NavBarItem ref={publicationsRef} text={"Publications"} />
         <NavBarItem ref={portfolioRef} text={"Projects"} />
         <NavBarItem ref={contactRef} text={"Contact"} />
-        <div className="min-[400px]:inline-block hidden w-full"></div>
+        <div className="inline-block w-full"></div>
         <ThemeButton
           theme={theme}
           themeSwitcherHandler={themeSwitcherHandler}

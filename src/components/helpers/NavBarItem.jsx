@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 const NavBarItem = forwardRef((props, ref) => {
   return (
     <button
-      className="max-[320px]:hidden"
+      className="max-[650px]:hidden"
       onClick={() => {
         ref.current?.scrollIntoView({ behavior: "smooth" });
       }}
