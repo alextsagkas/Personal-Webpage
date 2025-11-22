@@ -4,6 +4,7 @@ import NavBar from "./components/sections/NavBar";
 import IntroSlider from "./components/sections/IntroSlider";
 import Education from "./components/sections/Education";
 import Employment from "./components/sections/Employment";
+import Publications from "./components/sections/Publications";
 import Portfolio from "./components/sections/Portfolio";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
@@ -17,6 +18,7 @@ function App() {
   const introductionRef = useRef(null);
   const educationRef = useRef(null);
   const employmentRef = useRef(null);
+  const publicationsRef = useRef(null);
   const portfolioRef = useRef(null);
   const contactRef = useRef(null);
 
@@ -73,6 +75,7 @@ function App() {
     introductionRef,
     educationRef,
     employmentRef,
+    publicationsRef,
     portfolioRef,
     contactRef,
   };
@@ -95,6 +98,7 @@ function App() {
         ) : null}
         <Education ref={educationRef} />
         <Employment ref={employmentRef} />
+        <Publications ref={publicationsRef} />
         <Portfolio ref={portfolioRef} />
         <Contact ref={contactRef} />
         <Footer />
