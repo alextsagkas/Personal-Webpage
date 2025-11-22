@@ -12,7 +12,7 @@ The app is made responsive through the handy **TailwindCSS** classes. Some theme
 
 ## Storage
 
-The data for the projects and the timeline sections are stored in `src/data/data` folder. Therefore, in every section the Component maps to the data array a ComponentItem each time, so as to construct the whole section.
+The data for the education and projects sections are stored in `src/data/data` folder. Therefore, in every section the Component maps to the data array a ComponentItem each time, so as to construct the whole section.
 
 ## Contact Form
 

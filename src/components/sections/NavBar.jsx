@@ -2,7 +2,7 @@ import NavBarItem from "../helpers/NavBarItem";
 import ThemeButton from "../utility/ThemeButton";
 
 function NavBar({ theme, themeSwitcherHandler, removePageHandler, refs }) {
-  const { portfolioRef, timeLineRef, contactRef } = refs;
+  const { educationRef, portfolioRef, contactRef } = refs;
 
   return (
     <nav className="min-[380px]:text-base fixed top-0 z-10 h-14 w-full border-b-[0.6px] border-bgDark-400 bg-bgLight-50 py-3 text-sm text-bgDark-900 opacity-90 dark:bg-bgDark-900 dark:text-white">
@@ -14,8 +14,8 @@ function NavBar({ theme, themeSwitcherHandler, removePageHandler, refs }) {
         >
           Home
         </button>
+        <NavBarItem ref={educationRef} text={"Education"} />
         <NavBarItem ref={portfolioRef} text={"Projects"} />
-        <NavBarItem ref={timeLineRef} text={"Timeline"} />
         <NavBarItem ref={contactRef} text={"Contact"} />
         <div className="min-[400px]:inline-block hidden w-full"></div>
         <ThemeButton

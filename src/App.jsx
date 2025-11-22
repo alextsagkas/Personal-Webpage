@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 import NavBar from "./components/sections/NavBar";
 import IntroSlider from "./components/sections/IntroSlider";
+import Education from "./components/sections/Education";
 import Portfolio from "./components/sections/Portfolio";
-import TimeLine from "./components/sections/TimeLine";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 
@@ -14,8 +14,8 @@ function App() {
   const [toolBarHidden, setToolBarHidden] = useState(false);
 
   const introductionRef = useRef(null);
+  const educationRef = useRef(null);
   const portfolioRef = useRef(null);
-  const timeLineRef = useRef(null);
   const contactRef = useRef(null);
 
   // Toolbar Logic
@@ -69,8 +69,8 @@ function App() {
 
   const refs = {
     introductionRef,
+    educationRef,
     portfolioRef,
-    timeLineRef,
     contactRef,
   };
 
@@ -90,7 +90,7 @@ function App() {
             ref={introductionRef}
           />
         ) : null}
-        <TimeLine ref={timeLineRef} />
+        <Education ref={educationRef} />
         <Portfolio ref={portfolioRef} />
         <Contact ref={contactRef} />
         <Footer />
