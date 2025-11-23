@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 16
 
@@ -28,10 +28,12 @@ jobs:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: production-files
           path: ./dist
+          compression-level: 6
+          if-no-files-found: error
 
   deploy:
     name: Deploy
@@ -41,7 +43,7 @@ jobs:
 
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: production-files
           path: ./dist
