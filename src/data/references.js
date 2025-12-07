@@ -15,7 +15,7 @@ export default [
         id: 2,
         authors: "Christoforos Vasilakis, Alexandros Tsagkaropoulos, Angelos Motsios, and Dionysios Reisis",
         title: "Autonomously Reconfigurable Telemetry and Monitoring System for CubeSats",
-        at: "International Symposium on Very Large Scale Integration (ISVLSI)",
+        at: "IEEE Computer Society Annual Symposium on VLSI (ISVLSI)",
         date: "July 2025",
         url: "https://doi.org/10.1109/ISVLSI65124.2025.11130232",
       },
@@ -51,7 +51,7 @@ export default [
         id: 1,
         authors: "Christoforos Vasilakis, Alexandros Tsagkaropoulos, Angelos Motsios, Panagiotis Karathanasis, Christos Tsigkanos, and Dionysios Reisis",
         title: "Reducing Onboard Power Consumption in CubeSats via Adaptive Telemetry and Monitoring",
-        at: "IEEE International Conference on Autonomic Computing and Self-Organizing Systems (ACSOS)",
+        at: "IEEE International Conference on Autonomic Computing and Self-Organizing Systems Companion (ACSOS-C)",
         date: "September 2025",
         url: "https://doi.org/10.1109/ACSOS-C66519.2025.00062"
       },
