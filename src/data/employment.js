@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    year: "Now",
+    year: "Jul 2026",
     title: "ERMIS: Constellation of Three CubeSats",
     subtitle: "Embedded Software Engineer",
     details: [

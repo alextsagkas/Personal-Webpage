@@ -1,5 +1,15 @@
 export default [
   {
+    id: 2,
+    year: "Now",
+    title: "Columbia University",
+    subtitle: "Ph.D. in Computer Science",
+    details: [
+      {
+        key: 0, name: "Advisor", value: "Associate Professor Asaf Cidon"
+      }
+    ]
+  }, {
     id: 1,
     year: "Mar 2026",
     title: "National and Kapodistrian University of Athens",

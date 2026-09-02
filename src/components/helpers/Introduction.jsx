@@ -8,19 +8,10 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
       className="flex h-screen w-screen flex-col items-center justify-center text-center"
     >
       <div className="h-full" />
-      <h1 className="mb-2 px-7 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
+      <h1 className="mb-6 px-7 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
         Alexandros Tsagkaropoulos
       </h1>
-      <p className="mb-6 text-base font-semibold md:text-xl">
-        M.Sc. Student
-      </p>
-      <p className="mb-6 max-w-xl px-7 text-sm font-medium">
-        I am pursuing an M.Sc. in Electronics-Radioelectrology and in Control and Computing
-        at the National and Kapodistrian University of Athens.
-        My research interests center on the design, optimization and development of
-        resource-constrained and high-throughput computer systems.
-        I approach every project with emphasis on rigor, clarity and practicality,
-        aiming to address real-world problems efficiently and elegantly.
+      <p className="mb-6 text-base font-semibold md:text-xl">Ph.D. Student
       </p>
       <div className="h-full" />
       <motion.div

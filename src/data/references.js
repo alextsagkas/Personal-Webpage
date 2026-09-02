@@ -27,6 +27,14 @@ export default [
     elements: [
       {
         id: 1,
+        authors: "Christoforos Vasilakis, Alexandros Tsagkaropoulos, Angelos Motsios, Panagiotis Karathanasis, Christos Tsigkanos, Dionysios Reisis",
+        title: "On Architectural Analysis for Nanosatellite Flight Software: Deconstructing ERMIS3 per 4+1",
+        at: "Journal of Systems and Software",
+        date: "Aug 2027",
+        url: "https://doi.org/10.1016/j.jss.2026.113067"
+      },
+      {
+        id: 2,
         authors: "Christoforos Vasilakis, Alexandros Tsagkaropoulos, Ioannis Koutoulas, and Dionysios Reisis",
         title: "Improving the Fast Fourier Transform for Space and Edge Computing Applications with an Efficient In-Place Method",
         at: "MDPI Software",
@@ -34,7 +42,7 @@ export default [
         url: "https://doi.org/10.3390/software4020011"
       },
       {
-        id: 2,
+        id: 3,
         authors: "Georgios Venitourakis, Christoforos Vasilakis, Alexandros Tsagkaropoulos, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
         title: "Neural Network-Based Solar Irradiance Forecast for Edge Computing Devices",
         at: "MDPI Information",
