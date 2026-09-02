@@ -12,6 +12,7 @@ import Footer from "./components/sections/Footer";
 function App() {
   const [theme, setTheme] = useState(null);
   const [removePage, removePageHandler] = useState(false);
+  const [isDraggedDown, isDraggedDownHandler] = useState(true);
   const [scrollY, setScrollY] = useState(window.scrollY);
   const [toolBarHidden, setToolBarHidden] = useState(false);
 
@@ -62,6 +63,7 @@ function App() {
   useEffect(() => {
     if (!removePage) {
       document.body.style.overflow = "hidden";
+      isDraggedDownHandler(true);
     } else {
       document.body.style.overflow = "scroll";
     }
@@ -88,14 +90,23 @@ function App() {
         removePageHandler={removePageHandler}
         refs={refs}
       />
-      <div className="mx-auto w-11/12 max-w-5xl px-4 md:w-8/12">
-        {!removePage ? (
-          <IntroSlider
-            toolBarHidden={toolBarHidden}
-            removePageHandler={removePageHandler}
-            ref={introductionRef}
-          />
-        ) : null}
+      {!removePage ? (
+        <IntroSlider
+          toolBarHidden={toolBarHidden}
+          removePageHandler={removePageHandler}
+          isDraggedDown={isDraggedDown}
+          isDraggedDownHandler={isDraggedDownHandler}
+          ref={introductionRef}
+        />
+      ) : null}
+      {/* iOS Safari paints in-flow content into the strip its translucent
+          toolbar sits over, and no fixed overlay reaches that strip, so the page
+          underneath has to stop painting while the intro still covers it. */}
+      <div
+        className={`mx-auto w-11/12 max-w-5xl px-4 md:w-8/12 ${
+          !removePage && isDraggedDown ? "invisible" : ""
+        }`}
+      >
         <Education ref={educationRef} />
         <Employment ref={employmentRef} />
         <Publications ref={publicationsRef} />

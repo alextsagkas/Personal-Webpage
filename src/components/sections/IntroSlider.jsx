@@ -1,15 +1,17 @@
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 
 import Introduction from "../helpers/Introduction";
 
-const IntroSlider = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
-  const [isDraggedDown, isDraggedDownHandler] = useState(true);
-
-  return (
+const IntroSlider = forwardRef(
+  (
+    { removePageHandler, toolBarHidden, isDraggedDown, isDraggedDownHandler },
+    ref
+  ) => {
+    return (
     <>
       <motion.div
-        className="fixed top-0 left-0 z-20 bg-bgLight-50 dark:bg-bgDark-900"
+        className="fixed top-0 left-0 z-20 min-h-screen w-screen bg-bgLight-50 dark:bg-bgDark-900"
         drag="y"
         dragConstraints={{ bottom: 0 }}
         dragElastic={0}
@@ -20,14 +22,14 @@ const IntroSlider = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
         }}
         whileDrag={{ scale: 0.99 }}
         onUpdate={() => {
-          if (ref.current.getBoundingClientRect().y > 1) {
-            isDraggedDownHandler(true);
-          } else {
-            isDraggedDownHandler(false);
-          }
+          // Anything that is not an actual upward slide counts as "down":
+          // resting at 0 and the bounce past it both have to keep the page
+          // underneath hidden, not just an overshoot below the top edge.
+          isDraggedDownHandler(ref.current.getBoundingClientRect().y > -1);
 
           if (
-            Math.abs(ref.current.getBoundingClientRect().y) > window.innerHeight
+            Math.abs(ref.current.getBoundingClientRect().y) >
+            window.innerHeight
           ) {
             removePageHandler((latest) => !latest);
           }
@@ -37,10 +39,11 @@ const IntroSlider = forwardRef(({ removePageHandler, toolBarHidden }, ref) => {
       </motion.div>
       {/* Helper Div so as not to display the background when dragged downwards */}
       {isDraggedDown ? (
-        <div className="fixed top-0 left-0 z-10 h-[99%] w-screen bg-bgLight-50 dark:bg-bgDark-900"></div>
+        <div className="fixed inset-0 z-10 min-h-screen w-screen bg-bgLight-50 dark:bg-bgDark-900"></div>
       ) : null}
     </>
-  );
-});
+    );
+  }
+);
 
 export default IntroSlider;
