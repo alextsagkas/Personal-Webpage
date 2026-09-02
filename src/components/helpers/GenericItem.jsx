@@ -23,7 +23,7 @@ function GenericItem({year, title, subtitle, details, DetailsRenderer}) {
             </h4>
           </div>
           <div
-            className="md:pr-20 text-base text-bgDark-700 dark:text-bgDark-300">
+            className="w-full md:pr-20 text-base text-bgDark-700 dark:text-bgDark-300">
             {DetailsRenderer && <DetailsRenderer details={details}/>}
           </div>
         </div>
