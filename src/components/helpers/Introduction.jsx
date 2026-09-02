@@ -8,7 +8,7 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
       className="flex h-screen w-screen flex-col items-center justify-center text-center"
     >
       <div className="h-full" />
-      <h1 className="mb-6 px-7 text-4xl font-bold dark:text-white md:mb-3 md:text-7xl">
+      <h1 className="mb-6 px-7 text-2xl font-bold dark:text-white md:mb-3 md:text-4xl">
         Alexandros Tsagkaropoulos
       </h1>
       <p className="mb-6 text-base font-semibold md:text-xl">Ph.D. Student

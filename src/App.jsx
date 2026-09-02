@@ -81,7 +81,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen min-w-[320px] bg-bgLight-50 font-inter text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
+    <div className="min-h-screen min-w-[320px] bg-bgLight-50 font-mono text-bgDark-900 dark:bg-bgDark-900 dark:text-bgDark-300">
       <NavBar
         theme={theme}
         themeSwitcherHandler={themeSwitcherHandler}
