@@ -6,7 +6,7 @@ function GenericItem({year, title, subtitle, details, DetailsRenderer}) {
           className="absolute -left-[8.7px] mt-1.5 h-4 w-4 rounded-full border-[3.5px] border-bgLight-50 bg-bgDark-300 dark:border-bgDark-900 dark:bg-bgDark-700"/>
         <div className="flex flex-row flex-wrap items-center justify-start gap-y-4">
           <div
-            className="grid gap-y-3">
+            className="grid w-full gap-y-3">
             <div
               className="flex flex-row gap-x-3">
               <span
