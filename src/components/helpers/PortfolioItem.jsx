@@ -12,7 +12,7 @@ function PortfolioItem({ id, title, imgUrl, stack, link }) {
         className="h-40 w-full cursor-pointer object-cover"
       />
       <div className="w-full p-4">
-        <h3 className="mb-2 text-lg font-semibold dark:text-white md:mb-3 md:text-xl">
+        <h3 className="mb-2 text-base font-semibold dark:text-white md:mb-3">
           {title}
         </h3>
         <p className="flex flex-row flex-wrap items-center justify-start gap-2 text-xs dark:text-white">
