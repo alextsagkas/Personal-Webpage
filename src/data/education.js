@@ -8,8 +8,10 @@ export default [
       {
         key: 0,
         name: "Advisors",
-        value:
-          "Associate Professor Asaf Cidon\nAssistant Professor Kostis Kaffes"
+        value: [
+          "Associate Professor Asaf Cidon",
+          "Assistant Professor Kostis Kaffes",
+        ]
       }
     ]
   }, {

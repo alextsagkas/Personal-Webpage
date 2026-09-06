@@ -7,7 +7,9 @@ function DetailsDictRenderer({details}) {
             <p>{item.name}</p>
           </div>
           <div className="flex-1">
-            <p>{item.value}</p>
+            {[].concat(item.value).map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
           </div>
         </div>
       ))}
