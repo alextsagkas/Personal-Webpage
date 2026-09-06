@@ -103,7 +103,7 @@ function App() {
           toolbar sits over, and no fixed overlay reaches that strip, so the page
           underneath has to stop painting while the intro still covers it. */}
       <div
-        className={`mx-auto w-11/12 max-w-5xl px-4 md:w-8/12 ${
+        className={`mx-auto w-11/12 max-w-5xl px-4 page:w-[max(66.666667%,39rem)] ${
           !removePage && isDraggedDown ? "invisible" : ""
         }`}
       >

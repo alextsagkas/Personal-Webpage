@@ -3,7 +3,7 @@ import { Tick, Cross } from "../../icons/Icons";
 function InputMark({ success, failure }) {
   if (success) {
     return (
-      <div className="absolute w-11/12 max-w-5xl -translate-x-[1rem] md:w-8/12">
+      <div className="absolute w-11/12 max-w-5xl -translate-x-[1rem] page:w-[max(66.666667%,39rem)]">
         <div className="absolute right-7 -top-[2.13rem] scale-105 text-success-500">
           <Tick />
         </div>
@@ -13,7 +13,7 @@ function InputMark({ success, failure }) {
 
   if (failure) {
     return (
-      <div className="absolute w-11/12 max-w-5xl -translate-x-[1rem] md:w-8/12">
+      <div className="absolute w-11/12 max-w-5xl -translate-x-[1rem] page:w-[max(66.666667%,39rem)]">
         <div className="absolute right-7 -top-[2.13rem] scale-105 text-failure-500">
           <Cross />
         </div>
