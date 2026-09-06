@@ -6,7 +6,10 @@ export default [
     subtitle: "Ph.D. in Computer Science",
     details: [
       {
-        key: 0, name: "Advisor", value: "Associate Professor Asaf Cidon"
+        key: 0,
+        name: "Advisors",
+        value:
+          "Associate Professor Asaf Cidon\nAssistant Professor Kostis Kaffes"
       }
     ]
   }, {
