@@ -16,7 +16,7 @@ function Footer() {
           </FooterItem>
         </div>
       </div>
-      <p className="mt-1 mb-4 text-sm opacity-50">
+      <p className="mt-1 mb-4 text-xs opacity-50">
         &copy; {new Date().getFullYear()} Alexandros Tsagkaropoulos. All rights
         reserved.
       </p>

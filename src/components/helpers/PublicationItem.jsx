@@ -1,7 +1,7 @@
 function PublicationItem({index, authors, title, at, date, url}) {
   return (
     <div
-      className="pb-1.5 flex flex-row gap-2 text-base">
+      className="pb-1.5 flex flex-row gap-2 text-sm">
       <div
         className="flex-10">
         [{index}]

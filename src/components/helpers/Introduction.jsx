@@ -11,11 +11,11 @@ const Introduction = forwardRef(({ toolBarHidden }, ref) => {
       <h1 className="mb-6 px-7 text-2xl font-bold dark:text-white md:mb-3 md:text-4xl">
         Alexandros Tsagkaropoulos
       </h1>
-      <p className="mb-6 text-base font-semibold md:text-xl">Ph.D. Student
+      <p className="mb-6 text-sm font-semibold md:text-lg">Ph.D. Student
       </p>
       <div className="h-full" />
       <motion.div
-        className="mb-1 text-xs text-bgDark-900 dark:text-white md:mb-3 md:text-sm "
+        className="mb-1 text-xs text-bgDark-900 dark:text-white md:mb-3"
         animate={{ y: -4 }}
         transition={{
           repeat: Infinity,

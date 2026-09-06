@@ -12,7 +12,7 @@ const Publications = forwardRef((props, ref) => {
         <div className="mb-4 last:mb-0">
           <div
             key={reference.id}
-            className="text-xl mb-3 font-semibold text-bgDark-800 dark:text-bgDark-100">
+            className="text-lg mb-3 font-semibold text-bgDark-800 dark:text-bgDark-100">
             {reference.category}
           </div>
           {reference.elements.map((element) => (

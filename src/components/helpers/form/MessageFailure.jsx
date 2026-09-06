@@ -14,7 +14,7 @@ function MessageFailure({ isEmpty, isSmall, isBig, failure }) {
   }
 
   return failure ? (
-    <div className="mt-[2px] text-sm text-failure-500">{errorText}</div>
+    <div className="mt-[2px] text-xs text-failure-500">{errorText}</div>
   ) : null;
 }
 

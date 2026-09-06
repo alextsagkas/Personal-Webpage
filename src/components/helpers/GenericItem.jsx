@@ -13,17 +13,17 @@ function GenericItem({year, title, subtitle, details, DetailsRenderer}) {
                 className="basis-10 text-xs flex items-center py-1 px-2 justify-center text-center text-middle rounded-md bg-bgDark-900 font-semibold text-white dark:bg-white dark:text-bgDark-900">
                 {year}
               </span>
-              <h3 className="self-center text-lg font-semibold text-bgDark-900 dark:text-white">
+              <h3 className="self-center text-base font-semibold text-bgDark-900 dark:text-white">
                 {title}
               </h3>
             </div>
             <h4
-              className="text-base italic text-bgDark-800 dark:text-bgDark-50">
+              className="text-sm italic text-bgDark-800 dark:text-bgDark-50">
               {subtitle}
             </h4>
           </div>
           <div
-            className="w-full md:pr-20 text-base text-bgDark-700 dark:text-bgDark-300">
+            className="w-full md:pr-20 text-sm text-bgDark-700 dark:text-bgDark-300">
             {DetailsRenderer && <DetailsRenderer details={details}/>}
           </div>
         </div>
