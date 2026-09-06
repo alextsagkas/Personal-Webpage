@@ -19,6 +19,22 @@ export default [
         date: "July 2025",
         url: "https://doi.org/10.1109/ISVLSI65124.2025.11130232",
       },
+      {
+        id: 3,
+        authors: "Alexandros Tsagkaropoulos, Christoforos Vasilakis, Georgios Venitourakis, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
+        title: "Computing the Cleanness of the Photovoltaic (PV) Panels",
+        at: "Emerging Tech Conference Edge Intelligence (ETCEI)",
+        date: "October 2024",
+        url: "https://doi.org/10.63438/MNCB3433",
+      },
+      {
+        id: 4,
+        authors: "Christoforos Vasilakis, Georgios Venitourakis, Alexandros Tsagkaropoulos, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
+        title: "Comparing the Performance of Cameras and SW Packets for the Cloud Coverage Process in Photovoltaic (PV) Parks",
+        at: "Emerging Tech Conference Edge Intelligence (ETCEI)",
+        date: "October 2023",
+        url: "https://doi.org/10.63438/JSXN3655",
+      },
     ]
   },
   {
@@ -37,7 +53,7 @@ export default [
         id: 2,
         authors: "Christoforos Vasilakis, Alexandros Tsagkaropoulos, Ioannis Koutoulas, and Dionysios Reisis",
         title: "Improving the Fast Fourier Transform for Space and Edge Computing Applications with an Efficient In-Place Method",
-        at: "MDPI Software",
+        at: "Software",
         date: "May 2025",
         url: "https://doi.org/10.3390/software4020011"
       },
@@ -45,7 +61,7 @@ export default [
         id: 3,
         authors: "Georgios Venitourakis, Christoforos Vasilakis, Alexandros Tsagkaropoulos, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
         title: "Neural Network-Based Solar Irradiance Forecast for Edge Computing Devices",
-        at: "MDPI Information",
+        at: "Information",
         date: "November 2023",
         url: "https://doi.org/10.3390/info14110617"
       },
@@ -53,7 +69,7 @@ export default [
   },
   {
     id: 0,
-    category: "Presentations & Posters",
+    category: "Posters & Workshops",
     elements: [
       {
         id: 1,
@@ -62,22 +78,6 @@ export default [
         at: "IEEE International Conference on Autonomic Computing and Self-Organizing Systems Companion (ACSOS-C)",
         date: "September 2025",
         url: "https://doi.org/10.1109/ACSOS-C66519.2025.00062"
-      },
-      {
-        id: 2,
-        authors: "Alexandros Tsagkaropoulos, Christoforos Vasilakis, Georgios Venitourakis, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
-        title: "Computing the Cleanness of the Photovoltaic (PV) Panels",
-        at: "Emerging Tech Conference Edge Intelligence (ETCEI)",
-        date: "October 2024",
-        url: ""
-      },
-      {
-        id: 3,
-        authors: "Christoforos Vasilakis, Georgios Venitourakis, Alexandros Tsagkaropoulos, Tzouma Amrou, Georgios Konstantoulakis, Panagiotis Golemis, and Dionysios Reisis",
-        title: "Comparing the Performance of Cameras and SW Packets for the Cloud Coverage Process in Photovoltaic (PV) Parks",
-        at: "Emerging Tech Conference Edge Intelligence (ETCEI)",
-        date: "October 2023",
-        url: ""
       },
     ]
   },
